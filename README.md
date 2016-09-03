@@ -1,5 +1,5 @@
 # Java Ace Toolkit
-: An elegant & flexible general purpose utility library aiming compatibility & simplicity for the highest productivity.
+An elegant & flexible general purpose utility library aiming compatibility & simplicity for the highest productivity.
 
 ## Characteristics
 + works with Java 1.5 or superior
@@ -8,7 +8,7 @@
 + has no external dependencies
 + has a memorable package structure
 + has no final classes
-+ is developed following the platform standards (when useful nor possible): naming conventions, javadoc comments, junit tests, pmd rules, ant scripts, etc
++ is developed following the platform standards (when useful and possible): naming conventions, javadoc comments, junit tests, pmd rules, ant scripts, etc
 
 ## Motivation
 > *"If you want more effective programmers, you will discover that they should not waste their time debugging, they should not introduce the bugs to starth with."*
