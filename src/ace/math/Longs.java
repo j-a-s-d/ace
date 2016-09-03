@@ -2,10 +2,12 @@
 
 package ace.math;
 
+import ace.Ace;
+
 /**
  * Utility class for mathematic operations with longs.
  */
-public class Longs {
+public class Longs extends Ace {
     
     // UNBOXED
     

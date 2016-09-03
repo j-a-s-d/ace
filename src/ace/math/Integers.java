@@ -2,10 +2,12 @@
 
 package ace.math;
 
+import ace.Ace;
+
 /**
  * Utility class for mathematic operations with integers.
  */
-public class Integers {
+public class Integers extends Ace {
     
     // UNBOXED
     

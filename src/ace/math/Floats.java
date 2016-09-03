@@ -2,10 +2,12 @@
 
 package ace.math;
 
+import ace.Ace;
+
 /**
  * Utility class for mathematic operations with floats.
  */
-public class Floats {
+public class Floats extends Ace {
     
     // UNBOXED
     

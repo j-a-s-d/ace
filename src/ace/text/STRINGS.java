@@ -2,13 +2,14 @@
 
 package ace.text;
 
+import ace.Ace;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
 /**
  * Constants class for strings.
  */
-public class STRINGS {
+public class STRINGS extends Ace {
     
     public static final String EMPTY = "";
     public static final String EOL = new StringWriter(4) {{

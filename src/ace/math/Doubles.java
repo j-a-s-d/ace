@@ -2,10 +2,12 @@
 
 package ace.math;
 
+import ace.Ace;
+
 /**
  * Utility class for mathematic operations with doubles.
  */
-public class Doubles {
+public class Doubles extends Ace {
     
     // UNBOXED
     
