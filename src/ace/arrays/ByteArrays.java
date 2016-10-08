@@ -103,19 +103,21 @@ public class ByteArrays extends Ace {
     }
     
     public static final int indexOf(final byte[] buffer, final int startOffset, final byte[] sequence) {
-        for (int i = startOffset; i < buffer.length - sequence.length + 1; ++i) {
-            boolean found = true;
-            for (int j = 0; j < sequence.length; ++j) {
-                if (buffer[i + j] != sequence[j]) {
-                    found = false;
-                    break;
+        if (buffer != null && buffer.length > 0 && sequence != null && sequence.length > 0) {
+            for (int i = startOffset; i < buffer.length - sequence.length + 1; ++i) {
+                boolean found = true;
+                for (int j = 0; j < sequence.length; ++j) {
+                    if (buffer[i + j] != sequence[j]) {
+                        found = false;
+                        break;
+                    }
+                }
+                if (found) {
+                    return i;
                 }
             }
-            if (found) {
-                return i;
-            }
         }
-        return -1;  
+        return -1;
     }
     
     public static final int indexOf(final byte[] buffer, final byte[] sequence) {
@@ -124,20 +126,22 @@ public class ByteArrays extends Ace {
     
     public static final int[] indexesOf(final byte[] buffer, final byte[] sequence) {
         int[] result = new int[] {};
-        for (int i = 0; i < buffer.length - sequence.length + 1; ++i) {
-            boolean found = true;
-            for (int j = 0; j < sequence.length; ++j) {
-                if (buffer[i + j] != sequence[j]) {
-                    found = false;
-                    break;
+        if (buffer != null && buffer.length > 0 && sequence != null && sequence.length > 0) {
+            for (int i = 0; i < buffer.length - sequence.length + 1; ++i) {
+                boolean found = true;
+                for (int j = 0; j < sequence.length; ++j) {
+                    if (buffer[i + j] != sequence[j]) {
+                        found = false;
+                        break;
+                    }
                 }
-            }
-            if (found) {
-                final int l = result.length;
-                final int[] aux = new int[l + 1];
-                System.arraycopy(result, 0, aux, 0, l);
-                aux[l] = i;
-                result = aux;
+                if (found) {
+                    final int l = result.length;
+                    final int[] aux = new int[l + 1];
+                    System.arraycopy(result, 0, aux, 0, l);
+                    aux[l] = i;
+                    result = aux;
+                }
             }
         }
         return result;

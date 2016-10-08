@@ -17,12 +17,14 @@ public class ByteArraysTest {
     
     @Test public void testMake() {
         Assert.assertArrayEquals(DUMMY, ByteArrays.make((byte) 0x01, (byte) 0x02, (byte) 0x03));
+        Assert.assertArrayEquals(EMPTY, ByteArrays.make());
     }
     
     @Test public void testBoxedMake() {
         final byte n = 1;
         final Byte b = 2;
         Assert.assertArrayEquals(DUMMYB, ByteArrays.boxedMake(n, b, null));
+        Assert.assertArrayEquals(EMPTYB, ByteArrays.boxedMake());
     }
     
     @SuppressWarnings({"ConfusingArrayVararg", "PrimitiveArrayArgumentToVariableArgMethod"})
@@ -86,6 +88,7 @@ public class ByteArraysTest {
     @Test public void testHasContent() {
         Assert.assertEquals(true, ByteArrays.hasContent(DUMMY));
         Assert.assertEquals(false, ByteArrays.hasContent(EMPTY));
+        Assert.assertEquals(false, ByteArrays.hasContent(null));
     }
     
     @Test public void testIndexOf_3args() {
@@ -95,6 +98,7 @@ public class ByteArraysTest {
         Assert.assertEquals(3, ByteArrays.indexOf(aux, 0, DUMMY2));
         Assert.assertEquals(3, ByteArrays.indexOf(aux, 2, DUMMY2));
         Assert.assertEquals(-1, ByteArrays.indexOf(aux, 4, DUMMY2));
+        Assert.assertEquals(-1, ByteArrays.indexOf(null, 4, DUMMY2));
     }
 
     @Test public void testIndexOf_byteArr_byteArr() {
@@ -102,6 +106,8 @@ public class ByteArraysTest {
             (byte) 0x01, (byte) 0x02, (byte) 0x03, (byte) 0x04, (byte) 0x05, (byte) 0x06, (byte) 0x07, (byte) 0x08, (byte) 0x09
         };
         Assert.assertEquals(3, ByteArrays.indexOf(aux, DUMMY2));
+        Assert.assertEquals(-1, ByteArrays.indexOf(null, DUMMY2));
+        Assert.assertEquals(-1, ByteArrays.indexOf(aux, null));
     }
     
     @Test public void testIndexesOf() {
@@ -111,6 +117,8 @@ public class ByteArraysTest {
         Assert.assertArrayEquals(new int[] { 2, 5 }, ByteArrays.indexesOf(aux, new byte[] { (byte) 0x11, (byte) 0x12 }));
         Assert.assertArrayEquals(new int[] { 8 }, ByteArrays.indexesOf(aux, new byte[] { (byte) 0x09 }));
         Assert.assertArrayEquals(new int[] {}, ByteArrays.indexesOf(aux, new byte[] { (byte) 0xDD, (byte) 0xAA }));
+        Assert.assertArrayEquals(new int[] {}, ByteArrays.indexesOf(null, new byte[] { (byte) 0xDD, (byte) 0xAA }));
+        Assert.assertArrayEquals(new int[] {}, ByteArrays.indexesOf(aux, null));
     }
     
     @Test public void testWriteBigEndianShort() {
