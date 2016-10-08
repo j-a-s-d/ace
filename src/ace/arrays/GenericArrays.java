@@ -14,9 +14,9 @@ public class GenericArrays extends Ace {
 	
     // CONTENT
     
-	public static final <T> boolean hasContent(final T[] array) {
-		return array != null && array.length > 0;
-	}
+    public static final <T> boolean hasContent(final T[] array) {
+        return array != null && array.length > 0;
+    }
 
     public static final <T> boolean nullFree(final T[] array) {
         if (hasContent(array)) {
