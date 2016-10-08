@@ -16,6 +16,8 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.0.9 -- 08 Oct 2016
+    + added ace.arrays.ByteArrays routines class
 * 0.0.8 -- 03 Sep 2016
     + make first public release
     + added documentation comments
