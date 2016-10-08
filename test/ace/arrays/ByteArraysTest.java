@@ -11,14 +11,18 @@ public class ByteArraysTest {
     private static final byte[] DUMMY = new byte[] { (byte) 0x01, (byte) 0x02, (byte) 0x03 };
     private static final byte[] DUMMY2 = new byte[] { (byte) 0x04, (byte) 0x05, (byte) 0x06 };
     private static final byte[] DUMMY3 = new byte[] { (byte) 0x07, (byte) 0x08, (byte) 0x09 };
+    private static final Byte[] EMPTYB = ByteArrays.boxedMake();
+    private static final Byte[] DUMMYB = new Byte[] { 1, 2, null };
+    private static final Byte[] DUMMYB2 = new Byte[] { 4, 5, null };
     
     @Test public void testMake() {
         Assert.assertArrayEquals(DUMMY, ByteArrays.make((byte) 0x01, (byte) 0x02, (byte) 0x03));
     }
     
-    @Test public void testHasContent() {
-        Assert.assertEquals(true, ByteArrays.hasContent(DUMMY));
-        Assert.assertEquals(false, ByteArrays.hasContent(EMPTY));
+    @Test public void testBoxedMake() {
+        final byte n = 1;
+        final Byte b = 2;
+        Assert.assertArrayEquals(DUMMYB, ByteArrays.boxedMake(n, b, null));
     }
     
     @SuppressWarnings({"ConfusingArrayVararg", "PrimitiveArrayArgumentToVariableArgMethod"})
@@ -34,12 +38,30 @@ public class ByteArraysTest {
         Assert.assertArrayEquals(null, ByteArrays.concat());
     }
     
+    @Test public void testBoxedConcat() {
+        Assert.assertArrayEquals(new Byte[] {
+            (byte) 0x01, (byte) 0x02, null, (byte) 0x04, (byte) 0x05, null
+        }, ByteArrays.boxedConcat(DUMMYB, DUMMYB2));
+        Assert.assertArrayEquals(DUMMYB, ByteArrays.boxedConcat(DUMMYB, EMPTYB));
+        Assert.assertArrayEquals(DUMMYB, ByteArrays.boxedConcat(DUMMYB));
+        Assert.assertArrayEquals(null, ByteArrays.boxedConcat());
+    }
+    
     @Test public void testCopy() {
         Assert.assertArrayEquals(new byte[] {
             (byte) 0x01, (byte) 0x02, (byte) 0x03
         }, ByteArrays.copy(DUMMY, 0, 3));
         Assert.assertArrayEquals(DUMMY, ByteArrays.copy(new byte[] {
             (byte) 0x00, (byte) 0x01, (byte) 0x02, (byte) 0x03, (byte) 0x04
+        }, 1, 3));
+    }
+    
+    @Test public void testBoxedCopy() {
+        Assert.assertArrayEquals(new Byte[] {
+            (byte) 0x01, (byte) 0x02, null
+        }, ByteArrays.boxedCopy(DUMMYB, 0, 3));
+        Assert.assertArrayEquals(DUMMYB, ByteArrays.boxedCopy(new Byte[] {
+            (byte) 0x00, (byte) 0x01, (byte) 0x02, null, (byte) 0x04
         }, 1, 3));
     }
     
@@ -50,6 +72,20 @@ public class ByteArraysTest {
         Assert.assertArrayEquals(DUMMY, ByteArrays.invertedCopy(new byte[] {
             (byte) 0x04, (byte) 0x03, (byte) 0x02, (byte) 0x01, (byte) 0x00
         }, 1, 3));
+    }
+    
+    @Test public void testBoxedInvertedCopy() {
+        Assert.assertArrayEquals(new Byte[] {
+            null, (byte) 0x02, (byte) 0x01
+        }, ByteArrays.boxedInvertedCopy(DUMMYB, 0, 3));
+        Assert.assertArrayEquals(DUMMYB, ByteArrays.boxedInvertedCopy(new Byte[] {
+            (byte) 0x04, null, (byte) 0x02, (byte) 0x01, (byte) 0x00
+        }, 1, 3));
+    }
+    
+    @Test public void testHasContent() {
+        Assert.assertEquals(true, ByteArrays.hasContent(DUMMY));
+        Assert.assertEquals(false, ByteArrays.hasContent(EMPTY));
     }
     
     @Test public void testIndexOf_3args() {

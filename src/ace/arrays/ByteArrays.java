@@ -6,12 +6,14 @@ import ace.Ace;
 
 public class ByteArrays extends Ace {
     
+    // COMPOSITION
+    
     public static final byte[] make(final byte... items) {
         return items;
     }
     
-    public static final boolean hasContent(final byte[] array) {
-        return array != null && array.length > 0;
+    public static final Byte[] boxedMake(final Byte... items) {
+        return items;
     }
     
     public static final byte[] concat(final byte[]... arrays) {
@@ -29,12 +31,40 @@ public class ByteArrays extends Ace {
         }
         return result;
     }
+    
+    public static final Byte[] boxedConcat(final Byte[]... arrays) {
+        Byte[] result = null;
+        if (arrays.length > 0) {
+            result = new Byte[0];
+            for (final Byte[] array : arrays) {
+                final int rLen = result.length;
+                final int aLen = array.length;
+                final Byte[] aux = new Byte[rLen + aLen];
+                System.arraycopy(result, 0, aux, 0, rLen);
+                System.arraycopy(array, 0, aux, rLen, aLen);
+                result = aux;
+            }
+        }
+        return result;
+    }
 	
     public static byte[] copy(final byte[] buffer, final int offset, final int length) {
         if (buffer == null || buffer.length == 0 || offset < 0 || length < 0 || offset + length > buffer.length) {
             return null;
         }
-        byte[] result = new byte[length];
+        final byte[] result = new byte[length];
+        int index = 0;
+        for (int i = offset; i < offset + length; i++) {
+            result[index++] = buffer[i];
+        }
+        return result;
+    }
+	
+    public static Byte[] boxedCopy(final Byte[] buffer, final int offset, final int length) {
+        if (buffer == null || buffer.length == 0 || offset < 0 || length < 0 || offset + length > buffer.length) {
+            return null;
+        }
+        final Byte[] result = new Byte[length];
         int index = 0;
         for (int i = offset; i < offset + length; i++) {
             result[index++] = buffer[i];
@@ -46,14 +76,32 @@ public class ByteArrays extends Ace {
         if (buffer == null || buffer.length == 0 || offset < 0 || length < 0 || offset + length > buffer.length) {
             return null;
         }
-        byte[] inverted = new byte[length];
+        final byte[] inverted = new byte[length];
         int index = length - 1;
         for (int i = offset; (index > -1) && (i < offset + length); i++) {
             inverted[index--] = buffer[i];
         }
         return inverted;
     }
-
+    
+    public static Byte[] boxedInvertedCopy(final Byte[] buffer, final int offset, final int length) {
+        if (buffer == null || buffer.length == 0 || offset < 0 || length < 0 || offset + length > buffer.length) {
+            return null;
+        }
+        final Byte[] inverted = new Byte[length];
+        int index = length - 1;
+        for (int i = offset; (index > -1) && (i < offset + length); i++) {
+            inverted[index--] = buffer[i];
+        }
+        return inverted;
+    }
+    
+    // CONTENT
+    
+    public static final boolean hasContent(final byte[] array) {
+        return array != null && array.length > 0;
+    }
+    
     public static final int indexOf(final byte[] buffer, final int startOffset, final byte[] sequence) {
         for (int i = startOffset; i < buffer.length - sequence.length + 1; ++i) {
             boolean found = true;
