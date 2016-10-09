@@ -20,6 +20,7 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
     + improved unit tests
     + improved ace.arrays.ByteArrays
     + improved ace.arrays.GenericArrays
+    + moved ImmutableArray class to arrays package
 * 0.0.9 -- 08 Oct 2016
     + added ace.arrays.GenericArrays routines class
     + added ace.arrays.ByteArrays routines class

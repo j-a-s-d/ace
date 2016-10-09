@@ -3,7 +3,7 @@
 package ace.platform;
 
 import ace.Ace;
-import ace.classes.ImmutableArray;
+import ace.arrays.ImmutableArray;
 import java.util.ArrayList;
 
 /**
