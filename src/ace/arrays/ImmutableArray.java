@@ -50,6 +50,7 @@ public class ImmutableArray<T> extends Ace implements Immutable, Iterable<T> {
 		return _array.length;
 	}
 
+
 	// NOTE: JDK 5 will not allow @Override annotations on implemented methods of an interface
 	/*@Override*/ public Iterator<T> iterator() {
 		return new Iterator() {

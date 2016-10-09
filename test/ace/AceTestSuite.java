@@ -9,7 +9,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
     ace.AceTest.class,
     ace.arrays.ImmutableArrayTest.class,
-    ace.classes.SemanticVersionTest.class,
+    ace.app.SemanticVersionTest.class,
     ace.platform.ClassesTest.class,
     ace.platform.PackagesTest.class,
     ace.text.StringsTest.class,

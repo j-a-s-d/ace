@@ -126,7 +126,7 @@ public class GenericArrays extends Ace {
 		if (buffer == null || buffer.length == 0 || offset < 0 || length < 0 || offset + length > buffer.length) {
 			return null;
 		}
-		final T[] result = fromClass(buffer[0].getClass(), length);
+		final T[] result = (T[]) Array.newInstance(buffer[0].getClass(), length);
 		int index = 0;
 		for (int i = offset; i < offset + length; i++) {
 			result[index++] = buffer[i];
@@ -138,7 +138,7 @@ public class GenericArrays extends Ace {
 		if (buffer == null || buffer.length == 0 || offset < 0 || length < 0 || offset + length > buffer.length) {
 			return null;
 		}
-		final T[] result = fromClass(buffer[0].getClass(), length);
+		final T[] result = (T[]) Array.newInstance(buffer[0].getClass(), length);
 		int index = length - 1;
 		for (int i = offset; (index > -1) && (i < offset + length); i++) {
 			result[index--] = buffer[i];

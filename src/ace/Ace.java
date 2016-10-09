@@ -2,7 +2,7 @@
 
 package ace;
 
-import ace.classes.SemanticVersion;
+import ace.app.SemanticVersion;
 import ace.text.STRINGS;
 
 /**
