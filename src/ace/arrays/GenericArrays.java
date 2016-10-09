@@ -15,8 +15,12 @@ public class GenericArrays extends Ace {
 		return items;
 	}
 
+	public static final <T> T[] fromClass(final Class<?> clazz, final int length) {
+		return clazz != null && length > -1 ? (T[]) Array.newInstance(clazz, length) : null;
+	}
+
 	public static final <T> T[] fromList(final List<T> list) {
-		return list != null && list.size() > 0 ? list.toArray((T[]) Array.newInstance(list.get(0).getClass(), list.size())) : null;
+		return list != null && list.size() > 0 ? list.toArray((T[]) fromClass(list.get(0).getClass(), list.size())) : null;
 	}
 
 	// CONTENT
@@ -116,6 +120,30 @@ public class GenericArrays extends Ace {
 			list.addAll(Arrays.asList(array));
 		}
 		return fromList(list);
+	}
+
+	public static <T> T[] copy(final T[] buffer, final int offset, final int length) {
+		if (buffer == null || buffer.length == 0 || offset < 0 || length < 0 || offset + length > buffer.length) {
+			return null;
+		}
+		final T[] result = fromClass(buffer[0].getClass(), length);
+		int index = 0;
+		for (int i = offset; i < offset + length; i++) {
+			result[index++] = buffer[i];
+		}
+		return result;
+	}
+
+	public static <T> T[] invertedCopy(final T[] buffer, final int offset, final int length) {
+		if (buffer == null || buffer.length == 0 || offset < 0 || length < 0 || offset + length > buffer.length) {
+			return null;
+		}
+		final T[] result = fromClass(buffer[0].getClass(), length);
+		int index = length - 1;
+		for (int i = offset; (index > -1) && (i < offset + length); i++) {
+			result[index--] = buffer[i];
+		}
+		return result;
 	}
 
 }

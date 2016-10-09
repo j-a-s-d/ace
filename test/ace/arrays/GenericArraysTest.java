@@ -15,6 +15,13 @@ public class GenericArraysTest {
 		}, GenericArrays.make((byte) 0x01, (byte) 0x02, (byte) 0x03));
 	}
 
+	@Test public void testFromClass() {
+		Assert.assertArrayEquals(new Integer[] { null }, GenericArrays.fromClass(Integer.class, 1));
+		Assert.assertArrayEquals(new Integer[] {}, GenericArrays.fromClass(Integer.class, 0));
+		Assert.assertArrayEquals(null, GenericArrays.fromClass(Integer.class, -1));
+		Assert.assertArrayEquals(null, GenericArrays.fromClass(null, 0));
+	}
+
 	@Test public void testFromList() {
 		Assert.assertArrayEquals(new Integer[] { 1, 2 }, GenericArrays.fromList(new ArrayList<Integer>() {
 			{
@@ -108,6 +115,19 @@ public class GenericArraysTest {
 		Assert.assertArrayEquals(new Integer[] { 1, 2, 3, 4 }, tmp);
 		Assert.assertArrayEquals(new Integer[] { 1, 2, 3, 4 }, GenericArrays.concat(new Integer[] { 1, 2 }, new Integer[] { 3, 4 }));
 		Assert.assertArrayEquals(null, GenericArrays.concat());
+	}
+
+	@Test public void testCopy() {
+		final Byte[] tmp = GenericArrays.copy(new Byte[] {
+			(byte) 0x00, (byte) 0x01, (byte) 0x02, null, (byte) 0x04
+		}, 1, 2);
+		Assert.assertArrayEquals(new Byte[] { 0x01, 0x02 }, tmp);
+		Assert.assertArrayEquals(null, GenericArrays.copy(null, 0, 0));
+	}
+
+	@Test public void testInvertedCopy() {
+		Assert.assertArrayEquals(new Byte[] { 0x02, 0x01 }, GenericArrays.invertedCopy(new Byte[] { 0x00, 0x01, 0x02, null, 0x04 }, 1, 2));
+		Assert.assertArrayEquals(null, GenericArrays.invertedCopy(null, 0, 0));
 	}
 
 }

@@ -18,6 +18,7 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 * 0.1.0 -- 09 Oct 2016
     + improved unit tests
+    + improved ace.arrays.ByteArrays
     + improved ace.arrays.GenericArrays
 * 0.0.9 -- 08 Oct 2016
     + added ace.arrays.GenericArrays routines class
