@@ -130,4 +130,32 @@ public class GenericArraysTest {
 		Assert.assertArrayEquals(null, GenericArrays.invertedCopy(null, 0, 0));
 	}
 
+	@Test public void testIndexOf_3args() {
+		final Byte[] tmp = new Byte[] { 0x04, 0x05, 0x06 };
+		final Byte[] aux = new Byte[] { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09 };
+		Assert.assertEquals(3, GenericArrays.indexOf(aux, 0, tmp));
+		Assert.assertEquals(3, GenericArrays.indexOf(aux, 2, tmp));
+		Assert.assertEquals(-1, GenericArrays.indexOf(aux, 4, tmp));
+		Assert.assertEquals(-1, GenericArrays.indexOf(null, 4, tmp));
+	}
+
+	@Test public void testIndexOf_GenericType_GenericType() {
+		final Byte[] tmp = new Byte[] { 0x04, 0x05, 0x06 };
+		final Byte[] aux = new Byte[] { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09 };
+		Assert.assertEquals(3, GenericArrays.indexOf(aux, tmp));
+		Assert.assertEquals(-1, GenericArrays.indexOf(null, tmp));
+		Assert.assertEquals(-1, GenericArrays.indexOf(aux, null));
+	}
+
+	@Test public void testIndexesOf() {
+		final Byte[] aux = new Byte[] {
+			(byte) 0x01, (byte) 0x02, (byte) 0x11, (byte) 0x12, (byte) 0x05, (byte) 0x11, (byte) 0x12, (byte) 0x08, (byte) 0x09
+		};
+		Assert.assertArrayEquals(new int[] { 2, 5 }, GenericArrays.indexesOf(aux, new Byte[] { (byte) 0x11, (byte) 0x12 }));
+		Assert.assertArrayEquals(new int[] { 8 }, GenericArrays.indexesOf(aux, new Byte[] { (byte) 0x09 }));
+		Assert.assertArrayEquals(new int[] {}, GenericArrays.indexesOf(aux, new Byte[] { (byte) 0xDD, (byte) 0xAA }));
+		Assert.assertArrayEquals(new int[] {}, GenericArrays.indexesOf(null, new Byte[] { (byte) 0xDD, (byte) 0xAA }));
+		Assert.assertArrayEquals(new int[] {}, GenericArrays.indexesOf(aux, null));
+	}
+
 }

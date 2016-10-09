@@ -146,4 +146,51 @@ public class GenericArrays extends Ace {
 		return result;
 	}
 
+	public static final <T> int indexOf(final T[] buffer, final int startOffset, final T[] sequence) {
+		if (buffer != null && buffer.length > 0 && sequence != null && sequence.length > 0) {
+			for (int i = startOffset; i < buffer.length - sequence.length + 1; ++i) {
+				boolean found = true;
+				for (int j = 0; j < sequence.length; ++j) {
+					if ((buffer[i + j] == null && sequence[j] != null)
+						|| (!buffer[i + j].equals(sequence[j]))) {
+						found = false;
+						break;
+					}
+				}
+				if (found) {
+					return i;
+				}
+			}
+		}
+		return -1;
+	}
+
+	public static final <T> int indexOf(final T[] buffer, final T[] sequence) {
+		return indexOf(buffer, 0, sequence);
+	}
+
+	public static final <T> int[] indexesOf(final T[] buffer, final T[] sequence) {
+		int[] result = new int[] {};
+		if (buffer != null && buffer.length > 0 && sequence != null && sequence.length > 0) {
+			for (int i = 0; i < buffer.length - sequence.length + 1; ++i) {
+				boolean found = true;
+				for (int j = 0; j < sequence.length; ++j) {
+					if ((buffer[i + j] == null && sequence[j] != null)
+						|| (!buffer[i + j].equals(sequence[j]))) {
+						found = false;
+						break;
+					}
+				}
+				if (found) {
+					final int l = result.length;
+					final int[] aux = new int[l + 1];
+					System.arraycopy(result, 0, aux, 0, l);
+					aux[l] = i;
+					result = aux;
+				}
+			}
+		}
+		return result;
+	}
+
 }
