@@ -19,6 +19,7 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 * 0.1.1 -- 10 Oct 2016
     + improved unit tests
     + improved ace.text.Strings
+    + added ace.text.StringComposer
 * 0.1.0 -- 09 Oct 2016
     + improved unit tests
     + improved ace.arrays.ByteArrays
