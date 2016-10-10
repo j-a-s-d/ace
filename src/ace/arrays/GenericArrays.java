@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Utility class for working with generic arrays.
+ */
 public class GenericArrays extends Ace {
 
 	// COMPOSITION

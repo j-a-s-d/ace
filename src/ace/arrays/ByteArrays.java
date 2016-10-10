@@ -4,6 +4,9 @@ package ace.arrays;
 
 import ace.Ace;
 
+/**
+ * Utility class for working with byte arrays.
+ */
 public class ByteArrays extends Ace {
 
 	// COMPOSITION
