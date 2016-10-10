@@ -3,6 +3,7 @@
 package ace.text;
 
 import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -57,14 +58,14 @@ public class StringsTest {
 	@Test public void testFromInputStream() {
 		Assert.assertEquals(Strings.fromInputStream(
 			new ByteArrayInputStream(new byte[] { (byte) 'a', (byte) 'b', (byte) 'c', (byte) 'd' }
-		)), Strings.fromInputStream(Strings.toInputStream("abcd")));
+			)), Strings.fromInputStream(Strings.toInputStream("abcd")));
 		Assert.assertEquals(null, Strings.fromInputStream(null));
 	}
 
 	@Test public void testToInputStream() {
 		Assert.assertEquals(Strings.fromInputStream(
 			new ByteArrayInputStream(new byte[] { (byte) 'a', (byte) 'b', (byte) 'c', (byte) 'd' }
-		)), Strings.fromInputStream(Strings.toInputStream("abcd")));
+			)), Strings.fromInputStream(Strings.toInputStream("abcd")));
 		Assert.assertEquals(null, Strings.toInputStream(null));
 	}
 
@@ -209,6 +210,62 @@ public class StringsTest {
 		final String NIL = null;
 		Assert.assertEquals("AAA", Strings.stripAll("AAA", NIL));
 		Assert.assertEquals(null, Strings.stripAll(null, "A"));
+	}
+
+	@Test public void testSplitLines() {
+		Assert.assertEquals(new ArrayList<String>() {
+			{
+				add("abcd");
+				add("test");
+				add("AAA");
+				add("BBB");
+			}
+		}, Strings.splitLines("abcd\ntest\nAAA\nBBB"));
+		Assert.assertEquals(new ArrayList<String>() {
+			{
+				add(STRINGS.EMPTY);
+				add(STRINGS.EMPTY);
+				add(STRINGS.EMPTY);
+			}
+		}, Strings.splitLines("\n\n\n"));
+		Assert.assertEquals(null, Strings.splitLines(null));
+	}
+
+	@Test public void testSplitEqually() {
+		Assert.assertEquals(new ArrayList<String>() {
+			{
+				add("a");
+				add("b");
+				add("c");
+				add("d");
+			}
+		}, Strings.splitEqually("abcd", 1));
+		Assert.assertEquals(new ArrayList<String>() {
+			{
+				add("ab");
+				add("cd");
+			}
+		}, Strings.splitEqually("abcd", 2));
+		Assert.assertEquals(null, Strings.splitEqually(null, 0));
+	}
+
+	@Test public void testJoin_String_StringArr() {
+		Assert.assertEquals("123;456;789;000", Strings.join(";", "123", "456", "789", "000"));
+		Assert.assertEquals(STRINGS.EMPTY, Strings.join(";", new String[] {}));
+		Assert.assertEquals(STRINGS.EMPTY, Strings.join(null, new String[] {}));
+	}
+
+	@Test public void testJoin_String_Collection() {
+		Assert.assertEquals("123;456;789;000", Strings.join(";", new ArrayList<String>() {
+			{
+				add("123");
+				add("456");
+				add("789");
+				add("000");
+			}
+		}));
+		Assert.assertEquals(STRINGS.EMPTY, Strings.join(";", new ArrayList<String>()));
+		Assert.assertEquals(STRINGS.EMPTY, Strings.join(null, new ArrayList<String>()));
 	}
 
 }

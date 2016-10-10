@@ -5,6 +5,10 @@ package ace.text;
 import ace.Ace;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -113,6 +117,7 @@ public class Strings extends Ace {
 		return string != null && string.trim().length() > 0;
 	}
 
+	@SuppressWarnings("PMD.InefficientEmptyStringCheck")
 	public static final boolean haveText(final String... strings) {
 		boolean result = strings.length > 0;
 		for (final String string : strings) {
@@ -258,6 +263,56 @@ public class Strings extends Ace {
 			}
 		}
 		return result;
+	}
+
+	public static List<String> splitLines(final String string) {
+		List<String> result = null;
+		if (assigned(string)) {
+			result = new ArrayList();
+			final Scanner scanner = new Scanner(string);
+			while (scanner.hasNextLine()) {
+				result.add(scanner.nextLine());
+			}
+			scanner.close();
+		}
+		return result;
+	}
+
+	public static List<String> splitEqually(final String string, final int size) {
+		List<String> result = null;
+		if (assigned(string) && size > 0) {
+			result = new ArrayList<String>((string.length() + size - 1) / size);
+			for (int start = 0; start < string.length(); start += size) {
+				result.add(string.substring(start, Math.min(string.length(), start + size)));
+			}
+		}
+		return result;
+	}
+
+	public static String join(final String separator, final String... values) {
+		final StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < values.length; i++) {
+			if (i > 0) {
+				sb.append(separator);
+			}
+			sb.append(values[i]);
+		}
+		return sb.toString();
+	}
+
+	public static String join(final String separator, final Collection<?> collection) {
+		final StringBuilder sb = new StringBuilder();
+		if (assigned(collection) && collection.size() > 0) {
+			final Iterator<?> it = collection.iterator();
+			while (it.hasNext()) {
+				sb.append(it.next());
+				if (!it.hasNext()) {
+					break;
+				}
+				sb.append(separator);
+			}
+		}
+		return sb.toString();
 	}
 
 }
