@@ -91,6 +91,38 @@ public class Strings extends Ace {
 		return sb.toString();
 	}
 
+	public static String enclose(final String string, final char chr) {
+		return concat(STRINGS.EMPTY + chr, string, STRINGS.EMPTY + chr);
+	}
+
+	public static String enclose(final String string, final String borders) {
+		return concat(borders, string, borders);
+	}
+
+	public static String apostrophe(final String string) {
+		return enclose(string, STRINGS.APOSTROPHE);
+	}
+
+	public static String quote(final String string) {
+		return enclose(string, STRINGS.QUOTE);
+	}
+
+	public static String brace(final String string) {
+		return concat("{", string, "}");
+	}
+
+	public static String bracketize(final String string) {
+		return concat("[", string, "]");
+	}
+
+	public static String parenthesize(final String string) {
+		return concat("(", string, ")");
+	}
+
+	public static String chevronize(final String string) {
+		return concat("<", string, ">");
+	}
+
 	// CONTENT
 	public static final boolean hasContent(final String string) {
 		return string != null && string.length() > 0;

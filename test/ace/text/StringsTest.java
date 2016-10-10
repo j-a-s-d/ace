@@ -83,6 +83,16 @@ public class StringsTest {
 		Assert.assertEquals(STRINGS.EMPTY, Strings.concat(null, null));
 	}
 
+	@Test public void testEnclose_String_char() {
+		Assert.assertEquals("!test!", Strings.enclose("test", '!'));
+		Assert.assertEquals("!!", Strings.enclose(null, '!'));
+	}
+
+	@Test public void testEnclose_String_String() {
+		Assert.assertEquals("||test||", Strings.enclose("test", "||"));
+		Assert.assertEquals("||||", Strings.enclose(null, "||"));
+	}
+
 	@Test public void testHasContent() {
 		Assert.assertEquals(false, Strings.hasContent(STRINGS.EMPTY));
 		Assert.assertEquals(true, Strings.hasContent(TEST));
@@ -266,6 +276,30 @@ public class StringsTest {
 		}));
 		Assert.assertEquals(STRINGS.EMPTY, Strings.join(";", new ArrayList<String>()));
 		Assert.assertEquals(STRINGS.EMPTY, Strings.join(null, new ArrayList<String>()));
+	}
+
+	@Test public void testApostrophe() {
+		Assert.assertEquals(STRINGS.APOSTROPHE + "hey" + STRINGS.APOSTROPHE, Strings.apostrophe("hey"));
+	}
+
+	@Test public void testQuote() {
+		Assert.assertEquals(STRINGS.QUOTE + "hey" + STRINGS.QUOTE, Strings.quote("hey"));
+	}
+
+	@Test public void testBrace() {
+		Assert.assertEquals("{hey}", Strings.brace("hey"));
+	}
+
+	@Test public void testBracketize() {
+		Assert.assertEquals("[hey]", Strings.bracketize("hey"));
+	}
+
+	@Test public void testParenthesize() {
+		Assert.assertEquals("(hey)", Strings.parenthesize("hey"));
+	}
+
+	@Test public void testChevronize() {
+		Assert.assertEquals("<hey>", Strings.chevronize("hey"));
 	}
 
 }
