@@ -3,6 +3,9 @@
 package ace.text;
 
 import ace.Ace;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.Scanner;
 
 /**
  * Utility class for working with strings.
@@ -56,6 +59,18 @@ public class Strings extends Ace {
 		} catch (final Exception e) {
 			return null;
 		}
+	}
+
+	public static String fromInputStream(final InputStream is) {
+		if (is != null) {
+			final Scanner s = new Scanner(is).useDelimiter("\\A");
+			return s.hasNext() ? s.next() : STRINGS.EMPTY;
+		}
+		return null;
+	}
+
+	public static InputStream toInputStream(final String string) {
+		return string != null ? new ByteArrayInputStream(string.getBytes()) : null;
 	}
 
 	public static final String ensure(final String string) {
@@ -231,6 +246,18 @@ public class Strings extends Ace {
 			endIndex--;
 		}
 		return string.substring(beginIndex, endIndex + 1);
+	}
+
+	public static String stripAll(final String string, final String... regexes) {
+		String result = string;
+		if (assigned(string, regexes)) {
+			for (final String regex : regexes) {
+				if (assigned(regex)) {
+					result = result.replaceAll(regex, STRINGS.EMPTY);
+				}
+			}
+		}
+		return result;
 	}
 
 }

@@ -2,6 +2,7 @@
 
 package ace.text;
 
+import java.io.ByteArrayInputStream;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -51,6 +52,20 @@ public class StringsTest {
 
 	@Test public void testToByteArray_String_String() {
 		Assert.assertArrayEquals(new byte[] { (byte) 'a', (byte) 'b', (byte) 'c', (byte) 'd' }, Strings.toByteArray("abcd", "ASCII"));
+	}
+
+	@Test public void testFromInputStream() {
+		Assert.assertEquals(Strings.fromInputStream(
+			new ByteArrayInputStream(new byte[] { (byte) 'a', (byte) 'b', (byte) 'c', (byte) 'd' }
+		)), Strings.fromInputStream(Strings.toInputStream("abcd")));
+		Assert.assertEquals(null, Strings.fromInputStream(null));
+	}
+
+	@Test public void testToInputStream() {
+		Assert.assertEquals(Strings.fromInputStream(
+			new ByteArrayInputStream(new byte[] { (byte) 'a', (byte) 'b', (byte) 'c', (byte) 'd' }
+		)), Strings.fromInputStream(Strings.toInputStream("abcd")));
+		Assert.assertEquals(null, Strings.toInputStream(null));
 	}
 
 	@Test public void testEnsure() {
@@ -185,6 +200,15 @@ public class StringsTest {
 		Assert.assertEquals("AAA", Strings.stripBoth("AAABBB", 'B'));
 		Assert.assertEquals("AAABBB", Strings.stripBoth("AAABBB", '0'));
 		Assert.assertEquals(STRINGS.EMPTY, Strings.stripBoth("AAA", 'A'));
+	}
+
+	@Test public void testStripAll() {
+		Assert.assertEquals("BBB", Strings.stripAll("ABAABAABA", "A"));
+		Assert.assertEquals(STRINGS.EMPTY, Strings.stripAll("AAA", "A"));
+		Assert.assertEquals(STRINGS.EMPTY, Strings.stripAll("", "A"));
+		final String NIL = null;
+		Assert.assertEquals("AAA", Strings.stripAll("AAA", NIL));
+		Assert.assertEquals(null, Strings.stripAll(null, "A"));
 	}
 
 }
