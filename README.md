@@ -18,8 +18,10 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 * 0.1.2 -- 15 Oct 2016
     + improved unit tests
-    + added ace.platform.Reflection
-    + added ace.text.StringList
+    + added ace.platform.Reflection routines class
+    + added ace.text.StringList class
+    + added ace.binary.BYTES constants class
+    + added ace.binary package
 * 0.1.1 -- 10 Oct 2016
     + improved unit tests
     + improved ace.text.Strings

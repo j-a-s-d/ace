@@ -12,6 +12,9 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Scanner;
 
+/**
+ * Useful string list class.
+ */
 public class StringList extends Ace implements Iterable<String> {
 	
 	private static final Field FIELD_DATA = Reflection.getFieldAsAccessible(ArrayList.class, "elementData");
