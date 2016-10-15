@@ -16,6 +16,8 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.1.2 -- 15 Oct 2016
+    + added ace.platform.Reflection
 * 0.1.1 -- 10 Oct 2016
     + improved unit tests
     + improved ace.text.Strings
