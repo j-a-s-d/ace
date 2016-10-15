@@ -2,10 +2,12 @@
 
 package ace.binary;
 
+import ace.Ace;
+
 /**
  * Class providing bytes constants.
  */
-public class BYTES {
+public class BYTES extends Ace {
 
 	public static final byte X00 = (byte) 0x00;
 	public static final byte X01 = (byte) 0x01;
