@@ -20,6 +20,7 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
     + improved unit tests
     + added ace.platform.Reflection routines class
     + added ace.text.StringList class
+    + added ace.binary.BinaryComposer class
     + added ace.binary.BYTES constants class
     + added ace.binary package
 * 0.1.1 -- 10 Oct 2016
