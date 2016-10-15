@@ -22,6 +22,7 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
     + added ace.text.StringList class
     + added ace.binary.BinaryComposer class
     + added ace.binary.BYTES constants class
+    + added ace.binary.SIZES constants class
     + added ace.binary package
 * 0.1.1 -- 10 Oct 2016
     + improved unit tests
