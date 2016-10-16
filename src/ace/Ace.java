@@ -3,7 +3,6 @@
 package ace;
 
 import ace.app.SemanticVersion;
-import ace.text.STRINGS;
 
 /**
  * Ace toolkit class.
@@ -28,11 +27,6 @@ public class Ace {
      * Empty object constant.
      */
     public static final Object EMPTY_OBJECT = new Object();
-    
-    /**
-     * Empty string constant.
-     */
-    public static final String EMPTY_STRING = STRINGS.EMPTY;
     
     /**
      * Checks if all of the specified objects are not null.

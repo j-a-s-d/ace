@@ -22,6 +22,7 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
     + improved ace.math.Floats
     + improved ace.math.Integers
     + improved ace.math.Longs
+    + improved ace.Ace
 * 0.1.2 -- 15 Oct 2016
     + improved unit tests
     + improved ace.math.Doubles
