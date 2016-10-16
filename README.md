@@ -18,6 +18,7 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 * 0.1.3 -- 16 Oct 2016
     + improved unit tests
+    + improved ace.platform.Classes
     + improved ace.math.Doubles
     + improved ace.math.Floats
     + improved ace.math.Integers
