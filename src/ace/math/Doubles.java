@@ -46,6 +46,14 @@ public class Doubles extends Ace {
 		return number % factor == 0;
 	}
 
+	public static final double parse(final String string, final double defaultValue) {
+		try {
+			return Double.parseDouble(string);
+		} catch (final Exception e) {
+			return defaultValue;
+		}
+	}
+
 	// BOXED
 	public static final Double boxedAdd(final Double... numbers) {
 		Double result = NUMBERS.D0;
@@ -92,6 +100,14 @@ public class Doubles extends Ace {
 
 	public static final boolean boxedIsDivisibleBy(final Double number, final Double factor) {
 		return assigned(number, factor) && (number % factor == 0);
+	}
+
+	public static final Double boxedParse(final String string, final Double defaultValue) {
+		try {
+			return Double.parseDouble(string);
+		} catch (final Exception e) {
+			return defaultValue;
+		}
 	}
 
 }

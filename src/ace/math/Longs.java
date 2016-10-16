@@ -54,6 +54,22 @@ public class Longs extends Ace {
 		return number % factor == 0;
 	}
 
+	public static final long parse(final String string, final long defaultValue) {
+		try {
+			return Long.parseLong(string);
+		} catch (final Exception e) {
+			return defaultValue;
+		}
+	}
+
+	public static final long parse(final String string, final int radix, final long defaultValue) {
+		try {
+			return Long.parseLong(string, radix);
+		} catch (final Exception e) {
+			return defaultValue;
+		}
+	}
+
 	// BOXED
 	public static final Long boxedAdd(final Long... numbers) {
 		Long result = NUMBERS.L0;
@@ -108,6 +124,22 @@ public class Longs extends Ace {
 
 	public static final boolean boxedIsDivisibleBy(final Long number, final Long factor) {
 		return assigned(number, factor) && (number % factor == 0);
+	}
+
+	public static final Long boxedParse(final String string, final Long defaultValue) {
+		try {
+			return Long.parseLong(string);
+		} catch (final Exception e) {
+			return defaultValue;
+		}
+	}
+
+	public static final Long boxedParse(final String string, final int radix, final Long defaultValue) {
+		try {
+			return Long.parseLong(string, radix);
+		} catch (final Exception e) {
+			return defaultValue;
+		}
 	}
 
 }

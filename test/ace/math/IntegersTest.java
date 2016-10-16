@@ -83,4 +83,24 @@ public class IntegersTest {
 		Assert.assertFalse(Integers.boxedIsDivisibleBy(null, null));
 	}
 
+	@Test public void testParse_String_int() {
+		Assert.assertEquals(45, Integers.parse("45", 0));
+		Assert.assertEquals(0, Integers.parse("abc", 0));
+	}
+
+	@Test public void testParse_3args() {
+		Assert.assertEquals(254, Integers.parse("FE", 16, 0));
+		Assert.assertEquals(0, Integers.parse("abc", 10, 0));
+	}
+
+	@Test public void testBoxedParse_String_Integer() {
+		Assert.assertEquals(new Integer(123), Integers.boxedParse("123", 0));
+		Assert.assertEquals(new Integer(0), Integers.boxedParse("abc", new Integer(0)));
+	}
+
+	@Test public void testBoxedParse_3args() {
+		Assert.assertEquals(new Integer(254), Integers.boxedParse("FE", 16, 0));
+		Assert.assertEquals(new Integer(0), Integers.boxedParse("abc", 10, new Integer(0)));
+	}
+
 }

@@ -46,6 +46,14 @@ public class Floats extends Ace {
 		return number % factor == 0;
 	}
 
+	public static final float parse(final String string, final float defaultValue) {
+		try {
+			return Float.parseFloat(string);
+		} catch (final Exception e) {
+			return defaultValue;
+		}
+	}
+
 	// BOXED
 	public static final Float boxedAdd(final Float... numbers) {
 		Float result = NUMBERS.F0;
@@ -92,6 +100,14 @@ public class Floats extends Ace {
 
 	public static final boolean boxedIsDivisibleBy(final Float number, final Float factor) {
 		return assigned(number, factor) && (number % factor == 0);
+	}
+
+	public static final Float boxedParse(final String string, final Float defaultValue) {
+		try {
+			return Float.parseFloat(string);
+		} catch (final Exception e) {
+			return defaultValue;
+		}
 	}
 
 }

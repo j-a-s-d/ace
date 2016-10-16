@@ -54,6 +54,22 @@ public class Integers extends Ace {
 		return number % factor == 0;
 	}
 
+	public static final int parse(final String string, final int defaultValue) {
+		try {
+			return Integer.parseInt(string);
+		} catch (final Exception e) {
+			return defaultValue;
+		}
+	}
+
+	public static final int parse(final String string, final int radix, final int defaultValue) {
+		try {
+			return Integer.parseInt(string, radix);
+		} catch (final Exception e) {
+			return defaultValue;
+		}
+	}
+
 	// BOXED
 	public static final Integer boxedAdd(final Integer... numbers) {
 		Integer result = NUMBERS.I0;
@@ -108,6 +124,22 @@ public class Integers extends Ace {
 
 	public static final boolean boxedIsDivisibleBy(final Integer number, final Integer factor) {
 		return assigned(number, factor) && (number % factor == 0);
+	}
+
+	public static final Integer boxedParse(final String string, final Integer defaultValue) {
+		try {
+			return Integer.parseInt(string);
+		} catch (final Exception e) {
+			return defaultValue;
+		}
+	}
+
+	public static final Integer boxedParse(final String string, final int radix, final Integer defaultValue) {
+		try {
+			return Integer.parseInt(string, radix);
+		} catch (final Exception e) {
+			return defaultValue;
+		}
 	}
 
 }

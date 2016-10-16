@@ -16,6 +16,12 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.1.3 -- 16 Oct 2016
+    + improved unit tests
+    + improved ace.math.Doubles
+    + improved ace.math.Floats
+    + improved ace.math.Integers
+    + improved ace.math.Longs
 * 0.1.2 -- 15 Oct 2016
     + improved unit tests
     + improved ace.math.Doubles

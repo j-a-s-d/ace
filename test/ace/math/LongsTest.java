@@ -83,4 +83,24 @@ public class LongsTest {
 		Assert.assertFalse(Longs.boxedIsDivisibleBy(null, null));
 	}
 
+	@Test public void testParse_String_long() {
+		Assert.assertEquals(45L, Longs.parse("45", 0L));
+		Assert.assertEquals(0L, Longs.parse("abc", 0L));
+	}
+
+	@Test public void testParse_3args() {
+		Assert.assertEquals(254L, Longs.parse("FE", 16, 0L));
+		Assert.assertEquals(0L, Longs.parse("abc", 10, 0L));
+	}
+
+	@Test public void testBoxedParse_String_Long() {
+		Assert.assertEquals(new Long(123), Longs.boxedParse("123", 0L));
+		Assert.assertEquals(new Long(0), Longs.boxedParse("abc", new Long(0)));
+	}
+
+	@Test public void testBoxedParse_3args() {
+		Assert.assertEquals(new Long(254), Longs.boxedParse("FE", 16, 0L));
+		Assert.assertEquals(new Long(0), Longs.boxedParse("abc", 10, new Long(0)));
+	}
+
 }

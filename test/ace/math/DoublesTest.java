@@ -61,4 +61,14 @@ public class DoublesTest {
 		Assert.assertFalse(Doubles.boxedIsDivisibleBy(null, null));
 	}
 
+	@Test public void testParse() {
+		Assert.assertEquals(4.56d, Doubles.parse("4.56", 0d), 0d);
+		Assert.assertEquals(0d, Doubles.parse("abc", 0d), 0d);
+	}
+
+	@Test public void testBoxedParse() {
+		Assert.assertEquals(new Double(1.23d), Doubles.boxedParse("1.23", 0d), 0d);
+		Assert.assertEquals(new Double(0), Doubles.boxedParse("abc", new Double(0)), 0d);
+	}
+
 }

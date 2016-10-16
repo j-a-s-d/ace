@@ -61,4 +61,14 @@ public class FloatsTest {
 		Assert.assertFalse(Floats.boxedIsDivisibleBy(null, null));
 	}
 
+	@Test public void testParse() {
+		Assert.assertEquals(4.5f, Floats.parse("4.5", 0f), 0f);
+		Assert.assertEquals(0f, Floats.parse("abc", 0f), 0f);
+	}
+
+	@Test public void testBoxedParse() {
+		Assert.assertEquals(new Float(1.23f), Floats.boxedParse("1.23", 0f), 0f);
+		Assert.assertEquals(new Float(0), Floats.boxedParse("abc", new Float(0)), 0f);
+	}
+
 }
