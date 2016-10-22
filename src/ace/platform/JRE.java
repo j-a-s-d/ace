@@ -5,6 +5,9 @@ package ace.platform;
 import ace.Ace;
 import java.io.File;
 
+/**
+ * Utility class for working with the JRE.
+ */
 public class JRE extends Ace {
 
 	public static final String getDirectoryName() {
