@@ -72,7 +72,7 @@ public class Ace {
 	}
     
     /**
-     * If Ace is in DEVELOPMENT mode, prints a line with the specified value and returns it.
+     * If Ace is in DEVELOPMENT mode, prints a line with the specified value and returns it. Otherwise it just returns the specified value.
      * @param <T>
      * @param value
      * @return It always returns the passed value.
