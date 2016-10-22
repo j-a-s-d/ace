@@ -18,6 +18,7 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 * 0.1.4 -- 22 Oct 2016
     + added ace.looping.Range class
+    + added ace.looping package
     + added ace.platform.User class
     + added ace.platform.JRE class
     + added ace.platform.JVM class
