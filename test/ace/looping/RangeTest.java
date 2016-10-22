@@ -44,4 +44,14 @@ public class RangeTest {
 		Assert.assertArrayEquals(a, new Integer[] { 0, 1, 2, 3 });
 	}
 
+	@Test public void testIn() {
+		final Range range = Range.fromTo(0, 3);
+		Assert.assertFalse(range.in(-1));
+		Assert.assertTrue(range.in(0));
+		Assert.assertTrue(range.in(1));
+		Assert.assertTrue(range.in(2));
+		Assert.assertTrue(range.in(3));
+		Assert.assertFalse(range.in(4));
+	}
+
 }

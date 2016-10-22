@@ -29,6 +29,10 @@ public class Range extends Ace implements Immutable, Iterable<Integer> {
 		_upper = to;
 		_descending = descending;
 	}
+	
+	public boolean in(final int value) {
+		return (value >= _lower) && (value <= _upper);
+	}
 
 
 	// NOTE: JDK 5 will not allow @Override annotations on implemented methods of an interface
