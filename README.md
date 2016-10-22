@@ -17,6 +17,7 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 ## History
 
 * 0.1.4 -- 22 Oct 2016
+    + added ace.platform.JRE class
     + added ace.platform.JVM class
 * 0.1.3 -- 16 Oct 2016
     + improved unit tests
