@@ -54,4 +54,22 @@ public class RangeTest {
 		Assert.assertFalse(range.in(4));
 	}
 
+	@Test public void testGetLowerBound() {
+		Assert.assertEquals(0, Range.fromTo(0, 3).getLowerBound());
+		Assert.assertEquals(0, Range.fromTo(3, 0).getLowerBound());
+	}
+
+	@Test public void testGetUpperBound() {
+		Assert.assertEquals(3, Range.fromTo(0, 3).getUpperBound());
+		Assert.assertEquals(3, Range.fromTo(3, 0).getUpperBound());
+	}
+
+	@Test public void testCardinality() {
+		Assert.assertEquals(4, Range.fromTo(0, 3).cardinality());
+	}
+
+	@Test public void testToArray() {
+		Assert.assertArrayEquals(new int[] { 0, 1, 2, 3 }, Range.fromTo(0, 3).toArray());
+	}
+
 }

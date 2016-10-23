@@ -29,9 +29,30 @@ public class Range extends Ace implements Immutable, Iterable<Integer> {
 		_upper = to;
 		_descending = descending;
 	}
-	
+
+	public int getLowerBound() {
+		return _lower;
+	}
+
+	public int getUpperBound() {
+		return _upper;
+	}
+
+	public int cardinality() {
+		return _upper - _lower + 1;
+	}
+
 	public boolean in(final int value) {
 		return (value >= _lower) && (value <= _upper);
+	}
+
+	public int[] toArray() {
+		final int numbersInRange = cardinality();
+		final int[] result = new int[numbersInRange];
+		for (int i = 0; i < numbersInRange; i++) {
+			result[i] = i;
+		}
+		return result;
 	}
 
 
