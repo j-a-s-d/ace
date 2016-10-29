@@ -16,6 +16,17 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.1.5 -- 29 Oct 2016
+    + added ace.interfaces.Alertable interface
+    + added ace.interfaces.Decisor interface
+    + added ace.interfaces.Initializable interface
+    + added ace.interfaces.Processor interface
+    + added ace.interfaces.Reseteable interface
+    + added ace.interfaces.Startable interface
+    + added ace.interfaces.Stoppable interface
+    + added ace.interfaces.Taker interface
+    + added ace.interfaces.Testable interface
+    + added ace.interfaces.Treater interface
 * 0.1.4 -- 22 Oct 2016
     + added ace.looping.Range class
     + added ace.looping package
