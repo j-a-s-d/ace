@@ -2,23 +2,14 @@
 
 package ace.looping;
 
-import ace.Ace;
-import ace.interfaces.Treater;
-
-public abstract class ArrayMapper<T> extends Ace implements Treater<T> {
-
-	private final T[] _result;
+public abstract class ArrayMapper<T> extends BaseMapper<T[], T> {
 
 	@SuppressWarnings("OverridableMethodCallInConstructor")
 	public ArrayMapper(final T... items) {
-		_result = items;
+		super(items);
 		for (int x = items.length - 1; x > -1; x--) {
 			_result[x] = treat(items[x]);
 		}
-	}
-
-	public T[] map() {
-		return _result;
 	}
 
 }
