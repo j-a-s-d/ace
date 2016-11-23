@@ -10,6 +10,7 @@ public class AceTest {
     @Test public void testAssigned() {
         Assert.assertEquals(true, Ace.assigned(Ace.EMPTY_OBJECT));
         Assert.assertEquals(false, Ace.assigned(null, null, null));
+        Assert.assertEquals(false, Ace.assigned());
     }
     
     @Test public void testEnsure() {

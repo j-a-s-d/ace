@@ -16,6 +16,8 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.1.6 -- 22 Nov 2016
+    + improved ace.Ace
 * 0.1.5 -- 29 Oct 2016
     + added ace.looping.BaseMapper class
     + added ace.looping.MapMapper class
