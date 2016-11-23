@@ -16,6 +16,8 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.1.7 -- 23 Nov 2016
+    + released first public binary
 * 0.1.6 -- 22 Nov 2016
     + improved ace.Ace
 * 0.1.5 -- 29 Oct 2016
