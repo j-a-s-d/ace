@@ -16,7 +16,7 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
-* 0.1.8 -- 23 Nov 2016
+* 0.1.8 -- 24 Nov 2016
     + released new binary
     + improved ace.app.SemanticVersion
 * 0.1.7 -- 23 Nov 2016
