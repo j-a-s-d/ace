@@ -77,4 +77,41 @@ public class SemanticVersion extends Ace implements Immutable {
 		return _patch;
 	}
 
+	private static int compareVersionAsStrings(final String version1, final String version2) {
+		final String[] arr1 = version1.split("\\.");
+		final String[] arr2 = version2.split("\\.");
+		int i = 0;
+		while (i < arr1.length || i < arr2.length) {
+			if (i < arr1.length && i < arr2.length) {
+				if (Integer.parseInt(arr1[i]) < Integer.parseInt(arr2[i])) {
+					return -1;
+				} else if (Integer.parseInt(arr1[i]) > Integer.parseInt(arr2[i])) {
+					return 1;
+				}
+			} else if (i < arr1.length) {
+				if (Integer.parseInt(arr1[i]) != 0) {
+					return 1;
+				}
+			} else if (i < arr2.length) {
+				if (Integer.parseInt(arr2[i]) != 0) {
+					return -1;
+				}
+			}
+			i++;
+		}
+		return 0;
+	}
+
+	public final boolean equals(final SemanticVersion version) {
+		return compareVersionAsStrings(this.toString(), version.toString()) == 0;
+	}
+
+	public final boolean isNewer(final SemanticVersion version) {
+		return compareVersionAsStrings(this.toString(), version.toString()) == 1;
+	}
+
+	public final boolean isOlder(final SemanticVersion version) {
+		return compareVersionAsStrings(this.toString(), version.toString()) == -1;
+	}
+
 }

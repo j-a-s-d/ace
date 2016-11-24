@@ -23,4 +23,24 @@ public class SemanticVersionTest {
 		Assert.assertEquals(3, new SemanticVersion(1, 2, 3).getPatchNumber());
 	}
 
+	@Test public void testFromString() {
+		Assert.assertEquals(1, SemanticVersion.fromString("1.0.0").getMajorNumber());
+	}
+
+	@Test public void testToString() {
+		Assert.assertEquals("1.0.0", new SemanticVersion(1, 0, 0).toString());
+	}
+
+	@Test public void testEquals() {
+		Assert.assertTrue(new SemanticVersion(1, 0, 0).equals(SemanticVersion.fromString("1.0.0")));
+	}
+
+	@Test public void testIsNewer() {
+		Assert.assertTrue(new SemanticVersion(1, 0, 1).isNewer(SemanticVersion.fromString("1.0.0")));
+	}
+
+	@Test public void testIsOlder() {
+		Assert.assertTrue(new SemanticVersion(1, 0, 0).isOlder(SemanticVersion.fromString("1.0.1")));
+	}
+
 }
