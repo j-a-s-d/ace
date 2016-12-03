@@ -16,6 +16,9 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.1.9 -- 02 Dec 2016
+    + released new binary
+    + improved ace.binary.BinaryComposer
 * 0.1.8 -- 24 Nov 2016
     + released new binary
     + improved ace.app.SemanticVersion

@@ -17,6 +17,10 @@ public class BinaryComposerTest {
 		Assert.assertArrayEquals(BYTES.ALL, new BinaryComposer().set(BYTES.ALL).get());
 	}
 
+	@Test public void testSet_int_byte() {
+		Assert.assertArrayEquals(new byte[] { BYTES.X42, BYTES.X42, BYTES.X42 }, new BinaryComposer().set(3, BYTES.X42).get());
+	}
+
 	@Test public void testSet_charArr() {
 		Assert.assertArrayEquals(new char[] { 't', 'e', 's', 't'}, new BinaryComposer().set(new char[] { 't', 'e', 's', 't'}).getAsCharArray());
 	}
@@ -55,6 +59,10 @@ public class BinaryComposerTest {
 
 	@Test public void testAppend_byteArr() {
 		Assert.assertEquals("testing", new BinaryComposer(new char[] { 't', 'e', 's', 't' }).append(new byte[] { 'i', 'n', 'g' }).getAsString());
+	}
+
+	@Test public void testAppend_int_byte() {
+		Assert.assertEquals("testggg", new BinaryComposer(new char[] { 't', 'e', 's', 't' }).append(3, (byte) 'g').getAsString());
 	}
 
 	@Test public void testAppend_charArr() {

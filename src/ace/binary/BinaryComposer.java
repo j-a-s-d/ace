@@ -9,6 +9,7 @@ import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.Arrays;
 
 /**
  * Useful binary data flexible composing class.
@@ -50,6 +51,10 @@ public class BinaryComposer extends Ace {
 
 	public BinaryComposer(final byte[] content) {
 		set(content);
+	}
+
+	public BinaryComposer(final int length, final byte filling) {
+		set(length, filling);
 	}
 
 	public final BinaryComposer reset() {
@@ -106,6 +111,12 @@ public class BinaryComposer extends Ace {
 		}
 	}
 
+	public final BinaryComposer set(final int length, final byte filling) {
+		final byte[] content = new byte[length];
+		Arrays.fill(content, filling);
+		return set(content);
+	}
+
 	public final byte[] get() {
 		if (_mode.equals(Mode.STREAM)) {
 			try {
@@ -150,6 +161,12 @@ public class BinaryComposer extends Ace {
 			_buffer = ByteArrays.concat(_buffer, data);
 		}
 		return this;
+	}
+
+	public final BinaryComposer append(final int length, final byte filling) {
+		final byte[] content = new byte[length];
+		Arrays.fill(content, filling);
+		return append(content);
 	}
 
 	public final BinaryComposer append(final char[] data) {
