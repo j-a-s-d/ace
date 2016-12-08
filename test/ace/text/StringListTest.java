@@ -41,19 +41,30 @@ public class StringListTest {
 		Assert.assertArrayEquals(new String[] { "1", "2", "3", "4", "5", "6" }, sl.toArray());
 	}
 
-	@Test public void testInclude() {
+	@Test public void testInclude_Collection() {
 		final StringList sl = new StringList("1", "2", "3");
-		sl.include(new ArrayList() {{ add("4"); add("5"); add("6"); }});
+		sl.include(new ArrayList() {
+			{
+				add("4");
+				add("5");
+				add("6");
+			}
+		});
 		Assert.assertArrayEquals(new String[] { "1", "2", "3", "4", "5", "6" }, sl.toArray());
 	}
 
-	@Test public void testExclude() {
+	@Test public void testExclude_Collection() {
 		final StringList sl = new StringList("1", "2", "3");
-		sl.exclude(new ArrayList() {{ add("1"); add("3"); }});
+		sl.exclude(new ArrayList() {
+			{
+				add("1");
+				add("3");
+			}
+		});
 		Assert.assertArrayEquals(new String[] { "2" }, sl.toArray());
 	}
 
-	@Test public void testInsert() {
+	@Test public void testInsert_int_StringArr() {
 		final StringList sl = new StringList("1", "2", "3");
 		sl.insert(1, "4", "5", "6");
 		Assert.assertArrayEquals(new String[] { "1", "4", "5", "6", "2", "3" }, sl.toArray());
@@ -118,6 +129,44 @@ public class StringListTest {
 
 	@Test public void testToString() {
 		Assert.assertEquals("1\n2\n3", new StringList("1", "2", "3").toString());
+	}
+
+	@Test public void testAdd_StringList() {
+		final StringList sl = new StringList("1", "2", "3");
+		sl.add(new StringList("4", "5", "6"));
+		Assert.assertArrayEquals(new String[] { "1", "2", "3", "4", "5", "6" }, sl.toArray());
+	}
+
+	@Test public void testAdd_StringArr() {
+		final StringList sl = new StringList("1", "2", "3");
+		sl.add(new String[] { "4", "5", "6" });
+		Assert.assertArrayEquals(new String[] { "1", "2", "3", "4", "5", "6" }, sl.toArray());
+	}
+
+	@Test public void testInclude_StringList() {
+		final StringList sl = new StringList("1", "2", "3");
+		sl.include(new StringList("4", "5", "6"));
+		Assert.assertArrayEquals(new String[] { "1", "2", "3", "4", "5", "6" }, sl.toArray());
+	}
+
+	@Test public void testExclude_StringList() {
+		final StringList sl = new StringList("1", "2", "3");
+		sl.exclude(new StringList("1", "3"));
+		Assert.assertArrayEquals(new String[] { "2" }, sl.toArray());
+	}
+
+	@Test public void testInsert_int_StringList() {
+		final StringList sl = new StringList("1", "2", "3");
+		sl.insert(1, new StringList("4", "5", "6"));
+		Assert.assertArrayEquals(new String[] { "1", "4", "5", "6", "2", "3" }, sl.toArray());
+	}
+
+	@Test public void testContainsContaining() {
+		Assert.assertTrue(new StringList("123hello456", "blah", "test").containsContaining("hello"));
+	}
+
+	@Test public void testContainsContainedIn() {
+		Assert.assertTrue(new StringList("123hello456", "blah", "test").containsContainedIn("this-is-a-test-dude!"));
 	}
 
 }

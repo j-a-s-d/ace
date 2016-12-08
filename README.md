@@ -16,6 +16,9 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.2.0 -- 08 Dec 2016
+    + released new binary
+    + improved ace.text.StringList
 * 0.1.9 -- 02 Dec 2016
     + released new binary
     + improved ace.binary.BinaryComposer

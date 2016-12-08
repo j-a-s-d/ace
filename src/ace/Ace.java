@@ -13,7 +13,7 @@ public class Ace {
 	/**
 	 * Ace toolkit version.
 	 */
-	public static final SemanticVersion VERSION = SemanticVersion.fromString("0.1.9");
+	public static final SemanticVersion VERSION = SemanticVersion.fromString("0.2.0");
 
 	/**
 	 * Ace toolkit DEVELOPMENT mode flag.
