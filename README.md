@@ -16,6 +16,11 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.2.1 -- 09 Dec 2016
+    + released new binary
+    + added ace.randomness.Chance routines class
+    + added ace.randomness.GUID routines class
+    + added ace.randomness package
 * 0.2.0 -- 08 Dec 2016
     + released new binary
     + improved ace.text.StringList
