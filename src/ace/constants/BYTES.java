@@ -1,6 +1,6 @@
 /* Java Ace Toolkit by Javier Santo Domingo (j-a-s-d@coderesearchlabs.com) */
 
-package ace.binary;
+package ace.constants;
 
 import ace.Ace;
 

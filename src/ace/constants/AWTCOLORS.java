@@ -1,6 +1,6 @@
 /* Java Ace Toolkit by Javier Santo Domingo (j-a-s-d@coderesearchlabs.com) */
 
-package ace.awt;
+package ace.constants;
 
 import ace.Ace;
 import java.awt.Color;
@@ -8,7 +8,7 @@ import java.awt.Color;
 /**
  * Constants class for AWT colors.
  */
-public class COLORS extends Ace {
+public class AWTCOLORS extends Ace {
     
     public static final Color MAROON = new Color(128, 0, 0);
     public static final Color DARK_RED = new Color(139, 0, 0);

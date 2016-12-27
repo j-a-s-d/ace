@@ -1,13 +1,13 @@
 /* Java Ace Toolkit by Javier Santo Domingo (j-a-s-d@coderesearchlabs.com) */
 
-package ace.html;
+package ace.constants;
 
 import ace.Ace;
 
 /**
  * Constants class for HTML colors.
  */
-public class COLORS extends Ace {
+public class HTMLCOLORS extends Ace {
     
     public static final String MAROON = "#800000";
     public static final String DARK_RED = "#8B0000";

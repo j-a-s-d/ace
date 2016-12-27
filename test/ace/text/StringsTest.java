@@ -2,6 +2,7 @@
 
 package ace.text;
 
+import ace.constants.STRINGS;
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import org.junit.Assert;

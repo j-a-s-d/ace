@@ -2,6 +2,7 @@
 
 package ace.text;
 
+import ace.constants.STRINGS;
 import ace.Ace;
 import ace.platform.Reflection;
 import java.lang.reflect.Field;

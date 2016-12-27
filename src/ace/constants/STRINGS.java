@@ -1,6 +1,6 @@
 /* Java Ace Toolkit by Javier Santo Domingo (j-a-s-d@coderesearchlabs.com) */
 
-package ace.text;
+package ace.constants;
 
 import ace.Ace;
 import java.io.PrintWriter;

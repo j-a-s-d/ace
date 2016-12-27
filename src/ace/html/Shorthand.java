@@ -3,7 +3,7 @@
 package ace.html;
 
 import ace.Ace;
-import ace.text.STRINGS;
+import ace.constants.STRINGS;
 import ace.text.Strings;
 
 /**

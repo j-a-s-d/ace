@@ -2,6 +2,7 @@
 
 package ace.text;
 
+import ace.constants.STRINGS;
 import ace.Ace;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;

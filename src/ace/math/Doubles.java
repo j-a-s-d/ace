@@ -2,6 +2,7 @@
 
 package ace.math;
 
+import ace.constants.NUMBERS;
 import ace.Ace;
 
 /**

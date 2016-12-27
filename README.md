@@ -16,6 +16,15 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.2.3 -- 26 Dec 2016
+    + released new binary
+    + moved ace.math.NUMBERS to ace.constants.NUMBERS
+    + moved ace.text.STRINGS to ace.constants.STRINGS
+    + moved ace.binary.BYTES to ace.constants.BYTES
+    + moved ace.binary.SIZES to ace.constants.SIZES
+    + moved ace.html.COLORS to ace.constants.HTMLCOLORS
+    + moved ace.awt.COLORS to ace.constants.AWTCOLORS
+    + added ace.constants package
 * 0.2.2 -- 17 Dec 2016
     + released new binary
     + added ace.platform.Exceptions routines class

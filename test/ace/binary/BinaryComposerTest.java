@@ -2,6 +2,7 @@
 
 package ace.binary;
 
+import ace.constants.BYTES;
 import ace.text.Strings;
 import java.io.File;
 import org.junit.Assert;

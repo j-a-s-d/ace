@@ -1,6 +1,6 @@
 /* Java Ace Toolkit by Javier Santo Domingo (j-a-s-d@coderesearchlabs.com) */
 
-package ace.math;
+package ace.constants;
 
 import ace.Ace;
 
