@@ -2,8 +2,8 @@
 
 package ace.text;
 
-import ace.constants.STRINGS;
 import ace.Ace;
+import ace.constants.STRINGS;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -43,12 +43,36 @@ public class Strings extends Ace {
 	}
 
 	public static String fromByteArray(final byte[] buffer, final int offset, final int length) {
-		return buffer != null && offset > -1 && length > -1 && buffer.length > offset + length ? new String(buffer, offset, length) : null;
+		return buffer != null && offset > -1 && length > -1 && buffer.length >= offset + length ? new String(buffer, offset, length) : null;
 	}
 
 	public static String fromByteArray(final byte[] buffer, final int offset, final int length, final String charset) {
 		try {
-			return buffer != null && offset > -1 && length > -1 && buffer.length > offset + length ? new String(buffer, offset, length, charset) : null;
+			return buffer != null && offset > -1 && length > -1 && buffer.length >= offset + length ? new String(buffer, offset, length, charset) : null;
+		} catch (final Exception e) {
+			return null;
+		}
+	}
+
+	public static String fromByteArrayRange(final byte[] buffer, final int from, final int to) {
+		final int size = to - from + 1;
+		if (buffer == null || from < 0 || size < 0 || to >= buffer.length) {
+			return null;
+		}
+		final byte[] copy = new byte[size];
+		System.arraycopy(buffer, from, copy, 0, size);
+		return new String(copy);
+	}
+
+	public static String fromByteArrayRange(final byte[] buffer, final int from, final int to, final String charset) {
+		try {
+			final int size = to - from + 1;
+			if (buffer == null || from < 0 || size < 0 || to >= buffer.length) {
+				return null;
+			}
+			final byte[] copy = new byte[size];
+			System.arraycopy(buffer, from, copy, 0, size);
+			return new String(copy, charset);
 		} catch (final Exception e) {
 			return null;
 		}

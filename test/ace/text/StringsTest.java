@@ -48,6 +48,20 @@ public class StringsTest {
 		Assert.assertEquals(null, Strings.fromByteArray(null, 0, 0, "EBCDIC"));
 	}
 
+	@Test public void testFromByteArrayRange_3args() {
+		Assert.assertEquals("cd", Strings.fromByteArrayRange(new byte[] { (byte) 'a', (byte) 'b', (byte) 'c', (byte) 'd' }, 2, 3));
+		Assert.assertEquals(null, Strings.fromByteArrayRange(new byte[] { (byte) 'a', (byte) 'b', (byte) 'c', (byte) 'd' }, -1, 2));
+		Assert.assertEquals(null, Strings.fromByteArrayRange(new byte[] { (byte) 'a', (byte) 'b', (byte) 'c', (byte) 'd' }, 1, -1));
+		Assert.assertEquals(null, Strings.fromByteArrayRange(new byte[] { (byte) 'a', (byte) 'b', (byte) 'c', (byte) 'd' }, 1, 4));
+		Assert.assertEquals(null, Strings.fromByteArrayRange(null, 0, 0));
+	}
+
+	@Test public void testFromByteArrayRange_4args() {
+		Assert.assertEquals("cd", Strings.fromByteArrayRange(new byte[] { (byte) 'a', (byte) 'b', (byte) 'c', (byte) 'd' }, 2, 3, "ASCII"));
+		Assert.assertEquals(null, Strings.fromByteArrayRange(null, 0, 0, "EBCDIC"));
+		Assert.assertEquals(null, Strings.fromByteArrayRange(new byte[] { (byte) 'a', (byte) 'b', (byte) 'c', (byte) 'd' }, 2, 1, "EBCDIC"));
+	}
+
 	@Test public void testToByteArray_String() {
 		Assert.assertArrayEquals(new byte[] { (byte) 'a', (byte) 'b', (byte) 'c', (byte) 'd' }, Strings.toByteArray("abcd"));
 	}

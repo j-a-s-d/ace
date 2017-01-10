@@ -8,6 +8,7 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 + has no external dependencies
 + has a memorable package structure
 + has no final classes
++ has no bytecode manipulation
 + is developed following the platform standards (when useful and possible): naming conventions, javadoc comments, junit tests, pmd rules, ant scripts, etc
 
 ## Motivation
@@ -16,6 +17,9 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.2.4 -- 10 Jan 2017
+    + released new binary
+    + improved ace.text.Strings
 * 0.2.3 -- 26 Dec 2016
     + released new binary
     + moved ace.math.NUMBERS to ace.constants.NUMBERS
