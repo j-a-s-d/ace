@@ -25,6 +25,7 @@ public class Reflection extends Ace {
 		try {
 			return (Constructor) setObjectAsAccessible(clazz.getDeclaredConstructor(parameterTypes));
 		} catch (final Exception e) {
+			GEH.setLastException(e);
 			return null;
 		}
 	}
@@ -33,6 +34,7 @@ public class Reflection extends Ace {
 		try {
 			return (Method) setObjectAsAccessible(clazz.getDeclaredMethod(name, parameterTypes));
 		} catch (final Exception e) {
+			GEH.setLastException(e);
 			return null;
 		}
 	}
@@ -41,6 +43,7 @@ public class Reflection extends Ace {
 		try {
 			return (Field) setObjectAsAccessible(clazz.getDeclaredField(fieldName));
 		} catch (final Exception e) {
+			GEH.setLastException(e);
 			return null;
 		}
 	}

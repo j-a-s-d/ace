@@ -17,6 +17,10 @@ public class Exceptions extends Ace {
 		}}.getBuffer().toString() : null;
 	}
 
+	public static final Exception asException(final Throwable t) {
+		return t != null ? (t instanceof Exception ? (Exception) t : new Exception(t)) : null;
+	}
+
 	public static final Exception catchThrown(final Runnable r) {
 		try {
 			r.run();

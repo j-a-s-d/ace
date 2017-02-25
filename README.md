@@ -17,6 +17,11 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.2.5 -- 25 Feb 2017
+    + released new binary
+    + improved classes to use the Ace.GEH field
+    + added ace.GlobalExceptionHandler class
+    + added ace.interfaces.ExceptionsHandler interface
 * 0.2.4 -- 10 Jan 2017
     + released new binary
     + improved ace.text.Strings

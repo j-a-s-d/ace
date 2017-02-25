@@ -91,6 +91,7 @@ public class BinaryComposer extends Ace {
 			inputStream.read(arr, 0, arr.length);
 			return set(arr);
 		} catch (final Exception e) {
+			GEH.setLastException(e);
 			return null;
 		}
 	}
@@ -99,6 +100,7 @@ public class BinaryComposer extends Ace {
 		try {
 			return set(inputStream, inputStream.available());
 		} catch (final Exception e) {
+			GEH.setLastException(e);
 			return null;
 		}
 	}
@@ -107,6 +109,7 @@ public class BinaryComposer extends Ace {
 		try {
 			return set(new FileInputStream(file), (int) file.length());
 		} catch (final Exception e) {
+			GEH.setLastException(e);
 			return null;
 		}
 	}
@@ -125,6 +128,7 @@ public class BinaryComposer extends Ace {
 				_bos.close();
 				return result;
 			} catch (final Exception e) {
+				GEH.setLastException(e);
 				return null;
 			}
 		} else {
@@ -155,7 +159,7 @@ public class BinaryComposer extends Ace {
 			try {
 				_out.write(data);
 			} catch (final Exception e) {
-				//
+				GEH.setLastException(e);
 			}
 		} else {
 			_buffer = ByteArrays.concat(_buffer, data);
@@ -183,7 +187,7 @@ public class BinaryComposer extends Ace {
 			inputStream.read(arr, 0, arr.length);
 			append(arr);
 		} catch (final Exception e) {
-			//
+			GEH.setLastException(e);
 		}
 		return this;
 	}

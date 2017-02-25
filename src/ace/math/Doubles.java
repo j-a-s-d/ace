@@ -2,8 +2,8 @@
 
 package ace.math;
 
-import ace.constants.NUMBERS;
 import ace.Ace;
+import ace.constants.NUMBERS;
 
 /**
  * Utility class for mathematic operations with doubles.
@@ -51,6 +51,7 @@ public class Doubles extends Ace {
 		try {
 			return Double.parseDouble(string);
 		} catch (final Exception e) {
+			GEH.setLastException(e);
 			return defaultValue;
 		}
 	}
@@ -107,6 +108,7 @@ public class Doubles extends Ace {
 		try {
 			return Double.parseDouble(string);
 		} catch (final Exception e) {
+			GEH.setLastException(e);
 			return defaultValue;
 		}
 	}

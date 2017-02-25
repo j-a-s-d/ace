@@ -38,6 +38,7 @@ public class Strings extends Ace {
 		try {
 			return buffer != null ? new String(buffer, charset) : null;
 		} catch (final Exception e) {
+			GEH.setLastException(e);
 			return null;
 		}
 	}
@@ -50,6 +51,7 @@ public class Strings extends Ace {
 		try {
 			return buffer != null && offset > -1 && length > -1 && buffer.length >= offset + length ? new String(buffer, offset, length, charset) : null;
 		} catch (final Exception e) {
+			GEH.setLastException(e);
 			return null;
 		}
 	}
@@ -74,6 +76,7 @@ public class Strings extends Ace {
 			System.arraycopy(buffer, from, copy, 0, size);
 			return new String(copy, charset);
 		} catch (final Exception e) {
+			GEH.setLastException(e);
 			return null;
 		}
 	}
@@ -86,6 +89,7 @@ public class Strings extends Ace {
 		try {
 			return string != null ? string.getBytes(charset) : null;
 		} catch (final Exception e) {
+			GEH.setLastException(e);
 			return null;
 		}
 	}

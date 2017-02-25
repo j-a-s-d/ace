@@ -56,7 +56,7 @@ public class SemanticVersion extends Ace implements Immutable {
 				}
 			}
 		} catch (final Exception e) {
-			debug(e.getMessage());
+			GEH.setLastException(e);
 		}
 		return new SemanticVersion(major, minor, patch);
 	}

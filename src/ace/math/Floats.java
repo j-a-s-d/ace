@@ -2,8 +2,8 @@
 
 package ace.math;
 
-import ace.constants.NUMBERS;
 import ace.Ace;
+import ace.constants.NUMBERS;
 
 /**
  * Utility class for mathematic operations with floats.
@@ -51,6 +51,7 @@ public class Floats extends Ace {
 		try {
 			return Float.parseFloat(string);
 		} catch (final Exception e) {
+			GEH.setLastException(e);
 			return defaultValue;
 		}
 	}
@@ -107,6 +108,7 @@ public class Floats extends Ace {
 		try {
 			return Float.parseFloat(string);
 		} catch (final Exception e) {
+			GEH.setLastException(e);
 			return defaultValue;
 		}
 	}

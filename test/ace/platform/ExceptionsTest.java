@@ -31,4 +31,9 @@ public class ExceptionsTest {
 		}));
 	}
 
+	@Test public void testAsException() {
+		Assert.assertTrue(Exceptions.asException(new Throwable() {}) instanceof Exception);
+		Assert.assertFalse(Exceptions.asException(null) instanceof Exception);
+	}
+
 }

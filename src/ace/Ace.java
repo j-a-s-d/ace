@@ -3,6 +3,7 @@
 package ace;
 
 import ace.app.SemanticVersion;
+import ace.interfaces.ExceptionsHandler;
 
 /**
  * Ace toolkit class.
@@ -13,7 +14,7 @@ public class Ace {
 	/**
 	 * Ace toolkit version.
 	 */
-	public static final SemanticVersion VERSION = SemanticVersion.fromString("0.2.4");
+	public static final SemanticVersion VERSION = SemanticVersion.fromString("0.2.5");
 
 	/**
 	 * Ace toolkit DEVELOPMENT mode flag.
@@ -92,5 +93,45 @@ public class Ace {
 	public static final <T> void print(final T value) {
 		System.out.println(value);
 	}
+
+	/**
+	 * Freezes the current thread for a period of the specified number of milliseconds.
+	 * 
+	 * @param milliseconds
+	 * @return Returns true if the nap was completed or false if interrupted by another thread.
+	 */
+	public boolean nap(final long milliseconds) {
+		try {
+			Thread.sleep(milliseconds);
+			return true;
+		} catch (final Exception e) {
+			GEH.setLastException(e);
+			return false;
+		}
+	}
+
+	/**
+	 * Freezes the current thread for a period of the specified number of milliseconds plus the specified number of nanoseconds (in the 0..999999 range).
+	 * 
+	 * @param milliseconds
+	 * @param nanoseconds
+	 * @return Returns true if the nap was completed or false if interrupted by another thread or the specified nanoseconds are not in the valid range.
+	 */
+	public boolean nap(final long milliseconds, final int nanoseconds) {
+		try {
+			Thread.sleep(milliseconds, nanoseconds);
+			return true;
+		} catch (final Exception e) {
+			GEH.setLastException(e);
+			return false;
+		}
+	}
+
+	// EXCEPTIONS
+
+	/**
+	 * This is the global exceptions handler.
+	 */
+	public static final ExceptionsHandler GEH = new GlobalExceptionHandler(100, true, true);
 
 }

@@ -20,6 +20,7 @@ public class Classes extends Ace {
 			Class.forName(className);
 			return true;
 		} catch (final Exception e) {
+			GEH.setLastException(e);
 			return false;
 		}
 	}
@@ -28,6 +29,7 @@ public class Classes extends Ace {
 		try {
 			return (T) type.newInstance();
 		} catch (final Exception e) {
+			GEH.setLastException(e);
 			return null;
 		}
 	}
@@ -36,6 +38,7 @@ public class Classes extends Ace {
 		try {
 			return (T) type.getDeclaredConstructor(argumentTypes).newInstance(arguments);
 		} catch (final Exception e) {
+			GEH.setLastException(e);
 			return null;
 		}
 	}
@@ -44,6 +47,7 @@ public class Classes extends Ace {
 		try {
 			return (T) Classes.class.getClassLoader().loadClass(className).newInstance();
 		} catch (final Exception e) {
+			GEH.setLastException(e);
 			return null;
 		}
 	}
@@ -52,6 +56,7 @@ public class Classes extends Ace {
 		try {
 			return (T) Classes.class.getClassLoader().loadClass(className).getDeclaredConstructor(argumentTypes).newInstance(arguments);
 		} catch (final Exception e) {
+			GEH.setLastException(e);
 			return null;
 		}
 	}
@@ -81,7 +86,7 @@ public class Classes extends Ace {
 			try {
 				return classesLoader.loadClass(canonicalName);
 			} catch (final Exception e) {
-				//
+				GEH.setLastException(e);
 			}
 		}
 		return null;
@@ -96,7 +101,7 @@ public class Classes extends Ace {
 			try {
 				return new URLClassLoader(new URL[] { classesDirectory.toURL() });
 			} catch (final Exception e) {
-				//
+				GEH.setLastException(e);
 			}
 		}
 		return null;

@@ -2,8 +2,8 @@
 
 package ace.text;
 
-import ace.constants.STRINGS;
 import ace.Ace;
+import ace.constants.STRINGS;
 import ace.platform.Reflection;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -48,6 +48,7 @@ public class StringList extends Ace implements Iterable<String> {
 		try {
 			return ((Object[]) FIELD_DATA.get(_list)).length;
 		} catch (final Exception e) {
+			GEH.setLastException(e);
 			return -1;
 		}
 	}

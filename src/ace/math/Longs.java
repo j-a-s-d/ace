@@ -2,8 +2,8 @@
 
 package ace.math;
 
-import ace.constants.NUMBERS;
 import ace.Ace;
+import ace.constants.NUMBERS;
 
 /**
  * Utility class for mathematic operations with longs.
@@ -59,6 +59,7 @@ public class Longs extends Ace {
 		try {
 			return Long.parseLong(string);
 		} catch (final Exception e) {
+			GEH.setLastException(e);
 			return defaultValue;
 		}
 	}
@@ -67,6 +68,7 @@ public class Longs extends Ace {
 		try {
 			return Long.parseLong(string, radix);
 		} catch (final Exception e) {
+			GEH.setLastException(e);
 			return defaultValue;
 		}
 	}
@@ -131,6 +133,7 @@ public class Longs extends Ace {
 		try {
 			return Long.parseLong(string);
 		} catch (final Exception e) {
+			GEH.setLastException(e);
 			return defaultValue;
 		}
 	}
@@ -139,6 +142,7 @@ public class Longs extends Ace {
 		try {
 			return Long.parseLong(string, radix);
 		} catch (final Exception e) {
+			GEH.setLastException(e);
 			return defaultValue;
 		}
 	}
