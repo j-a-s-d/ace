@@ -3,7 +3,7 @@
 package ace;
 
 import ace.interfaces.ExceptionsHandler;
-import ace.platform.Exceptions;
+import ace.interfaces.ExceptionsMonitor;
 import java.util.ArrayList;
 
 /**
@@ -12,35 +12,36 @@ import java.util.ArrayList;
 public class GlobalExceptionHandler extends Ace implements ExceptionsHandler {
 
 	private Thread.UncaughtExceptionHandler _lastUncaughtExceptionHandler = null;
-	private final boolean _printUncaughtExceptionsStackTrace;
+	private boolean _printUncaughtExceptionsStackTrace = true;
 	private int _exceptionsHistoryMaximum = 100;
-	private final ArrayList<Exception> _exceptionsThrown = new ArrayList();
+	private final ArrayList<Throwable> _exceptionsThrown = new ArrayList();
 	private boolean _hadException = false;
-	private Exception _lastException = null;
+	private Throwable _lastException = null;
 	private Thread _lastExceptionThread;
 	private long _lastExceptionTimestamp = -1;
+	private ExceptionsMonitor _exceptionsMonitor;
 
-	public GlobalExceptionHandler(final int exceptionsHistoryMaximum, final boolean handleUncaughtExceptions, final boolean printUncaughtExceptionsStackTrace) {
-		_exceptionsHistoryMaximum = exceptionsHistoryMaximum;
-		_printUncaughtExceptionsStackTrace = printUncaughtExceptionsStackTrace;
+	public GlobalExceptionHandler(final boolean handleUncaughtExceptions) {
 		if (handleUncaughtExceptions) {
 			registerAsDefaultUncaughtExceptionHandler();
 		}
 	}
 
 	@SuppressWarnings("ThrowableResultIgnored")
-	private boolean addException(final Exception e) {
+	private boolean addException(final Throwable throwable) {
 		if (_exceptionsThrown.size() >= _exceptionsHistoryMaximum) {
 			_exceptionsThrown.remove(0);
 		}
-		return _exceptionsThrown.add(e);
+		return _exceptionsThrown.add(throwable);
 	}
 
 	private void catchThrowable(final Thread thread, final Throwable throwable) {
-		final Exception e = Exceptions.asException(throwable);
-		_hadException = (_lastException = e) != null ? addException(e) : false;
+		_hadException = (_lastException = throwable) != null ? addException(throwable) : false;
 		_lastExceptionTimestamp = _hadException ? System.currentTimeMillis() : -1;
 		_lastExceptionThread = thread;
+		if (assigned(_exceptionsMonitor)) {
+			_exceptionsMonitor.onExceptionCatched(_lastExceptionThread, _lastException, _lastExceptionTimestamp);
+		}
 	}
 
 	public int getExceptionsHistoryMaximum() {
@@ -61,6 +62,9 @@ public class GlobalExceptionHandler extends Ace implements ExceptionsHandler {
 		}
 	}
 
+	/*
+	* Registers as the default uncaught exception handler.
+	*/
 	public final boolean registerAsDefaultUncaughtExceptionHandler() {
 		_lastUncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
 		return setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
@@ -74,15 +78,28 @@ public class GlobalExceptionHandler extends Ace implements ExceptionsHandler {
 		});
 	}
 
+	/*
+	* Unregisters as the default uncaught exception handler by registering again the backup of the previous handler (which commonly will be null).
+	*/
 	public final boolean unregisterAsDefaultUncaughtExceptionHandler() {
 		return setDefaultUncaughtExceptionHandler(_lastUncaughtExceptionHandler);
+	}
+
+	/**
+	 * Prevents the GEH from printing the stack trace of uncaught exceptions.
+	 * 
+	 * If you need this, use it via:
+	 * <code>((ace.GlobalExceptionHandler) ace.Ace.GEH).disableUncaughtExceptionsStackTracePrinting()</code>
+	 */
+	public void disableUncaughtExceptionsStackTracePrinting() {
+		_printUncaughtExceptionsStackTrace = false;
 	}
 
 	/*@Override*/ public final void forgetExceptionsThrown() {
 		_exceptionsThrown.clear();
 	}
 
-	/*@Override*/ public final ArrayList<Exception> getExceptionsThrown() {
+	/*@Override*/ public final ArrayList<Throwable> getExceptionsThrown() {
 		return _exceptionsThrown;
 	}
 
@@ -96,7 +113,7 @@ public class GlobalExceptionHandler extends Ace implements ExceptionsHandler {
 		_hadException = false;
 	}
 
-	/*@Override*/ public final Exception getLastException() {
+	/*@Override*/ public final Throwable getLastException() {
 		return _lastException;
 	}
 
@@ -114,6 +131,14 @@ public class GlobalExceptionHandler extends Ace implements ExceptionsHandler {
 
 	/*@Override*/ public final void setLastException(final Throwable throwable) {
 		catchThrowable(Thread.currentThread(), throwable);
+	}
+
+	/*@Override*/ public ExceptionsMonitor getExceptionsMonitor() {
+		return _exceptionsMonitor;
+	}
+
+	/*@Override*/ public void setExceptionsMonitor(final ExceptionsMonitor exceptionsMonitor) {
+		_exceptionsMonitor = exceptionsMonitor;
 	}
 
 }

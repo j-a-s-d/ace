@@ -5,7 +5,7 @@ package ace.interfaces;
 import java.util.List;
 
 /**
- * This is the interface of an added-value exceptions handling mechanism embedded into Ace.
+ * This is the interface of the added-value exceptions handling mechanism provided by Ace.
  */
 public interface ExceptionsHandler {
 
@@ -13,7 +13,7 @@ public interface ExceptionsHandler {
 
 	boolean hadException();
 
-	Exception getLastException();
+	Throwable getLastException();
 
 	Thread getLastExceptionThread();
 
@@ -29,6 +29,12 @@ public interface ExceptionsHandler {
 
 	void forgetExceptionsThrown();
 
-	List<Exception> getExceptionsThrown();
+	List<Throwable> getExceptionsThrown();
 
+	// EXCEPTIONS MONITOR
+	
+	void setExceptionsMonitor(final ExceptionsMonitor exceptionsMonitor);
+	
+	ExceptionsMonitor getExceptionsMonitor();
+	
 }
