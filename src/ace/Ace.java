@@ -14,7 +14,7 @@ public class Ace {
 	/**
 	 * Ace toolkit version.
 	 */
-	public static final SemanticVersion VERSION = SemanticVersion.fromString("0.2.6");
+	public static final SemanticVersion VERSION = SemanticVersion.fromString("0.2.7");
 
 	/**
 	 * Ace toolkit DEVELOPMENT mode flag.
@@ -132,6 +132,6 @@ public class Ace {
 	/**
 	 * This is the global exceptions handler.
 	 */
-	public static final ExceptionsHandler GEH = new GlobalExceptionHandler(true);
+	public static final ExceptionsHandler GEH = new GlobalExceptionHandler();
 
 }
