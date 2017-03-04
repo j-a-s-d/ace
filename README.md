@@ -17,6 +17,9 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.2.8 -- 04 Mar 2017
+    + released new binary
+    + added ace.Sandboxed class
 * 0.2.7 -- 02 Mar 2017
     + released new binary
     + added ace.LocalExceptionHandler class
