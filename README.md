@@ -1,4 +1,4 @@
-# Java Ace Toolkit
+# Ace
 An elegant & flexible general purpose utility library aiming compatibility & simplicity for the highest productivity.
 
 ## Characteristics
@@ -17,6 +17,8 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.3.0 -- 05 Mar 2017
+    + updated the project name to just Ace
 * 0.2.8 -- 04 Mar 2017
     + released new binary
     + added ace.Sandboxed class

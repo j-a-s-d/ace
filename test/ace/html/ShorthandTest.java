@@ -1,4 +1,4 @@
-/* Java Ace Toolkit by Javier Santo Domingo (j-a-s-d@coderesearchlabs.com) */
+/* Ace by Javier Santo Domingo (j-a-s-d@coderesearchlabs.com) */
 
 package ace.html;
 
