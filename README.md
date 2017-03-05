@@ -172,7 +172,7 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## License
 
-Java Ace Toolkit
+Ace
 Copyright (c) 2016 Javier Santo Domingo (j-a-s-d@coderesearchlabs.com).
 
 Permission is hereby granted, free of charge, to any
