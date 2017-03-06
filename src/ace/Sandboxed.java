@@ -2,17 +2,31 @@
 
 package ace;
 
+import ace.interfaces.ExceptionsHandler;
+
 /**
  * Useful class to assist you wrap code that can throw exceptions and to retrieve a default value if that's the case.
  */
 public abstract class Sandboxed<T> extends LocalExceptionHandler {
-	
+
+	public static boolean USE_GEH = true;
+
+	private final ExceptionsHandler _exceptionsHandler;
+
+	public Sandboxed() {
+		this(USE_GEH);
+	}
+
+	public Sandboxed(final boolean forwardExceptionsToGEH) {
+		_exceptionsHandler = (forwardExceptionsToGEH ? GEH : this);
+	}
+
 	public final <T> T go(final T defaultValue) {
 		try {
-			forgetLastException();
+			_exceptionsHandler.forgetLastException();
 			return (T) this.run();
 		} catch (final Exception e) {
-			setLastException(e);
+			_exceptionsHandler.setLastException(e);
 			return defaultValue;
 		}
 	}

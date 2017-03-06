@@ -8,6 +8,7 @@ import org.junit.Test;
 public class SandboxedTest {
 
 	@Test public void testGo_defaultValueArg() {
+		Sandboxed.USE_GEH = false;
 		final Sandboxed sb1 = new Sandboxed<String>() {
 			@Override public String run() throws Exception {
 				int i = 1/0;

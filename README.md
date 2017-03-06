@@ -17,6 +17,9 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.3.1 -- 06 Mar 2017
+    + released new binary
+    + improved ace.Sandboxed class
 * 0.3.0 -- 05 Mar 2017
     + updated the project name to just Ace
     + added NetBeans project files
