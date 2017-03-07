@@ -17,6 +17,10 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.3.2 -- 07 Mar 2017
+    + released new binary
+    + added ace.containers.Maps class
+    + added ace.containers package
 * 0.3.1 -- 06 Mar 2017
     + released new binary
     + improved ace.Sandboxed class
