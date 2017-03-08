@@ -11,6 +11,12 @@ import org.junit.Test;
 
 public class MapsTest {
 
+	@Test public void testIsAssignedNonEmptyMap() {
+		final Map<String, Integer> map = Maps.make();
+		map.put("A", 1);
+		Assert.assertTrue(Maps.isAssignedNonEmptyMap(map));
+	}
+
 	@Test public void testMake_0args() {
 		Assert.assertNotNull(Maps.make());
 	}

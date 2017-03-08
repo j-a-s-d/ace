@@ -17,6 +17,11 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.3.3 -- 08 Mar 2017
+    + released new binary
+    + improved ace.containers.Maps class
+    + improved ace.text.StringList class
+    + added ace.containers.Lists class
 * 0.3.2 -- 07 Mar 2017
     + released new binary
     + added ace.containers.Maps class

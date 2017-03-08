@@ -180,14 +180,58 @@ public class StringList extends Ace implements Iterable<String> {
 	public ListIterator<String> listIterator(final int index) {
 		return _list.listIterator(index);
 	}
+	
+	public StringList filter(final String filter) {
+		final List filtered = new ArrayList<String>() {
+			{
+				if (Strings.hasText(filter)) {
+					final boolean unknownEnd = "*".equals(String.valueOf(filter.charAt(filter.length() - 1)));
+					final boolean unknownStart = "*".equals(String.valueOf(filter.charAt(0)));
+					if (unknownEnd && unknownStart) {
+						final String knownPart = Strings.dropBoth(filter, 1);
+						for (final String n : _list) {
+							if (n.contains(knownPart)) {
+								add(n);
+							}
+						}
+					} else if (unknownEnd) {
+						final String knownPart = Strings.dropRight(filter, 1);
+						for (final String n : _list) {
+							if (n.startsWith(knownPart)) {
+								add(n);
+							}
+						}
+					} else if (unknownStart) {
+						final String knownPart = Strings.dropLeft(filter, 1);
+						for (final String n : _list) {
+							if (n.endsWith(knownPart)) {
+								add(n);
+							}
+						}
+					} else {
+						for (final String n : _list) {
+							if (n.equals(filter)) {
+								add(n);
+							}
+						}
+					}
+				}
+			}
+		};
+		_list.clear();
+		_list.addAll(filtered);
+		_list.trimToSize();
+		return this;
+	}
 
 	public StringList fromString(final String text) {
-		clear();
+		_list.clear();
 		final Scanner sc = new Scanner(text);
 		while (sc.hasNextLine()) {
 			_list.add(sc.nextLine());
 		}
 		sc.close();
+		_list.trimToSize();
 		return this;
 	}
 

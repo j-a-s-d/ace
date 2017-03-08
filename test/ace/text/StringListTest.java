@@ -169,4 +169,19 @@ public class StringListTest {
 		Assert.assertTrue(new StringList("123hello456", "blah", "test").containsContainedIn("this-is-a-test-dude!"));
 	}
 
+	@Test public void testFilter() {
+		// starts with
+		final StringList sl1 = new StringList("or", "orange", "orangutan", "ore");
+		Assert.assertEquals(2, sl1.filter("ora*").size());
+		// ends with
+		final StringList sl2 = new StringList("or", "orange", "orangutan", "ore");
+		Assert.assertEquals(2, sl2.filter("*e").size());
+		// contains
+		final StringList sl3 = new StringList("or", "orange", "orangutan", "ore");
+		Assert.assertEquals(2, sl3.filter("*ran*").size());
+		// equals
+		final StringList sl4 = new StringList("or", "orange", "orangutan", "ore");
+		Assert.assertEquals(1, sl4.filter("or").size());
+	}
+
 }
