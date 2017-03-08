@@ -184,4 +184,8 @@ public class StringListTest {
 		Assert.assertEquals(1, sl4.filter("or").size());
 	}
 
+	@Test public void testToList() {
+		Assert.assertNotNull(new StringList().toList());
+	}
+
 }

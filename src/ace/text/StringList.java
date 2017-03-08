@@ -67,6 +67,10 @@ public class StringList extends Ace implements Iterable<String> {
 		return _list.isEmpty();
 	}
 
+	public List<String> toList() {
+		return new ArrayList(_list);
+	}
+
 	public String[] toArray() {
 		return _list.toArray(new String[_list.size()]);
 	}
