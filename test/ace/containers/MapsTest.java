@@ -11,10 +11,10 @@ import org.junit.Test;
 
 public class MapsTest {
 
-	@Test public void testIsAssignedNonEmptyMap() {
+	@Test public void testHasContent() {
 		final Map<String, Integer> map = Maps.make();
 		map.put("A", 1);
-		Assert.assertTrue(Maps.isAssignedNonEmptyMap(map));
+		Assert.assertTrue(Maps.hasContent(map));
 	}
 
 	@Test public void testMake_0args() {

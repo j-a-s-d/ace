@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Lists extends Ace {
 
-	public static boolean isAssignedNonEmptyList(final List list) {
+	public static boolean hasContent(final List list) {
 		return list != null && list.size() > 0;
 	}
 
@@ -78,7 +78,7 @@ public class Lists extends Ace {
 	}
 
 	public static <T> boolean hasSameValueItems(final List<T> list) {
-		if (isAssignedNonEmptyList(list)) {
+		if (hasContent(list)) {
 			boolean result = true;
 			final T first = list.get(0);
 			for (final T value : list) {
@@ -90,31 +90,31 @@ public class Lists extends Ace {
 	}
 
 	public static <T> T get(final List<T> list, final int index) {
-		return isAssignedNonEmptyList(list) && list.size() > index && index >= 0 ? list.get(index) : null;
+		return hasContent(list) && list.size() > index && index >= 0 ? list.get(index) : null;
 	}
 
 	public static <T> T last(final List<T> list) {
-		return isAssignedNonEmptyList(list) ? list.get(list.size() - 1) : null;
+		return hasContent(list) ? list.get(list.size() - 1) : null;
 	}
 
 	public static <T> List<T> firstAndLast(final List<T> list) {
-		return isAssignedNonEmptyList(list) ? make(list.get(0), list.get(list.size() - 1)) : null;
+		return hasContent(list) ? make(list.get(0), list.get(list.size() - 1)) : null;
 	}
 
 	public static <T> List<T> firstAndLastSynchronized(final List<T> list) {
-		return isAssignedNonEmptyList(list) ? makeSynchronized(list.get(0), list.get(list.size() - 1)) : null;
+		return hasContent(list) ? makeSynchronized(list.get(0), list.get(list.size() - 1)) : null;
 	}
 
 	public static <T> List<T> firstAndLastLinked(final List<T> list) {
-		return isAssignedNonEmptyList(list) ? makeLinked(list.get(0), list.get(list.size() - 1)) : null;
+		return hasContent(list) ? makeLinked(list.get(0), list.get(list.size() - 1)) : null;
 	}
 
 	public static <T> List<T> firstAndLastSynchronizedLinked(final List<T> list) {
-		return isAssignedNonEmptyList(list) ? makeSynchronizedLinked(list.get(0), list.get(list.size() - 1)) : null;
+		return hasContent(list) ? makeSynchronizedLinked(list.get(0), list.get(list.size() - 1)) : null;
 	}
 
 	public static <T> List<T> extractSublist(final List<T> list, final int from, final int to) {
-		if (isAssignedNonEmptyList(list)) {
+		if (hasContent(list)) {
 			final int size = list.size();
 			final int lowerBound = from < 0 ? 0 : from + 1 > size ? size : from;
 			final int upperBound = to < 0 ? 0 : to + 1 > size ? size : to;

@@ -17,6 +17,26 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.3.4 -- 09 Mar 2017
+    + released new binary
+    + improved ace.containers.Lists class
+    + improved ace.containers.Maps class
+    + added ace.binary.Streams class
+    + added ace.files.DirectoryListener class
+    + added ace.files.FilenameUtils class
+    + added ace.files.FilenameValidator class
+    + added ace.files.FilesDirectory class
+    + added ace.files.Directories class
+    + added ace.files.Files class
+    + added ace.files.FilesSplitter class
+    + added ace.files.FilesMerger class
+    + added ace.files.BufferedTextFileAppender class
+    + added ace.files.FileAppender class
+    + added ace.files.TemporaryFiles class
+    + added ace.files.TextFiles class
+    + added ace.files.BinaryFiles class
+    + added ace.files.BinaryFileWriter class
+    + added ace.files package
 * 0.3.3 -- 08 Mar 2017
     + released new binary
     + improved ace.containers.Maps class

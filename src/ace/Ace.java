@@ -6,18 +6,18 @@ import ace.app.SemanticVersion;
 import ace.interfaces.ExceptionsHandler;
 
 /**
- * Ace toolkit class.
+ * Ace class.
  */
 public class Ace {
 
 	// GLOBAL
 	/**
-	 * Ace toolkit version.
+	 * Ace version.
 	 */
-	public static final SemanticVersion VERSION = SemanticVersion.fromString("0.3.3");
+	public static final SemanticVersion VERSION = SemanticVersion.fromString("0.3.4");
 
 	/**
-	 * Ace toolkit DEVELOPMENT mode flag.
+	 * Ace DEVELOPMENT mode flag.
 	 */
 	public static boolean DEVELOPMENT = false;
 

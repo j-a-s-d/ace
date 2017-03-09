@@ -8,8 +8,8 @@ import org.junit.Test;
 
 public class ListsTest {
 
-	@Test public void testIsAssignedNonEmptyList() {
-		Assert.assertTrue(Lists.isAssignedNonEmptyList(Lists.make("hello", "world")));
+	@Test public void testHasContent() {
+		Assert.assertTrue(Lists.hasContent(Lists.make("hello", "world")));
 	}
 
 	@Test public void testMake() {

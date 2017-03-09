@@ -21,7 +21,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @SuppressWarnings("PMD.TooManyMethods")
 public class Maps extends Ace {
 
-	public static boolean isAssignedNonEmptyMap(final Map map) {
+	public static boolean hasContent(final Map map) {
 		return map != null && map.size() > 0;
 	}
 
@@ -126,7 +126,7 @@ public class Maps extends Ace {
 	}
 
 	public static String[] getStringKeysAsStringArray(final Map<String, ?> map) {
-		return isAssignedNonEmptyMap(map) ? map.keySet().toArray(new String[] {}) : new String[] {};
+		return hasContent(map) ? map.keySet().toArray(new String[] {}) : new String[] {};
 	}
 
 	public static <K, V> boolean hasKeys(final Map<K, V> map, final K[] keys) {
