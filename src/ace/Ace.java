@@ -14,7 +14,7 @@ public class Ace {
 	/**
 	 * Ace version.
 	 */
-	public static final SemanticVersion VERSION = SemanticVersion.fromString("0.3.4");
+	public static final SemanticVersion VERSION = SemanticVersion.fromString("0.3.5");
 
 	/**
 	 * Ace DEVELOPMENT mode flag.
@@ -100,7 +100,7 @@ public class Ace {
 	 * @param milliseconds
 	 * @return Returns true if the nap was completed or false if interrupted by another thread.
 	 */
-	public boolean nap(final long milliseconds) {
+	public static final boolean nap(final long milliseconds) {
 		try {
 			Thread.sleep(milliseconds);
 			return true;
@@ -117,7 +117,7 @@ public class Ace {
 	 * @param nanoseconds
 	 * @return Returns true if the nap was completed or false if interrupted by another thread or the specified nanoseconds are not in the valid range.
 	 */
-	public boolean nap(final long milliseconds, final int nanoseconds) {
+	public static final boolean nap(final long milliseconds, final int nanoseconds) {
 		try {
 			Thread.sleep(milliseconds, nanoseconds);
 			return true;

@@ -2,28 +2,43 @@
 
 package ace.files;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class FileAppenderTest {
 
+	private final FileAppender _appender = new FileAppender(TemporaryFiles.create());
+
 	@Test public void testReset() {
-		// TODO
+		try {
+			_appender.reset();
+		} catch (final Exception e) {
+			Assert.fail(e.getMessage());
+		}
 	}
 
 	@Test public void testAppend_String() {
-		// TODO
+		Assert.assertTrue(_appender.append("test"));
 	}
 
 	@Test public void testAppend_byteArr() {
-		// TODO
+		Assert.assertTrue(_appender.append("testing".getBytes()));
 	}
 
 	@Test public void testCloseFile() {
-		// TODO
+		try {
+			_appender.closeFile();
+		} catch (final Exception e) {
+			Assert.fail(e.getMessage());
+		}
 	}
 
 	@Test public void testClose() {
-		// TODO
+		try {
+			_appender.close();
+		} catch (final Exception e) {
+			Assert.fail(e.getMessage());
+		}
 	}
 
 }

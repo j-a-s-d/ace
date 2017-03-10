@@ -17,6 +17,12 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.3.5 -- 10 Mar 2017
+    + released new binary
+    + improved unit tests
+    + added ace.time.Nanometer class
+    + added ace.time.Chronometer class
+    + added ace.time package
 * 0.3.4 -- 09 Mar 2017
     + released new binary
     + improved ace.containers.Lists class
