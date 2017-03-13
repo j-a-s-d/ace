@@ -17,6 +17,9 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.3.6 -- 13 Mar 2017
+    + released new binary
+    + small adjustments
 * 0.3.5 -- 10 Mar 2017
     + released new binary
     + improved unit tests

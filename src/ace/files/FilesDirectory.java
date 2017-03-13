@@ -16,7 +16,7 @@ public abstract class FilesDirectory extends Ace {
 	protected final String _extension;
 	protected final FilenameValidator _validator;
 
-	public FilesDirectory(final Class<?> clazz, final String path, final String extension) {
+	public FilesDirectory(final String path, final String extension) {
 		_path = FilenameUtils.ensureLastDirectorySeparator(path);
 		_extension = assigned(extension) ? extension : STRINGS.EMPTY;
 		_validator = _extension.length() == 0 ? FilenameValidator.makeAllFilesValidator() : FilenameValidator.makeExtensionsValidator(extension);
