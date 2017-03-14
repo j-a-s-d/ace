@@ -14,6 +14,9 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.List;
 
+/**
+ * Utility class for working with files.
+ */
 public class Files extends Ace {
 
 	public static boolean hasContent(final File file) {

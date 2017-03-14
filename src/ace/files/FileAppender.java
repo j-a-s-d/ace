@@ -8,6 +8,9 @@ import java.io.Closeable;
 import java.io.File;
 import java.io.RandomAccessFile;
 
+/**
+ * Useful file appender class.
+ */
 public class FileAppender extends Ace implements Reseteable, Closeable {
 
 	private final File _file;

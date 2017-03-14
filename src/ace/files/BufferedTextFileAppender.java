@@ -5,6 +5,9 @@ package ace.files;
 import ace.text.StringComposer;
 import java.io.File;
 
+/**
+ * Useful buffered text file writer class.
+ */
 public class BufferedTextFileAppender extends FileAppender {
 
 	public static final int DEFAULT_BUFFER_SIZE = 4096;

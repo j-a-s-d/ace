@@ -7,6 +7,9 @@ import ace.containers.Lists;
 import java.io.File;
 import java.util.List;
 
+/**
+ * Utility class for working with directories.
+ */
 public class Directories extends Ace {
 
 	public static boolean exists(final File directory) {
@@ -21,36 +24,39 @@ public class Directories extends Ace {
 
 	public static final void walkDirectory(final File directory, final boolean recursive, final DirectoryWalkerHandler handler) {
 		if (directory != null && directory.exists()) {
-			for (final File file : directory.listFiles()) {
-				handler.processFile(file);
-				if (recursive && file.isDirectory()) {
-					walkDirectory(file, recursive, handler);
+			final File[] files = directory.listFiles();
+			if (files != null) {
+				for (final File file : files) {
+					handler.processFile(file);
+					if (recursive && file.isDirectory()) {
+						walkDirectory(file, recursive, handler);
+					}
 				}
 			}
 		}
 	}
 
-	public static final List<File> listFilesFromDirectory(final String directoryPath) {
-		return listFilesFromDirectory(directoryPath, false, FilenameValidator.makeAllFilesValidator());
+	public static final List<File> listFiles(final String directoryPath) {
+		return listFiles(directoryPath, false, FilenameValidator.makeAllFilesValidator());
 	}
 
-	public static final List<File> listFilesFromDirectory(final String directoryPath, final boolean recursive) {
-		return listFilesFromDirectory(directoryPath, recursive, FilenameValidator.makeAllFilesValidator());
+	public static final List<File> listFiles(final String directoryPath, final boolean recursive) {
+		return listFiles(directoryPath, recursive, FilenameValidator.makeAllFilesValidator());
 	}
 
-	public static final List<File> listFilesFromDirectory(final String directoryPath, final boolean recursive, final FilenameValidator validator) {
-		return listFilesFromDirectory(new File(directoryPath), recursive, validator);
+	public static final List<File> listFiles(final String directoryPath, final boolean recursive, final FilenameValidator validator) {
+		return listFiles(new File(directoryPath), recursive, validator);
 	}
 
-	public static final List<File> listFilesFromDirectory(final File directory) {
-		return listFilesFromDirectory(directory, false, FilenameValidator.makeAllFilesValidator());
+	public static final List<File> listFiles(final File directory) {
+		return listFiles(directory, false, FilenameValidator.makeAllFilesValidator());
 	}
 
-	public static final List<File> listFilesFromDirectory(final File directory, final boolean recursive) {
-		return listFilesFromDirectory(directory, recursive, FilenameValidator.makeAllFilesValidator());
+	public static final List<File> listFiles(final File directory, final boolean recursive) {
+		return listFiles(directory, recursive, FilenameValidator.makeAllFilesValidator());
 	}
 
-	public static final List<File> listFilesFromDirectory(final File directory, final boolean recursive, final FilenameValidator validator) {
+	public static final List<File> listFiles(final File directory, final boolean recursive, final FilenameValidator validator) {
 		final List<File> list = Lists.make();
 		walkDirectory(directory, recursive, new DirectoryWalkerHandler() {
 			@Override public void processFile(final File file) {
@@ -62,11 +68,11 @@ public class Directories extends Ace {
 		return list;
 	}
 
-	public static final List<File> listDirectoriesFromDirectory(final String directoryPath, final boolean recursive) {
-		return listDirectoriesFromDirectory(new File(directoryPath), recursive);
+	public static final List<File> listDirectories(final String directoryPath, final boolean recursive) {
+		return listDirectories(new File(directoryPath), recursive);
 	}
 
-	public static final List<File> listDirectoriesFromDirectory(final File directory, final boolean recursive) {
+	public static final List<File> listDirectories(final File directory, final boolean recursive) {
 		final List<File> list = Lists.make();
 		walkDirectory(directory, recursive, new DirectoryWalkerHandler() {
 			@Override public void processFile(final File file) {
@@ -114,14 +120,14 @@ public class Directories extends Ace {
 		return result;
 	}
 
-	public static long getDirectorySize(final String directoryPath) {
-		return getDirectorySize(new File(directoryPath));
+	public static long calculateSize(final String directoryPath) {
+		return calculateSize(new File(directoryPath));
 	}
 
-	public static long getDirectorySize(final File directory) {
+	public static long calculateSize(final File directory) {
 		long result = 0;
-		for (final File file : listFilesFromDirectory(directory)) {
-			result += file.isFile() ? file.length() : getDirectorySize(file);
+		for (final File file : listFiles(directory)) {
+			result += file.isFile() ? file.length() : calculateSize(file);
 		}
 		return result;
 	}

@@ -3,6 +3,7 @@
 package ace.arrays;
 
 import ace.Ace;
+import ace.constants.BYTES;
 
 /**
  * Utility class for working with byte arrays.
@@ -52,6 +53,10 @@ public class ByteArrays extends Ace {
 			inverted[index--] = buffer[i];
 		}
 		return inverted;
+	}
+
+	public static final byte[] ensure(final byte[] buffer) {
+		return buffer != null ? buffer : BYTES.EMPTY;
 	}
 
 	// CONTENT

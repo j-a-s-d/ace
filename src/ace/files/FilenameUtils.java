@@ -7,6 +7,9 @@ import ace.constants.STRINGS;
 import ace.text.Strings;
 import java.io.File;
 
+/**
+ * Utility class for working with file names.
+ */
 public class FilenameUtils extends Ace {
 
 	private static final char DOT = '.';

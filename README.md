@@ -17,6 +17,15 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.3.7 -- 14 Mar 2017
+    + released new binary
+    + improved unit tests
+    + improved ace.files.TemporaryFiles class
+    + improved ace.files.FilesDirectory class
+    + improved ace.files.Directories class
+    + improved ace.containers.Lists class
+    + improved ace.binary.ByteArrays class
+    + improved ace.constants.BYTES class
 * 0.3.6 -- 13 Mar 2017
     + released new binary
     + small adjustments

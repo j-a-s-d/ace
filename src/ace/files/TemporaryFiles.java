@@ -7,10 +7,13 @@ import ace.Sandboxed;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+/**
+ * Utility class for working with temporary files.
+ */
 public class TemporaryFiles extends Ace {
 
-	public static final String PREFIX = "ace";
-	public static final String EXTENSION = ".tmp";
+	public static final String FILE_PREFIX = "ace";
+	public static final String FILE_EXTENSION = ".tmp";
 
 	private static int _counter;
 
@@ -18,8 +21,16 @@ public class TemporaryFiles extends Ace {
 		return _counter;
 	}
 
+	public static File getDirectory() {
+		return new File(getDirectoryPath());
+	}
+
+	public static String getDirectoryPath() {
+		return System.getProperty("java.io.tmpdir");
+	}
+
 	public static File create() {
-		return create(PREFIX, (File) null);
+		return create(FILE_PREFIX, (File) null);
 	}
 
 	public static File create(final String prefix) {
@@ -27,7 +38,7 @@ public class TemporaryFiles extends Ace {
 	}
 
 	public static File create(final File directory) {
-		return create(PREFIX, directory);
+		return create(FILE_PREFIX, directory);
 	}
 
 	public static File create(final String prefix, final String directoryName) {
@@ -37,7 +48,7 @@ public class TemporaryFiles extends Ace {
 	public static File create(final String prefix, final File directory) {
 		return new Sandboxed<File>() {
 			/*@Override*/ public File run() throws Exception {
-				final File temp = File.createTempFile(prefix, EXTENSION, directory);
+				final File temp = File.createTempFile(prefix, FILE_EXTENSION, directory);
 				temp.deleteOnExit();
 				if (!temp.exists()) {
 					throw new FileNotFoundException(temp.getAbsolutePath());

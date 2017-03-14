@@ -319,4 +319,6 @@ public class BYTES extends Ace {
 		XF0, XF1, XF2, XF3, XF4, XF5, XF6, XF7, XF8, XF9, XFA, XFB, XFC, XFD, XFE, XFF
 	};
 
+	public static final byte[] EMPTY = new byte[0];
+
 }

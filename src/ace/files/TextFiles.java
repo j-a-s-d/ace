@@ -13,6 +13,9 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
+/**
+ * Utility class for working with text files.
+ */
 public class TextFiles extends Ace {
 
 	public static final String FILE_EXTENSION = ".txt";

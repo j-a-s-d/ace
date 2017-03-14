@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
+/**
+ * Useful file splitter class.
+ */
 public class FilesSplitter extends Ace {
 
 	public static final int DEFAULT_BUFFER_SIZE = 4096;

@@ -10,11 +10,18 @@ import ace.text.StringList;
 import java.io.File;
 import java.util.List;
 
+/**
+ * Useful files directory class.
+ */
 public abstract class FilesDirectory extends Ace {
 
 	protected final String _path;
 	protected final String _extension;
 	protected final FilenameValidator _validator;
+
+	public FilesDirectory(final File directory, final String extension) {
+		this(directory.getAbsolutePath(), extension);
+	}
 
 	public FilesDirectory(final String path, final String extension) {
 		_path = FilenameUtils.ensureLastDirectorySeparator(path);
@@ -43,7 +50,7 @@ public abstract class FilesDirectory extends Ace {
 	}
 
 	public final List<File> list() {
-		return Directories.listFilesFromDirectory(_path, false, _validator);
+		return Directories.listFiles(_path, false, _validator);
 	}
 
 	public final List<String> listNames() {
@@ -59,7 +66,7 @@ public abstract class FilesDirectory extends Ace {
 	}
 
 	public final long length() {
-		return Directories.getDirectorySize(_path);
+		return Directories.calculateSize(_path);
 	}
 
 	public final boolean treat(final Treater<byte[]> treater) {

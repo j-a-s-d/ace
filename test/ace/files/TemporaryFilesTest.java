@@ -39,4 +39,12 @@ public class TemporaryFilesTest {
 		Assert.assertTrue(tmp.getName().startsWith("prefix"));
 	}
 
+	@Test public void testGetDirectory() {
+		Assert.assertNotNull(TemporaryFiles.getDirectory());
+	}
+
+	@Test public void testGetDirectoryPath() {
+		Assert.assertNotNull(TemporaryFiles.getDirectoryPath());
+	}
+
 }

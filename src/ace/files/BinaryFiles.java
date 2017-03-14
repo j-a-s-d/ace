@@ -15,6 +15,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.RandomAccessFile;
 
+/**
+ * Utility class for working with binary files.
+ */
 public class BinaryFiles extends Ace {
 
 	public static final byte[] read(final String filename) {

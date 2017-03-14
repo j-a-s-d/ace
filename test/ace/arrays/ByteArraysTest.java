@@ -2,19 +2,19 @@
 
 package ace.arrays;
 
+import ace.constants.BYTES;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class ByteArraysTest {
 
-	private static final byte[] EMPTY = ByteArrays.make();
 	private static final byte[] DUMMY = new byte[] { (byte) 0x01, (byte) 0x02, (byte) 0x03 };
 	private static final byte[] DUMMY2 = new byte[] { (byte) 0x04, (byte) 0x05, (byte) 0x06 };
 	private static final byte[] DUMMY3 = new byte[] { (byte) 0x07, (byte) 0x08, (byte) 0x09 };
 
 	@Test public void testMake() {
 		Assert.assertArrayEquals(DUMMY, ByteArrays.make((byte) 0x01, (byte) 0x02, (byte) 0x03));
-		Assert.assertArrayEquals(EMPTY, ByteArrays.make());
+		Assert.assertArrayEquals(BYTES.EMPTY, ByteArrays.make());
 	}
 
 	@SuppressWarnings({ "ConfusingArrayVararg", "PrimitiveArrayArgumentToVariableArgMethod" })
@@ -25,7 +25,7 @@ public class ByteArraysTest {
 		Assert.assertArrayEquals(new byte[] {
 			(byte) 0x01, (byte) 0x02, (byte) 0x03, (byte) 0x04, (byte) 0x05, (byte) 0x06, (byte) 0x07, (byte) 0x08, (byte) 0x09
 		}, ByteArrays.concat(DUMMY, DUMMY2, DUMMY3));
-		Assert.assertArrayEquals(DUMMY, ByteArrays.concat(DUMMY, EMPTY));
+		Assert.assertArrayEquals(DUMMY, ByteArrays.concat(DUMMY, BYTES.EMPTY));
 		Assert.assertArrayEquals(DUMMY, ByteArrays.concat(DUMMY));
 		Assert.assertArrayEquals(null, ByteArrays.concat());
 	}
@@ -50,7 +50,7 @@ public class ByteArraysTest {
 
 	@Test public void testHasContent() {
 		Assert.assertEquals(true, ByteArrays.hasContent(DUMMY));
-		Assert.assertEquals(false, ByteArrays.hasContent(EMPTY));
+		Assert.assertEquals(false, ByteArrays.hasContent(BYTES.EMPTY));
 		Assert.assertEquals(false, ByteArrays.hasContent(null));
 	}
 
@@ -148,6 +148,10 @@ public class ByteArraysTest {
 	@Test public void testReadLittleEndianLong() {
 		final byte[] aux = new byte[] { (byte) 0xEF, (byte) 0xDC, (byte) 0xBA, (byte) 0x98, (byte) 0x89, (byte) 0xAB, (byte) 0xCD, (byte) 0xFE };
 		Assert.assertEquals(0xFECDAB8998BADCEFL, ByteArrays.readLittleEndianLong(aux, 0));
+	}
+
+	@Test public void testEnsure() {
+		Assert.assertNotNull(ByteArrays.ensure(null));
 	}
 
 }

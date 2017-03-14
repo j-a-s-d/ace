@@ -10,6 +10,9 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+/**
+ * Useful binary file writer class.
+ */
 public class BinaryFileWriter extends Ace {
 
 	private FileOutputStream _fos;

@@ -17,7 +17,7 @@ public class Lists extends Ace {
 		return list != null && list.size() > 0;
 	}
 
-	public static <T> List<T> make(final T... values) {
+	public static <T> ArrayList<T> make(final T... values) {
 		return new ArrayList() {
 			{
 				for (final T value : values) {
@@ -57,7 +57,7 @@ public class Lists extends Ace {
 		});
 	}
 
-	public static <T> List<T> combine(final List<T>... lists) {
+	public static <T> ArrayList<T> combine(final List<T>... lists) {
 		return new ArrayList() {
 			{
 				for (final List<T> list : lists) {
@@ -67,7 +67,7 @@ public class Lists extends Ace {
 		};
 	}
 
-	public static <T> List<T> combineLinked(final List<T>... lists) {
+	public static <T> LinkedList<T> combineLinked(final List<T>... lists) {
 		return new LinkedList() {
 			{
 				for (final List<T> list : lists) {
@@ -97,7 +97,7 @@ public class Lists extends Ace {
 		return hasContent(list) ? list.get(list.size() - 1) : null;
 	}
 
-	public static <T> List<T> firstAndLast(final List<T> list) {
+	public static <T> ArrayList<T> firstAndLast(final List<T> list) {
 		return hasContent(list) ? make(list.get(0), list.get(list.size() - 1)) : null;
 	}
 
@@ -105,7 +105,7 @@ public class Lists extends Ace {
 		return hasContent(list) ? makeSynchronized(list.get(0), list.get(list.size() - 1)) : null;
 	}
 
-	public static <T> List<T> firstAndLastLinked(final List<T> list) {
+	public static <T> LinkedList<T> firstAndLastLinked(final List<T> list) {
 		return hasContent(list) ? makeLinked(list.get(0), list.get(list.size() - 1)) : null;
 	}
 

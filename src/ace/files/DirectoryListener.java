@@ -8,6 +8,9 @@ import ace.interfaces.Startable;
 import ace.interfaces.Stoppable;
 import java.io.File;
 
+/**
+ * Useful directory listener class.
+ */
 public abstract class DirectoryListener extends LocalExceptionHandler implements Initializable, Startable, Stoppable {
 
 	protected boolean _running = true;

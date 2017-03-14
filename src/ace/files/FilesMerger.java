@@ -9,6 +9,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
+/**
+ * Useful file merger class.
+ */
 public class FilesMerger extends Ace {
 
 	public static final int DEFAULT_BUFFER_SIZE = 4096;

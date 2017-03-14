@@ -5,6 +5,9 @@ package ace.files;
 import ace.Ace;
 import java.util.regex.Pattern;
 
+/**
+ * Useful file name validation class.
+ */
 public class FilenameValidator extends Ace {
 
 	public static final FilenameValidator makeAllFilesValidator() {

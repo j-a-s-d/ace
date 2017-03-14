@@ -9,6 +9,9 @@ import java.io.Closeable;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+/**
+ * Utility class for working with streams.
+ */
 public class Streams extends Ace {
 
 	public static final int DEFAULT_COPY_BUFFER_SIZE = 4096;
