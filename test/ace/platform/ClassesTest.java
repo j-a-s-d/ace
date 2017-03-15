@@ -2,6 +2,8 @@
 
 package ace.platform;
 
+import java.io.File;
+import java.net.URLClassLoader;
 import org.junit.*;
 
 public class ClassesTest {
@@ -9,6 +11,10 @@ public class ClassesTest {
 	@Test public void testIsClassLoaded() {
 		Assert.assertTrue(Classes.isClassLoaded("java.lang.String"));
 		Assert.assertFalse(Classes.isClassLoaded("blah"));
+	}
+
+	@Test public void testInstantiate_Class() {
+		Assert.assertNotNull(Classes.instantiate(java.lang.String.class));
 	}
 
 	@Test public void testInstantiate_String() {
@@ -37,15 +43,19 @@ public class ClassesTest {
 	}
 
 	@Test public void testLoadFromFile() {
-		// TODO
+		final URLClassLoader l = Classes.makeURLClassLoaderFromDirectory("./build/classes");
+		final Class<?> c = Classes.loadFromFile(l,
+			"ace.Ace" // NOTE: here is the canonical name, that is ace.Something instead of ./ace/Something.class
+		);
+		Assert.assertNotNull(c);
 	}
 
 	@Test public void testMakeURLClassLoaderFromDirectory_String() {
-		// TODO
+		Assert.assertNotNull(Classes.makeURLClassLoaderFromDirectory("./build/classes"));
 	}
 
 	@Test public void testMakeURLClassLoaderFromDirectory_File() {
-		// TODO
+		Assert.assertNotNull(Classes.makeURLClassLoaderFromDirectory(new File("./build/classes")));
 	}
 
 }

@@ -15,6 +15,8 @@ import java.util.List;
  */
 public class Classes extends Ace {
 
+	public static final String FILE_EXTENSION = ".class";
+
 	public static boolean isClassLoaded(final String className) {
 		try {
 			Class.forName(className);

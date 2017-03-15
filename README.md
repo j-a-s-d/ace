@@ -17,6 +17,22 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.3.8 -- 15 Mar 2017
+    + released new binary
+    + added ace.time.SampleProfiler class
+    + added ace.concurrency.Job class
+    + added ace.concurrency.ParallelScheduler class
+    + added ace.concurrency.SerialScheduler class
+    + added ace.concurrency.Scheduler class
+    + added ace.concurrency.Schedulers class
+    + added ace.concurrency.Threads class
+    + added ace.concurrency package
+    + improved ace.platform.Classes class
+    + added ace.platform.Jars class
+    + added ace.platform.Jar class
+    + added ace.platform.OS class
+    + improved ace.files.Directories class
+    + added ace.interfaces.Evaluable interface
 * 0.3.7 -- 14 Mar 2017
     + released new binary
     + improved unit tests

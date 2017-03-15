@@ -3,6 +3,7 @@
 package ace.files;
 
 import ace.Ace;
+import ace.constants.STRINGS;
 import ace.containers.Lists;
 import java.io.File;
 import java.util.List;
@@ -11,6 +12,8 @@ import java.util.List;
  * Utility class for working with directories.
  */
 public class Directories extends Ace {
+
+	public static final File CURRENT = new File(STRINGS.PERIOD);
 
 	public static boolean exists(final File directory) {
 		return assigned(directory) && directory.isDirectory() && directory.exists();
