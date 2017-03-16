@@ -2,12 +2,13 @@
 
 package ace.concurrency;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class ParallelSchedulerTest {
 
-	@Test public void testSomeMethod() {
-		// TODO
+	@Test public void test() {
+		Assert.assertNotNull(new SerialScheduler("parallel0"));
 	}
 
 }

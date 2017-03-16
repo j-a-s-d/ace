@@ -173,16 +173,14 @@ public class Strings extends Ace {
 		return value1 == null ? value2 == null : value1.equals(value2);
 	}
 
-	@SuppressWarnings("PMD.InefficientEmptyStringCheck")
 	public static final boolean hasText(final String string) {
-		return string != null && string.trim().length() > 0;
+		return string != null && !string.trim().equals(STRINGS.EMPTY);
 	}
 
-	@SuppressWarnings("PMD.InefficientEmptyStringCheck")
 	public static final boolean haveText(final String... strings) {
 		boolean result = strings.length > 0;
 		for (final String string : strings) {
-			result &= string != null && string.trim().length() > 0;
+			result &= string != null && !string.trim().equals(STRINGS.EMPTY);
 		}
 		return result;
 	}
@@ -374,6 +372,14 @@ public class Strings extends Ace {
 			}
 		}
 		return sb.toString();
+	}
+
+	public static boolean isAlphanumeric(final String string) {
+		return string != null && string.matches("[A-Za-z0-9]+");
+	}
+
+	public static boolean isNumeric(final String string) {
+		return string != null && string.matches("-?\\d+(\\.\\d+)?");
 	}
 
 }

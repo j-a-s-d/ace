@@ -317,4 +317,24 @@ public class StringsTest {
 		Assert.assertEquals("<hey>", Strings.chevronize("hey"));
 	}
 
+	@Test public void testIsAlphanumeric() {
+		Assert.assertTrue(Strings.isAlphanumeric("A"));
+		Assert.assertTrue(Strings.isAlphanumeric("1"));
+		Assert.assertTrue(Strings.isAlphanumeric("0123456789ABCDEF"));
+		Assert.assertTrue(Strings.isAlphanumeric("Z1X01TT7"));
+		Assert.assertFalse(Strings.isAlphanumeric("Z1X0-1TT7"));
+		Assert.assertFalse(Strings.isAlphanumeric("."));
+		Assert.assertFalse(Strings.isAlphanumeric(STRINGS.EMPTY));
+	}
+
+	@Test public void testIsNumeric() {
+		Assert.assertFalse(Strings.isNumeric("A"));
+		Assert.assertFalse(Strings.isNumeric("-1B"));
+		Assert.assertFalse(Strings.isNumeric(".0"));
+		Assert.assertTrue(Strings.isNumeric("1"));
+		Assert.assertTrue(Strings.isNumeric("1.2"));
+		Assert.assertTrue(Strings.isNumeric("-0"));
+		Assert.assertTrue(Strings.isNumeric("-0.9"));
+	}
+
 }

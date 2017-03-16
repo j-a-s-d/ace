@@ -2,28 +2,39 @@
 
 package ace.concurrency;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class SchedulerTest {
 
+	final Scheduler _scheduler = new Scheduler(1, "test");
+	final Job _job = new Job("job") {
+		/*@Override*/ public void run() {
+		}
+	};
+
 	@Test public void testGetName() {
-		// TODO
+		Assert.assertEquals("test", _scheduler.getName());
 	}
 
 	@Test public void testGetMaxThreadCount() {
-		// TODO
+		Assert.assertEquals(1, _scheduler.getMaxThreadCount());
 	}
 
 	@Test public void testSubmit_Job() {
-		// TODO
+		Assert.assertNotNull(_scheduler.submit(_job));
 	}
 
 	@Test public void testSubmit_Job_long() {
-		// TODO
+		Assert.assertNotNull(_scheduler.submit(_job, 10));
 	}
 
 	@Test public void testShutdown() {
-		// TODO
+		try {
+			_scheduler.shutdown();
+		} catch (final Exception e) {
+			Assert.fail();
+		}
 	}
 
 }

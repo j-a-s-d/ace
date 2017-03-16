@@ -13,7 +13,7 @@ import java.io.File;
  */
 public abstract class DirectoryListener extends LocalExceptionHandler implements Initializable, Startable, Stoppable {
 
-	protected boolean _running = true;
+	protected boolean _running = false;
 	protected int _interval = 10; // NOTE: seconds
 	protected File _folder;
 
@@ -39,6 +39,7 @@ public abstract class DirectoryListener extends LocalExceptionHandler implements
 
 	/*@Override*/ public final void start() {
 		onStartListening();
+		_running = true;
 		while (_running) {
 			try {
 				if (_running = onProcessFiles(_folder.listFiles())) {
