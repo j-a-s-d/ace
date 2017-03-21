@@ -129,7 +129,7 @@ public class Maps extends Ace {
 		return hasContent(map) ? map.keySet().toArray(new String[] {}) : new String[] {};
 	}
 
-	public static <K, V> boolean hasKeys(final Map<K, V> map, final K[] keys) {
+	public static <K, V> boolean hasKeys(final Map<K, V> map, final K... keys) {
 		for (final K k : keys) {
 			if (!map.containsKey(k)) {
 				return false;

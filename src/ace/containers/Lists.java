@@ -4,6 +4,7 @@ package ace.containers;
 
 import ace.Ace;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -127,6 +128,24 @@ public class Lists extends Ace {
 			return newList;
 		}
 		return list;
+	}
+
+	public static <T> boolean has(final List<T> list, final T... items) {
+		for (final T k : items) {
+			if (!list.contains(k)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public static <T> boolean has(final List<T> set, final Collection<T> items) {
+		for (final T k : items) {
+			if (!set.contains(k)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 }

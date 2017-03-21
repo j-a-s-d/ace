@@ -75,4 +75,14 @@ public class ListsTest {
 		}
 	}
 
+	@Test public void testHas_List_GenericType() {
+		Assert.assertTrue(Lists.has(Lists.make(1, 2, 3), 1, 2));
+		Assert.assertFalse(Lists.has(Lists.make(4, 5, 6), 7, 8, 9));
+	}
+
+	@Test public void testHas_List_Collection() {
+		Assert.assertTrue(Lists.has(Lists.make(1, 2, 3), Lists.make(1, 2)));
+		Assert.assertFalse(Lists.has(Lists.make(4, 5, 6), Lists.make(7, 8, 9)));
+	}
+
 }

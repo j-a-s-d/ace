@@ -17,6 +17,12 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.4.0 -- 21 Mar 2017
+    + released new binary
+    + improved unit tests
+    + improved ace.containers.Lists class
+    + improved ace.containers.Maps class
+    + added ace.containers.Sets class
 * 0.3.9 -- 16 Mar 2017
     + released new binary
     + improved unit tests
