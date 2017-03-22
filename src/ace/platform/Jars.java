@@ -4,6 +4,7 @@ package ace.platform;
 
 import ace.Ace;
 import ace.Sandboxed;
+import ace.arrays.GenericArrays;
 import ace.constants.STRINGS;
 import ace.text.Strings;
 import java.io.File;
@@ -14,10 +15,7 @@ public class Jars extends Ace {
 
 	public static final String FILE_EXTENSION = ".jar";
 
-	Jars() {
-	}
-
-	private static final Jar _current;
+	private static Jar _current;
 
 	static {
 		_current = getJarForClass(Jar.class);
@@ -29,6 +27,10 @@ public class Jars extends Ace {
 
 	public static Jar getCurrent() {
 		return _current;
+	}
+
+	public static void setCurrent(final Jar jar) {
+		_current = jar;
 	}
 
 	public static String packageNameToPackagePath(final String packageName) {
@@ -78,6 +80,29 @@ public class Jars extends Ace {
 			GEH.setLastException(e);
 			return null;
 		}
+	}
+
+	public static synchronized boolean load(final File jarFile, final URLClassLoader classLoader) {
+		if (assigned(jarFile, classLoader)) {
+			try {
+				final URL url = jarFile.toURI().toURL();
+				for (final URL it : classLoader.getURLs()) {
+					if (it.equals(url)) {
+						return true;
+					}
+				}
+				final Object[] oo = GenericArrays.make(url);
+				Reflection.getMethodAsAccessible(URLClassLoader.class, "addURL", GenericArrays.make(URL.class)).invoke(classLoader, oo);
+				return true;
+			} catch (final Exception e) {
+				ace.Ace.GEH.setLastException(e);
+			}
+		}
+		return false;
+	}
+
+	public static boolean load(final java.io.File jar) {
+		return load(jar, (java.net.URLClassLoader) ClassLoader.getSystemClassLoader());
 	}
 
 }

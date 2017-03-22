@@ -17,6 +17,10 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.4.1 -- 22 Mar 2017
+    + released new binary
+    + improved ace.platform.Jars class
+    + added ace.platform.BinaryClassLoader class
 * 0.4.0 -- 21 Mar 2017
     + released new binary
     + improved unit tests
