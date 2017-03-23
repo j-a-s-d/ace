@@ -17,6 +17,11 @@ public class JarsTest {
 		Assert.assertNotNull(Jars.getCurrent());
 	}
 
+	@Test public void testSetCurrent() {
+		Jars.setCurrent(Jars.getCurrent());
+		Assert.assertNotNull(Jars.getCurrent());
+	}
+
 	@Test public void testPackageNameToPackagePath() {
 		Assert.assertEquals("/a/b/c/", Jars.packageNameToPackagePath("a.b.c"));
 	}
@@ -55,6 +60,14 @@ public class JarsTest {
 
 	@Test public void testGetClassFromJarFile_3args_2() {
 		Assert.assertNull(Jars.getClassFromJarFile(STRINGS.EMPTY, STRINGS.EMPTY, JarsTest.class));
+	}
+
+	@Test public void testLoad_File_URLClassLoader() {
+		// TODO
+	}
+
+	@Test public void testLoad_File() {
+		// TODO
 	}
 
 }

@@ -42,6 +42,18 @@ public class GenericArrays extends Ace {
 		return false;
 	}
 
+	public static final <T> int countNotNull(final T[] array) {
+		int result = 0;
+		if (hasContent(array)) {
+			for (final Object o : array) {
+				if (o != null) {
+					result++;
+				}
+			}
+		}
+		return result;
+	}
+
 	public static final <T> boolean contains(final T[] array, final T value) {
 		if (hasContent(array)) {
 			if (value == null) {
@@ -149,6 +161,21 @@ public class GenericArrays extends Ace {
 		return result;
 	}
 
+	public static <T> void reverse(final T[] array) {
+		if (array != null) {
+			int i = 0;
+			int j = array.length - 1;
+			T tmp;
+			while (j > i) {
+				tmp = array[j];
+				array[j] = array[i];
+				array[i] = tmp;
+				j--;
+				i++;
+			}
+		}
+	}
+
 	public static final <T> int indexOf(final T[] buffer, final int startOffset, final T[] sequence) {
 		if (buffer != null && buffer.length > 0 && sequence != null && sequence.length > 0) {
 			for (int i = startOffset; i < buffer.length - sequence.length + 1; ++i) {
@@ -194,6 +221,21 @@ public class GenericArrays extends Ace {
 			}
 		}
 		return result;
+	}
+
+	public static final <T> int indexOfFirstNull(final T[] array) {
+		return indexOfFirstNullInRange(array, 0, array.length);
+	}
+
+	public static final <T> int indexOfFirstNullInRange(final T[] array, final int index, final int max) {
+		if (max > index && index > -1 && array.length >= max) {
+			for (int i = index; i < max - 1; i++) {
+				if (array[i] == null) {
+					return i;
+				}
+			}
+		}
+		return -1;
 	}
 
 }

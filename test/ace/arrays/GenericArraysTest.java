@@ -53,6 +53,12 @@ public class GenericArraysTest {
 		Assert.assertEquals(false, GenericArrays.nullFree(null));
 	}
 
+	@Test public void testCountNotNull() {
+		Assert.assertEquals(3, GenericArrays.countNotNull(GenericArrays.make(1, 2, 3)));
+		Assert.assertEquals(2, GenericArrays.countNotNull(GenericArrays.make(1, null, 3)));
+		Assert.assertEquals(0, GenericArrays.countNotNull(null));
+	}
+
 	@Test public void testContains() {
 		Assert.assertEquals(true, GenericArrays.contains(GenericArrays.make(1, 2, 3), 1));
 		Assert.assertEquals(true, GenericArrays.contains(GenericArrays.make(1, 2, 3), 2));
@@ -130,6 +136,12 @@ public class GenericArraysTest {
 		Assert.assertArrayEquals(null, GenericArrays.invertedCopy(null, 0, 0));
 	}
 
+	@Test public void testReverse() {
+		final Byte[] A = new Byte[] { 0x01, 0x02 };
+		GenericArrays.reverse(A);
+		Assert.assertArrayEquals(new Byte[] { 0x02, 0x01 }, A);
+	}
+
 	@Test public void testIndexOf_3args() {
 		final Byte[] tmp = new Byte[] { 0x04, 0x05, 0x06 };
 		final Byte[] aux = new Byte[] { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09 };
@@ -156,6 +168,21 @@ public class GenericArraysTest {
 		Assert.assertArrayEquals(new int[] {}, GenericArrays.indexesOf(aux, new Byte[] { (byte) 0xDD, (byte) 0xAA }));
 		Assert.assertArrayEquals(new int[] {}, GenericArrays.indexesOf(null, new Byte[] { (byte) 0xDD, (byte) 0xAA }));
 		Assert.assertArrayEquals(new int[] {}, GenericArrays.indexesOf(aux, null));
+	}
+
+	@Test public void testIndexOfNull() {
+		Assert.assertEquals(1, GenericArrays.indexOfFirstNull(GenericArrays.make(1, null, 3)));
+		Assert.assertEquals(-1, GenericArrays.indexOfFirstNull(GenericArrays.make(1, 2, 3)));
+	}
+
+	@Test public void testIndexOfNullInRange() {
+		Assert.assertEquals(3, GenericArrays.indexOfFirstNullInRange(GenericArrays.make(1, null, 3, null, 5), 3, 5));
+		Assert.assertEquals(-1, GenericArrays.indexOfFirstNullInRange(GenericArrays.make(1, null, 3, null, 5), 7, 9));
+		Assert.assertEquals(-1, GenericArrays.indexOfFirstNullInRange(GenericArrays.make(1, null, 3, null, 5), 5, 3));
+		Assert.assertEquals(-1, GenericArrays.indexOfFirstNullInRange(GenericArrays.make(1, 2, 3, 4, 5), 3, 5));
+		Assert.assertEquals(-1, GenericArrays.indexOfFirstNullInRange(GenericArrays.make(1, null, 3, null, 5), 3, 6));
+		Assert.assertEquals(-1, GenericArrays.indexOfFirstNullInRange(GenericArrays.make(1, 2, 3, 4, 5), 3, -1));
+		Assert.assertEquals(-1, GenericArrays.indexOfFirstNullInRange(GenericArrays.make(1, 2, 3, 4, 5), -1, 5));
 	}
 
 }
