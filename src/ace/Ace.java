@@ -14,7 +14,7 @@ public class Ace {
 	/**
 	 * Ace version.
 	 */
-	public static final SemanticVersion ACE_VERSION = SemanticVersion.fromString("0.4.1");
+	public static final SemanticVersion ACE_VERSION = SemanticVersion.fromString("0.4.2");
 
 	/**
 	 * Ace DEVELOPMENT mode flag.
