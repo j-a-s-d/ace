@@ -17,6 +17,15 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.4.3 -- 27 Mar 2017
+    + released new binary
+    + added ace.hashing.SHA256 class
+    + added ace.hashing.SHA1 class
+    + added ace.hashing.CRC32 class
+    + added ace.hashing.Adler32 class
+    + added ace.hashing.Digester class
+    + added ace.hashing package
+    + improved ace.arrays.GenericArrays class
 * 0.4.2 -- 23 Mar 2017
     + released new binary
     + improved unit tests

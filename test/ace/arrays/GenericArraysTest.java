@@ -22,14 +22,14 @@ public class GenericArraysTest {
 		Assert.assertArrayEquals(null, GenericArrays.fromClass(null, 0));
 	}
 
-	@Test public void testFromList() {
-		Assert.assertArrayEquals(new Integer[] { 1, 2 }, GenericArrays.fromList(new ArrayList<Integer>() {
+	@Test public void testFromCollection() {
+		Assert.assertArrayEquals(new Integer[] { 1, 2 }, GenericArrays.fromCollection(new ArrayList<Integer>() {
 			{
 				add(1);
 				add(2);
 			}
 		}));
-		final Integer[] tmp = GenericArrays.fromList(new ArrayList<Integer>() {
+		final Integer[] tmp = GenericArrays.fromCollection(new ArrayList<Integer>() {
 			{
 				add(1);
 				add(2);
@@ -37,8 +37,8 @@ public class GenericArraysTest {
 			}
 		});
 		Assert.assertArrayEquals(new Integer[] { 1, 2, 3 }, tmp);
-		Assert.assertArrayEquals(null, GenericArrays.fromList(new ArrayList<Integer>()));
-		Assert.assertArrayEquals(null, GenericArrays.fromList(null));
+		Assert.assertArrayEquals(null, GenericArrays.fromCollection(new ArrayList<Integer>()));
+		Assert.assertArrayEquals(null, GenericArrays.fromCollection(null));
 	}
 
 	@Test public void testHasContent() {
@@ -116,6 +116,13 @@ public class GenericArraysTest {
 		Assert.assertArrayEquals(null, GenericArrays.chopBoth(GenericArrays.make(1, 2, 3, 4), 3));
 	}
 
+	@Test public void testAppend() {
+		Assert.assertArrayEquals(new Integer[] { 1, 2, 3, 4 }, GenericArrays.append(GenericArrays.make(1, 2), 3, 4));
+		Assert.assertArrayEquals(new Integer[] { 1, 2, 3 }, GenericArrays.append(GenericArrays.make(1, 2), 3));
+		Assert.assertArrayEquals(new Integer[] { 1, 2 }, GenericArrays.append(GenericArrays.make(1, 2)));
+		Assert.assertArrayEquals(new Integer[] { 1, 2, null, 3, null }, GenericArrays.append(GenericArrays.make(1, 2), null, 3, null));
+	}
+
 	@Test public void testConcat() {
 		final Integer[] tmp = GenericArrays.concat(GenericArrays.make(1, 2), GenericArrays.make(3, 4));
 		Assert.assertArrayEquals(new Integer[] { 1, 2, 3, 4 }, tmp);
@@ -170,12 +177,12 @@ public class GenericArraysTest {
 		Assert.assertArrayEquals(new int[] {}, GenericArrays.indexesOf(aux, null));
 	}
 
-	@Test public void testIndexOfNull() {
+	@Test public void testIndexOfFirstNull() {
 		Assert.assertEquals(1, GenericArrays.indexOfFirstNull(GenericArrays.make(1, null, 3)));
 		Assert.assertEquals(-1, GenericArrays.indexOfFirstNull(GenericArrays.make(1, 2, 3)));
 	}
 
-	@Test public void testIndexOfNullInRange() {
+	@Test public void testIndexOfFirstNullInRange() {
 		Assert.assertEquals(3, GenericArrays.indexOfFirstNullInRange(GenericArrays.make(1, null, 3, null, 5), 3, 5));
 		Assert.assertEquals(-1, GenericArrays.indexOfFirstNullInRange(GenericArrays.make(1, null, 3, null, 5), 7, 9));
 		Assert.assertEquals(-1, GenericArrays.indexOfFirstNullInRange(GenericArrays.make(1, null, 3, null, 5), 5, 3));
@@ -183,6 +190,10 @@ public class GenericArraysTest {
 		Assert.assertEquals(-1, GenericArrays.indexOfFirstNullInRange(GenericArrays.make(1, null, 3, null, 5), 3, 6));
 		Assert.assertEquals(-1, GenericArrays.indexOfFirstNullInRange(GenericArrays.make(1, 2, 3, 4, 5), 3, -1));
 		Assert.assertEquals(-1, GenericArrays.indexOfFirstNullInRange(GenericArrays.make(1, 2, 3, 4, 5), -1, 5));
+	}
+
+	@Test public void testFilterNull() {
+		Assert.assertArrayEquals(new Integer[] { 1, 2, 3 }, GenericArrays.filterNull(GenericArrays.make(null, 1, 2, null, 3, null)));
 	}
 
 }

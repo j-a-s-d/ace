@@ -6,7 +6,7 @@ import ace.Ace;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.Collection;
 
 /**
  * Utility class for working with generic arrays.
@@ -22,8 +22,8 @@ public class GenericArrays extends Ace {
 		return clazz != null && length > -1 ? (T[]) Array.newInstance(clazz, length) : null;
 	}
 
-	public static final <T> T[] fromList(final List<T> list) {
-		return list != null && list.size() > 0 ? list.toArray((T[]) fromClass(list.get(0).getClass(), list.size())) : null;
+	public static final <T> T[] fromCollection(final Collection<T> collection) {
+		return collection != null && collection.size() > 0 ? collection.toArray((T[]) fromClass(collection.iterator().next().getClass(), collection.size())) : null;
 	}
 
 	// CONTENT
@@ -52,6 +52,16 @@ public class GenericArrays extends Ace {
 			}
 		}
 		return result;
+	}
+
+	public static final <T> T[] filterNull(final T[] array) {
+		return fromCollection(new ArrayList<T>() {{
+			for (final T element : array) {
+				if (element != null) {
+					add(element);
+				}
+			}
+		}});
 	}
 
 	public static final <T> boolean contains(final T[] array, final T value) {
@@ -91,50 +101,56 @@ public class GenericArrays extends Ace {
 
 	public static <T> T[] chopBeginning(final T[] array, final int count) {
 		T[] result = null;
-		if (hasContent(array)) {
+		if (nullFree(array)) {
 			final ArrayList<T> list = new ArrayList(Arrays.asList(array));
 			int x = 0;
 			while (count > x++ && !list.isEmpty()) {
 				list.remove(0);
 			}
-			result = fromList(list);
+			result = fromCollection(list);
 		}
 		return result;
 	}
 
 	public static <T> T[] chopEnding(final T[] array, final int count) {
 		T[] result = null;
-		if (hasContent(array)) {
+		if (nullFree(array)) {
 			final ArrayList<T> list = new ArrayList(Arrays.asList(array));
 			int x = 0;
 			while (count > x++ && !list.isEmpty()) {
 				list.remove(list.size() - 1);
 			}
-			result = fromList(list);
+			result = fromCollection(list);
 		}
 		return result;
 	}
 
 	public static <T> T[] chopBoth(final T[] array, final int count) {
 		T[] result = null;
-		if (hasContent(array)) {
+		if (nullFree(array)) {
 			final ArrayList<T> list = new ArrayList(Arrays.asList(array));
 			int x = 0;
 			while (count > x++ && !list.isEmpty()) {
 				list.remove(0);
 				list.remove(list.size() - 1);
 			}
-			result = fromList(list);
+			result = fromCollection(list);
 		}
 		return result;
 	}
 
+	public static final <T> T[] append(final T[] array, final T... elements) {
+		return concat(array, elements);
+	}
+
 	public static final <T> T[] concat(final T[]... arrays) {
-		final ArrayList<T> list = new ArrayList();
-		for (final T[] array : arrays) {
-			list.addAll(Arrays.asList(array));
-		}
-		return fromList(list);
+		return fromCollection(new ArrayList<T>() {{
+			for (final T[] array : arrays) {
+				for (final T element : array) {
+					add(element);
+				}
+			}
+		}});
 	}
 
 	public static <T> T[] copy(final T[] buffer, final int offset, final int length) {
