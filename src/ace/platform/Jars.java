@@ -8,9 +8,13 @@ import ace.arrays.GenericArrays;
 import ace.constants.STRINGS;
 import ace.text.Strings;
 import java.io.File;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 
+/**
+ * Utility class for working with jar files.
+ */
 public class Jars extends Ace {
 
 	public static final String FILE_EXTENSION = ".jar";
@@ -82,27 +86,40 @@ public class Jars extends Ace {
 		}
 	}
 
-	public static synchronized boolean load(final File jarFile, final URLClassLoader classLoader) {
-		if (assigned(jarFile, classLoader)) {
+	private static final Method _addURL = Reflection.getMethodAsAccessible(URLClassLoader.class, "addURL", GenericArrays.make(URL.class));
+
+	public static synchronized boolean load(final URL urlToJarFile, final URLClassLoader classLoader) {
+		if (assigned(urlToJarFile, classLoader)) {
 			try {
-				final URL url = jarFile.toURI().toURL();
 				for (final URL it : classLoader.getURLs()) {
-					if (it.equals(url)) {
+					if (it.equals(urlToJarFile)) {
 						return true;
 					}
 				}
-				final Object[] oo = GenericArrays.make(url);
-				Reflection.getMethodAsAccessible(URLClassLoader.class, "addURL", GenericArrays.make(URL.class)).invoke(classLoader, oo);
+				_addURL.invoke(classLoader, urlToJarFile);
 				return true;
 			} catch (final Exception e) {
-				ace.Ace.GEH.setLastException(e);
+				GEH.setLastException(e);
 			}
 		}
 		return false;
 	}
 
-	public static boolean load(final java.io.File jar) {
-		return load(jar, (java.net.URLClassLoader) ClassLoader.getSystemClassLoader());
+	public static boolean load(final URL urlToJarFile) {
+		return load(urlToJarFile, (URLClassLoader) ClassLoader.getSystemClassLoader());
+	}
+
+	public static boolean load(final File jarFile, final URLClassLoader classLoader) {
+		try {
+			return load(jarFile.toURI().toURL(), classLoader);
+		} catch (final Exception e) {
+			GEH.setLastException(e);
+			return false;
+		}
+	}
+
+	public static boolean load(final File jar) {
+		return load(jar, (URLClassLoader) ClassLoader.getSystemClassLoader());
 	}
 
 }

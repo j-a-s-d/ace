@@ -13,6 +13,9 @@ import java.io.File;
 import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 
+/**
+ * Utility class for working with the operative system.
+ */
 public class OS extends Ace {
 	
 	public static final String getArchitectureName() {

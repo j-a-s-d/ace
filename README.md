@@ -17,6 +17,12 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.4.4 -- 28 Mar 2017
+    + released new binary
+    + improved ace.platform.BinaryClassLoader class
+    + improved ace.platform.Jars class
+    + improved ace.platform.Jar class
+    + improved ace.platform.OS class
 * 0.4.3 -- 27 Mar 2017
     + released new binary
     + added ace.hashing.SHA256 class

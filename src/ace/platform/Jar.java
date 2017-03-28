@@ -5,26 +5,31 @@ package ace.platform;
 import ace.LocalExceptionHandler;
 import ace.binary.Streams;
 import ace.constants.STRINGS;
+import ace.containers.Lists;
+import ace.containers.Maps;
 import ace.files.BinaryFiles;
 import ace.files.Directories;
 import ace.files.FilenameUtils;
 import ace.text.Strings;
 import java.io.File;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
+/**
+ * Useful class for working with a jar file.
+ */
 public class Jar extends LocalExceptionHandler {
 
 	private static final String META_INF = "META-INF";
 
-	private final ArrayList<String> _metaInfo;
-	private final ArrayList<String> _packages;
-	private final ArrayList<String> _classes;
-	private final HashMap<String, byte[]> _contents;
+	private final List<String> _metaInfo;
+	private final List<String> _packages;
+	private final List<String> _classes;
+	private final Map<String, byte[]> _contents;
 	private final File _file;
 	private final ClassLoader _classLoader;
 	private final Class _requester;
@@ -45,10 +50,10 @@ public class Jar extends LocalExceptionHandler {
 		_file = jarFile;
 		_requester = requester;
 		_classLoader = Jars.getClassLoaderForJarFile(_file.getAbsolutePath(), requester);
-		_metaInfo = new ArrayList();
-		_packages = new ArrayList();
-		_classes = new ArrayList();
-		_contents = new HashMap();
+		_metaInfo = Lists.make();
+		_packages = Lists.make();
+		_classes = Lists.make();
+		_contents = Maps.make();
 		reload();
 	}
 
@@ -92,15 +97,15 @@ public class Jar extends LocalExceptionHandler {
 		return _file;
 	}
 
-	public ArrayList<String> getMetaInfo() {
+	public List<String> getMetaInfo() {
 		return _metaInfo;
 	}
 
-	public HashMap<String, byte[]> getContents() {
+	public Map<String, byte[]> getContents() {
 		return _contents;
 	}
 
-	public ArrayList<String> getPackages() {
+	public List<String> getPackages() {
 		return _packages;
 	}
 
@@ -108,8 +113,8 @@ public class Jar extends LocalExceptionHandler {
 		return _packages.indexOf(packageName) > -1;
 	}
 
-	public ArrayList<String> getPackageContents(final String packageName) {
-		final ArrayList<String> result = new ArrayList();
+	public List<String> getPackageContents(final String packageName) {
+		final List<String> result = Lists.make();
 		if (hasPackage(packageName)) {
 			final String pkgPath = Jars.packageNameToPackagePath(packageName);
 			for (final String s : _contents.keySet()) {
@@ -121,8 +126,8 @@ public class Jar extends LocalExceptionHandler {
 		return result;
 	}
 
-	public ArrayList<String> getPackageClasses(final String packageName) {
-		final ArrayList<String> result = new ArrayList();
+	public List<String> getPackageClasses(final String packageName) {
+		final List<String> result = Lists.make();
 		if (hasPackage(packageName)) {
 			for (final String s : _classes) {
 				if (s.startsWith(packageName)) {
