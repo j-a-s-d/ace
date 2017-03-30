@@ -14,7 +14,7 @@ public class Ace {
 	/**
 	 * Ace version.
 	 */
-	public static final SemanticVersion ACE_VERSION = SemanticVersion.fromString("0.4.4");
+	public static final SemanticVersion ACE_VERSION = SemanticVersion.fromString("0.4.5");
 
 	/**
 	 * Ace DEVELOPMENT mode flag.
@@ -128,7 +128,6 @@ public class Ace {
 	}
 
 	// EXCEPTIONS
-
 	/**
 	 * This is the global exceptions handler.
 	 */

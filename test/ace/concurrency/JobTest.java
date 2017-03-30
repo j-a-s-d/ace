@@ -31,7 +31,7 @@ public class JobTest {
 	@Test public void testSetRunnable() {
 		Runnable r;
 		Assert.assertNotNull(r = _job.getRunnable());
-		Assert.assertEquals(_job, _job.setRunnable(Threads.makeDummyRunnable()));
+		Assert.assertEquals(_job, _job.setRunnable(Runnables.makeDummy()));
 	}
 
 	@Test public void testGetScheduledFuture() {

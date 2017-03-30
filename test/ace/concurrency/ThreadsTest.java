@@ -36,7 +36,7 @@ public class ThreadsTest {
 	}
 
 	@Test public void testMakeDummyRunnable() {
-		Assert.assertNotNull(Threads.makeDummyRunnable());
+		Assert.assertNotNull(Runnables.makeDummy());
 	}
 
 	@Test public void testCreateWaiter() {
@@ -81,7 +81,7 @@ public class ThreadsTest {
 
 	@Test public void testDelayedRun() {
 		try {
-			Threads.delayedRun(10, Threads.makeDummyRunnable());
+			Threads.delayedRun(10, Runnables.makeDummy());
 		} catch (final Exception e) {
 			Assert.fail();
 		}
@@ -89,7 +89,7 @@ public class ThreadsTest {
 
 	@Test public void testDelayedSpawn_long_Runnable() {
 		try {
-			Threads.delayedSpawn(10, Threads.makeDummyRunnable());
+			Threads.delayedSpawn(10, Runnables.makeDummy());
 		} catch (final Exception e) {
 			Assert.fail();
 		}
@@ -97,7 +97,7 @@ public class ThreadsTest {
 
 	@Test public void testDelayedSpawn_3args() {
 		try {
-			Threads.delayedSpawn(10, Threads.makeDummyRunnable(), "dummy");
+			Threads.delayedSpawn(10, Runnables.makeDummy(), "dummy");
 		} catch (final Exception e) {
 			Assert.fail();
 		}
@@ -105,7 +105,7 @@ public class ThreadsTest {
 
 	@Test public void testIsolatedSpawn_Runnable() {
 		try {
-			Threads.isolatedSpawn(Threads.makeDummyRunnable());
+			Threads.isolatedSpawn(Runnables.makeDummy());
 		} catch (final Exception e) {
 			Assert.fail();
 		}
@@ -113,7 +113,7 @@ public class ThreadsTest {
 
 	@Test public void testIsolatedSpawn_Runnable_String() {
 		try {
-			Threads.isolatedSpawn(Threads.makeDummyRunnable(), "dummy");
+			Threads.isolatedSpawn(Runnables.makeDummy(), "dummy");
 		} catch (final Exception e) {
 			Assert.fail();
 		}
@@ -121,7 +121,7 @@ public class ThreadsTest {
 
 	@Test public void testIsolatedSpawn_int_Runnable() {
 		try {
-			Threads.isolatedSpawn(2, Threads.makeDummyRunnable());
+			Threads.isolatedSpawn(2, Runnables.makeDummy());
 		} catch (final Exception e) {
 			Assert.fail();
 		}
@@ -129,7 +129,7 @@ public class ThreadsTest {
 
 	@Test public void testIsolatedSpawn_3args() {
 		try {
-			Threads.isolatedSpawn(2, Threads.makeDummyRunnable(), 10);
+			Threads.isolatedSpawn(2, Runnables.makeDummy(), 10);
 		} catch (final Exception e) {
 			Assert.fail();
 		}
@@ -137,7 +137,7 @@ public class ThreadsTest {
 
 	@Test public void testIsolatedSpawn_4args() {
 		try {
-			Threads.isolatedSpawn(2, Threads.makeDummyRunnable(), 10, "prefix");
+			Threads.isolatedSpawn(2, Runnables.makeDummy(), 10, "prefix");
 		} catch (final Exception e) {
 			Assert.fail();
 		}
@@ -145,7 +145,7 @@ public class ThreadsTest {
 
 	@Test public void testSpawn_Runnable() {
 		try {
-			Threads.spawn(Threads.makeDummyRunnable());
+			Threads.spawn(Runnables.makeDummy());
 		} catch (final Exception e) {
 			Assert.fail();
 		}
@@ -153,7 +153,7 @@ public class ThreadsTest {
 
 	@Test public void testSpawn_Runnable_String() {
 		try {
-			Threads.spawn(Threads.makeDummyRunnable(), "dummy");
+			Threads.spawn(Runnables.makeDummy(), "dummy");
 		} catch (final Exception e) {
 			Assert.fail();
 		}
@@ -161,7 +161,7 @@ public class ThreadsTest {
 
 	@Test public void testSpawn_int_Runnable() {
 		try {
-			Threads.spawn(2, Threads.makeDummyRunnable());
+			Threads.spawn(2, Runnables.makeDummy());
 		} catch (final Exception e) {
 			Assert.fail();
 		}
@@ -169,7 +169,7 @@ public class ThreadsTest {
 
 	@Test public void testSpawn_3args() {
 		try {
-			Threads.spawn(2, Threads.makeDummyRunnable(), 10);
+			Threads.spawn(2, Runnables.makeDummy(), 10);
 		} catch (final Exception e) {
 			Assert.fail();
 		}
@@ -177,7 +177,7 @@ public class ThreadsTest {
 
 	@Test public void testSpawn_4args() {
 		try {
-			Threads.spawn(2, Threads.makeDummyRunnable(), 10, "prefix");
+			Threads.spawn(2, Runnables.makeDummy(), 10, "prefix");
 		} catch (final Exception e) {
 			Assert.fail();
 		}

@@ -61,13 +61,6 @@ public class Threads extends Ace {
 	}
 
 	// RUNNABLE RELATED
-	public static final Runnable makeDummyRunnable() {
-		return new Runnable() {
-			/*@Override*/ public void run() {
-			}
-		};
-	}
-
 	public static final void delayedRun(final long delay, final Runnable r) {
 		new Sandboxed<Void>() {
 			/*@Override*/ public Void run() throws Exception {

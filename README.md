@@ -17,6 +17,10 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.4.5 -- 30 Mar 2017
+    + released new binary
+    + improved ace.concurrency.Threads class
+    + added ace.concurrency.Runnables class
 * 0.4.4 -- 28 Mar 2017
     + released new binary
     + improved ace.platform.BinaryClassLoader class
