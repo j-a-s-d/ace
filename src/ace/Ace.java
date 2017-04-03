@@ -2,7 +2,6 @@
 
 package ace;
 
-import ace.app.SemanticVersion;
 import ace.interfaces.ExceptionsHandler;
 
 /**
@@ -14,7 +13,7 @@ public class Ace {
 	/**
 	 * Ace version.
 	 */
-	public static final SemanticVersion ACE_VERSION = SemanticVersion.fromString("0.4.5");
+	public static final SemanticVersion ACE_VERSION = SemanticVersion.fromString("0.4.6");
 
 	/**
 	 * Ace DEVELOPMENT mode flag.

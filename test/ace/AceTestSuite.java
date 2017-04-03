@@ -8,8 +8,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	ace.AceTest.class,
-	ace.app.ArgumentsManagerTest.class,
-	ace.app.SemanticVersionTest.class,
+	ace.SemanticVersionTest.class,
 	ace.arrays.ByteArraysTest.class,
 	ace.arrays.GenericArraysTest.class,
 	ace.arrays.ImmutableArrayTest.class,

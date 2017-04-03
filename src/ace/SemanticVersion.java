@@ -1,8 +1,7 @@
 /* Ace by Javier Santo Domingo (j-a-s-d@coderesearchlabs.com) */
 
-package ace.app;
+package ace;
 
-import ace.Ace;
 import ace.interfaces.Immutable;
 
 /**

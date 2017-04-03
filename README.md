@@ -17,6 +17,13 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.5.0 -- 03 Apr 2017
+    + released new binary
+    + added ace.containers.Stacks class
+    + removed ace.app.ArgumentsManager class
+    + moved SemanticVersion class to ace package
+* 0.4.6 -- 31 Mar 2017
+    + improved ace.text.StringList class
 * 0.4.5 -- 30 Mar 2017
     + released new binary
     + improved ace.concurrency.Threads class

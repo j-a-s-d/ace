@@ -4,6 +4,7 @@ package ace.text;
 
 import ace.Ace;
 import ace.constants.STRINGS;
+import ace.containers.Lists;
 import ace.platform.Reflection;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -23,19 +24,19 @@ public class StringList extends Ace implements Iterable<String> {
 
 	@SuppressWarnings("OverridableMethodCallInConstructor")
 	public StringList(final String... values) {
-		_list = new ArrayList();
+		_list = Lists.make();
 		add(values);
 	}
 
 	@SuppressWarnings("OverridableMethodCallInConstructor")
 	public StringList(final List<String> values) {
-		_list = new ArrayList();
+		_list = Lists.make();
 		include(values);
 	}
 
 	@SuppressWarnings("OverridableMethodCallInConstructor")
 	public StringList(final StringList values) {
-		_list = new ArrayList();
+		_list = Lists.make();
 		add(values);
 	}
 
@@ -68,7 +69,7 @@ public class StringList extends Ace implements Iterable<String> {
 	}
 
 	public List<String> toList() {
-		return new ArrayList(_list);
+		return (List) Lists.make(_list);
 	}
 
 	public String[] toArray() {
@@ -184,7 +185,7 @@ public class StringList extends Ace implements Iterable<String> {
 	public ListIterator<String> listIterator(final int index) {
 		return _list.listIterator(index);
 	}
-	
+
 	public StringList filter(final String filter) {
 		final List filtered = new ArrayList<String>() {
 			{

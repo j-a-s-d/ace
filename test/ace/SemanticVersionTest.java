@@ -1,7 +1,8 @@
 /* Ace by Javier Santo Domingo (j-a-s-d@coderesearchlabs.com) */
 
-package ace.app;
+package ace;
 
+import ace.SemanticVersion;
 import org.junit.Assert;
 import org.junit.Test;
 
