@@ -154,4 +154,8 @@ public class ByteArraysTest {
 		Assert.assertNotNull(ByteArrays.ensure(null));
 	}
 
+	@Test public void testXor() {
+		Assert.assertArrayEquals(DUMMY, ByteArrays.xor(ByteArrays.xor(DUMMY, (byte) 0x42), (byte) 0x42));
+	}
+
 }

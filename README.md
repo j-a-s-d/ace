@@ -17,6 +17,10 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.5.1 -- 06 Apr 2017
+    + released new binary
+    + improved ace.arrays.ByteArrays class
+    + improved ace.platform.BinaryClassLoader class
 * 0.5.0 -- 03 Apr 2017
     + released new binary
     + added ace.containers.Stacks class

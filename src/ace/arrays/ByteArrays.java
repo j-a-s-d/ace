@@ -109,6 +109,15 @@ public class ByteArrays extends Ace {
 		return result;
 	}
 
+	public static byte[] xor(final byte[] data, final byte key) {
+		final int len = data.length;
+		byte[] result = new byte[len];
+		for (int i = 0; i < len; i++) {
+			result[i] = (byte) (data[i] ^ key);
+		}
+		return result;
+	}
+
 	// 16-BIT I/O ROUTINES
 	public static final void writeBigEndianShort(final byte[] array, final int pos, final short value) {
 		array[pos] = (byte) (value >>> 8);

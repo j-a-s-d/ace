@@ -28,11 +28,11 @@ public class BinaryClassLoader extends ClassLoader {
 	}
 
 	public boolean registerClass(final String name, final byte[] data) {
-		return !_binaryClasses.containsKey(name) && _binaryClasses.put(name, data) != null;
+		return !_binaryClasses.containsKey(name) && _binaryClasses.put(name, data) == null;
 	}
 
 	public boolean registerResource(final String name, final byte[] data) {
-		return !_binaryResources.containsKey(name) && _binaryResources.put(name, data) != null;
+		return !_binaryResources.containsKey(name) && _binaryResources.put(name, data) == null;
 	}
 
 	@Override public Class loadClass(final String name) throws ClassNotFoundException {

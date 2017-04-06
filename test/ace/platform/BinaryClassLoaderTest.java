@@ -12,7 +12,7 @@ public class BinaryClassLoaderTest {
 
 	@Test public void test() {
 		try {
-			Assert.assertFalse(_l.registerClass("ace.Ace", BinaryFiles.read("./build/classes/ace/Ace.class")));
+			Assert.assertTrue(_l.registerClass("ace.Ace", BinaryFiles.read("./build/classes/ace/Ace.class")));
 			Class<?> c = _l.findClass("ace.Ace");
 			Assert.assertNotNull(c);
 		} catch (final Exception e) {
