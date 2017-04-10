@@ -140,6 +140,10 @@ public class StringList extends Ace implements Iterable<String> {
 		return _list.remove(index);
 	}
 
+	public boolean remove(final String element) {
+		return _list.remove(element);
+	}
+
 	public String set(final int index, final String element) {
 		return index > -1 && _list.size() > index ? _list.set(index, element) : null;
 	}

@@ -74,9 +74,15 @@ public class StringListTest {
 		Assert.assertEquals("2", new StringList("1", "2", "3").get(1));
 	}
 
-	@Test public void testRemove() {
+	@Test public void testRemove_int() {
 		final StringList sl = new StringList("1", "2", "3");
 		Assert.assertEquals("2", sl.remove(1));
+		Assert.assertArrayEquals(new String[] { "1", "3" }, sl.toArray());
+	}
+
+	@Test public void testRemove_String() {
+		final StringList sl = new StringList("1", "2", "3");
+		Assert.assertTrue(sl.remove("2"));
 		Assert.assertArrayEquals(new String[] { "1", "3" }, sl.toArray());
 	}
 

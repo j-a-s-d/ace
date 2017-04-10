@@ -17,6 +17,10 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.5.2 -- 10 Apr 2017
+    + released new binary
+    + improved ace.files.Files class
+    + improved ace.text.StringList class
 * 0.5.1 -- 06 Apr 2017
     + released new binary
     + improved ace.arrays.ByteArrays class
@@ -25,7 +29,7 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
     + released new binary
     + added ace.containers.Stacks class
     + removed ace.app.ArgumentsManager class
-    + moved SemanticVersion class to ace package
+    + moved ace.app.SemanticVersion class to ace package
 * 0.4.6 -- 31 Mar 2017
     + improved ace.text.StringList class
 * 0.4.5 -- 30 Mar 2017

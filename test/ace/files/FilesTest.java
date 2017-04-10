@@ -82,4 +82,8 @@ public class FilesTest {
 		Assert.assertTrue(Files.copy(tempFile, new File(System.getProperty("java.io.tmpdir"), GUID.makeAsString()), true));
 	}
 
+	@Test public void testGetURL() {
+		Assert.assertNotNull(Files.getURL(tempFile));
+	}
+
 }

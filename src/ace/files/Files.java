@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.List;
 
 /**
@@ -142,6 +143,17 @@ public class Files extends Ace {
 			GEH.setLastException(e);
 		}
 		return false;
+	}
+
+	public static URL getURL(final File file) {
+		if (assigned(file)) {
+			try {
+				return file.toURL();
+			} catch (final Exception e) {
+				GEH.setLastException(e);
+			}
+		}
+		return null;
 	}
 
 }
