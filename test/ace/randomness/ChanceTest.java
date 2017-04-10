@@ -28,6 +28,9 @@ public class ChanceTest {
 	@Test public void testInRange_int_int() {
 		final int s = Chance.inRange(0, 2);
 		Assert.assertTrue(s < 3);
+		final int x = Chance.inRange(400, 1400);
+		Assert.assertTrue(x > 399);
+		Assert.assertTrue(x < 1401);
 	}
 
 	@Test public void testInRange_long_long() {

@@ -29,19 +29,19 @@ public class Chance extends Ace {
 	}
 
 	public static synchronized int inRange(final int min, final int max) {
-		return Math.abs((int) new Random().nextInt() % (max - min + 1) + min);
+		return Math.abs((int) new Random().nextInt() % (max - min + 1)) + min;
 	}
 
 	public static synchronized long inRange(final long min, final long max) {
-		return Math.abs((long) new Random().nextLong() % (max - min + 1) + min);
+		return Math.abs((long) new Random().nextLong() % (max - min + 1)) + min;
 	}
 
 	public static synchronized float inRange(final float min, final float max) {
-		return Math.abs((float) new Random().nextFloat() % (max - min + 1) + min);
+		return Math.abs((float) new Random().nextFloat() % (max - min + 1)) + min;
 	}
 
 	public static synchronized double inRange(final double min, final double max) {
-		return Math.abs((double) new Random().nextDouble() % (max - min + 1) + min);
+		return Math.abs((double) new Random().nextDouble() % (max - min + 1)) + min;
 	}
 
 }

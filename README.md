@@ -21,6 +21,7 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
     + released new binary
     + improved ace.files.Files class
     + improved ace.text.StringList class
+    + improved ace.randomness.Chance class
 * 0.5.1 -- 06 Apr 2017
     + released new binary
     + improved ace.arrays.ByteArrays class
