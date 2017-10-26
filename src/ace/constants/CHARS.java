@@ -31,7 +31,7 @@ public class CHARS extends Ace {
     public static final char COMMA = ',';
     public static final char PERIOD = '.';
     public static final char APOSTROPHE = '\'';
-    public static final char QUOTE = '\'';
+    public static final char QUOTE = '\"';
     public static final char CARET = '^';
     public static final char TILDE = '~';
     public static final char AT = '@';

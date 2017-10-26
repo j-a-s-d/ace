@@ -17,6 +17,10 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.5.3 -- 26 Oct 2017
+    + released new binary
+    + improved ace.constants.CHARS class
+    + improved ace.files.Directories class
 * 0.5.2 -- 10 Apr 2017
     + released new binary
     + improved ace.files.Files class

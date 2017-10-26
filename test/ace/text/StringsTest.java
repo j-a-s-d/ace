@@ -203,7 +203,12 @@ public class StringsTest {
 	}
 
 	@Test public void testDropBoth() {
+		Assert.assertEquals(null, Strings.dropBoth("", 1));
+		Assert.assertEquals(null, Strings.dropBoth("A", 1));
+		Assert.assertEquals(null, Strings.dropBoth("AB", 1));
+		Assert.assertEquals("B", Strings.dropBoth("ABC", 1));
 		Assert.assertEquals("AB", Strings.dropBoth("AAABBB", 2));
+		Assert.assertEquals("AABB", Strings.dropBoth("AAABBB", 1));
 		Assert.assertEquals("AAABBB", Strings.dropBoth("AAABBB", 0));
 		Assert.assertEquals(null, Strings.dropBoth("AAABBB", -1));
 		Assert.assertEquals(null, Strings.dropBoth("AAABBB", 3));
@@ -222,6 +227,7 @@ public class StringsTest {
 	}
 
 	@Test public void testStripBoth() {
+		Assert.assertEquals("B", Strings.stripBoth("B", 'A'));
 		Assert.assertEquals("BBB", Strings.stripBoth("AAABBBAAA", 'A'));
 		Assert.assertEquals("AAA", Strings.stripBoth("AAABBB", 'B'));
 		Assert.assertEquals("AAABBB", Strings.stripBoth("AAABBB", '0'));
