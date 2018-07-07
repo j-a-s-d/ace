@@ -63,6 +63,12 @@ public class STRINGS extends Ace {
 	public static final String SECTION = "§";
 	public static final String MINOR = "<";
 	public static final String MAJOR = ">";
+	public static final String BRACES_OPEN = "{";
+	public static final String BRACES_CLOSE = "}";
+	public static final String BRACKETS_OPEN = "[";
+	public static final String BRACKETS_CLOSE = "]";
+	public static final String PARENTHESES_OPEN = "(";
+	public static final String PARENTHESES_CLOSE = ")";
 
 	// NUMBERS
 	public static final String NUMBER_ZERO = "0";

@@ -3,6 +3,7 @@
 package ace.platform;
 
 import ace.Ace;
+import ace.constants.CHARS;
 import ace.text.Strings;
 import java.io.File;
 import java.net.URL;
@@ -77,7 +78,7 @@ public class Classes extends Ace {
 
 	public static String getShortName(final String canonicalName) {
 		if (Strings.hasText(canonicalName)) {
-			final int x = canonicalName.lastIndexOf('.');
+			final int x = canonicalName.lastIndexOf(CHARS.PERIOD);
 			return x == -1 ? canonicalName : Strings.dropLeft(canonicalName.substring(x), 1);
 		}
 		return null;

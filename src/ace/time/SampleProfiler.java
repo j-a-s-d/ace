@@ -3,13 +3,14 @@
 package ace.time;
 
 import ace.Ace;
+import ace.constants.STRINGS;
 import ace.containers.Maps;
 import ace.interfaces.Reseteable;
 import java.util.HashMap;
 
 public class SampleProfiler extends Ace implements Reseteable {
 
-	public static final String PRECISION_SUFFIX_NONE = "";
+	public static final String PRECISION_SUFFIX_NONE = STRINGS.EMPTY;
 	public static final String PRECISION_SUFFIX_MILLISECS = "-ms";
 	public static final String PRECISION_SUFFIX_NANOSECS = "-ns";
 

@@ -3,6 +3,7 @@
 package ace.files;
 
 import ace.Ace;
+import ace.constants.STRINGS;
 import java.util.regex.Pattern;
 
 /**
@@ -35,13 +36,13 @@ public class FilenameValidator extends Ace {
 			if (first) {
 				first = false;
 			} else {
-				sb.append("|");
+				sb.append(STRINGS.PIPE);
 			}
-			if (extension.startsWith(".")) {
+			if (extension.startsWith(STRINGS.PERIOD)) {
 				extension = extension.substring(1);
 			}
 			sb.append(extension.toLowerCase());
-			sb.append("|");
+			sb.append(STRINGS.PIPE);
 			sb.append(extension.toUpperCase());
 		}
 		sb.append(")$");

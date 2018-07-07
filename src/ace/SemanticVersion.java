@@ -2,6 +2,7 @@
 
 package ace;
 
+import ace.constants.STRINGS;
 import ace.interfaces.Immutable;
 
 /**
@@ -10,6 +11,8 @@ import ace.interfaces.Immutable;
  * @see <a href="http://semver.org/">semver.org</a>
  */
 public class SemanticVersion extends Ace implements Immutable {
+
+	private static final String SCAPED_PERIOD = "\\.";
 
 	private static final int DEFAULT_MAJOR = 0;
 	private static final int DEFAULT_MINOR = 0;
@@ -36,26 +39,28 @@ public class SemanticVersion extends Ace implements Immutable {
 		_major = major;
 		_minor = minor;
 		_patch = release;
-		_string = Integer.toString(_major) + "." + Integer.toString(_minor) + "." + Integer.toString(_patch);
+		_string = Integer.toString(_major) + STRINGS.PERIOD + Integer.toString(_minor) + STRINGS.PERIOD + Integer.toString(_patch);
 	}
 
 	public static final SemanticVersion fromString(final String value) {
 		int major = DEFAULT_MAJOR;
 		int minor = DEFAULT_MINOR;
 		int patch = DEFAULT_PATCH;
-		try {
-			final String[] numbers = value.split("\\.");
-			if (numbers.length > 0) {
-				major = Integer.parseInt(numbers[0]);
-				if (numbers.length > 1) {
-					minor = Integer.parseInt(numbers[1]);
-					if (numbers.length > 2) {
-						patch = Integer.parseInt(numbers[2]);
+		if (assigned(value)) {
+			try {
+				final String[] numbers = value.split(SCAPED_PERIOD);
+				if (numbers.length > 0) {
+					major = Integer.parseInt(numbers[0]);
+					if (numbers.length > 1) {
+						minor = Integer.parseInt(numbers[1]);
+						if (numbers.length > 2) {
+							patch = Integer.parseInt(numbers[2]);
+						}
 					}
 				}
+			} catch (final Exception e) {
+				GEH.setLastException(e);
 			}
-		} catch (final Exception e) {
-			GEH.setLastException(e);
 		}
 		return new SemanticVersion(major, minor, patch);
 	}
@@ -77,8 +82,8 @@ public class SemanticVersion extends Ace implements Immutable {
 	}
 
 	private static int compareVersionAsStrings(final String version1, final String version2) {
-		final String[] arr1 = version1.split("\\.");
-		final String[] arr2 = version2.split("\\.");
+		final String[] arr1 = version1.split(SCAPED_PERIOD);
+		final String[] arr2 = version2.split(SCAPED_PERIOD);
 		int i = 0;
 		while (i < arr1.length || i < arr2.length) {
 			if (i < arr1.length && i < arr2.length) {

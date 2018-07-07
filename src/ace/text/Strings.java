@@ -137,19 +137,19 @@ public class Strings extends Ace {
 	}
 
 	public static String brace(final String string) {
-		return concat("{", string, "}");
+		return concat(STRINGS.BRACES_OPEN, string, STRINGS.BRACES_CLOSE);
 	}
 
 	public static String bracketize(final String string) {
-		return concat("[", string, "]");
+		return concat(STRINGS.BRACKETS_OPEN, string, STRINGS.BRACKETS_CLOSE);
 	}
 
 	public static String parenthesize(final String string) {
-		return concat("(", string, ")");
+		return concat(STRINGS.PARENTHESES_OPEN, string, STRINGS.PARENTHESES_CLOSE);
 	}
 
 	public static String chevronize(final String string) {
-		return concat("<", string, ">");
+		return concat(STRINGS.MINOR, string, STRINGS.MAJOR);
 	}
 
 	// CONTENT

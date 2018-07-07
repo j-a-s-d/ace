@@ -3,6 +3,7 @@
 package ace.files;
 
 import ace.Ace;
+import ace.constants.CHARS;
 import ace.constants.STRINGS;
 import ace.text.Strings;
 import java.io.File;
@@ -12,17 +13,15 @@ import java.io.File;
  */
 public class FilenameUtils extends Ace {
 
-	private static final char DOT = '.';
-
 	public static final String sanitizeFilename(final String name) {
-		return assigned(name) ? name.replaceAll("[ \n\r\t\0\f`:\\\\/*\"?|<>]", "_") : null;
+		return assigned(name) ? name.replaceAll("[ \n\r\t\0\f`:\\\\/*\"?|<>]", STRINGS.UNDERSCORE) : null;
 	}
 
 	public static final String stripExtension(final String filename) {
 		if (!Strings.hasText(filename)) {
 			return filename;
 		}
-		final int x = filename.lastIndexOf(DOT);
+		final int x = filename.lastIndexOf(CHARS.PERIOD);
 		return x == -1 ? filename : filename.substring(0, x);
 	}
 
@@ -30,14 +29,14 @@ public class FilenameUtils extends Ace {
 		if (!Strings.hasText(filename) || !Strings.hasText(newExtension)) {
 			return filename;
 		}
-		return stripExtension(filename) + (newExtension.charAt(0) == DOT ? newExtension : DOT + newExtension);
+		return stripExtension(filename) + (newExtension.charAt(0) == CHARS.PERIOD ? newExtension : STRINGS.PERIOD + newExtension);
 	}
 
 	public static final String extractExtension(final String filename) {
 		if (!Strings.hasText(filename)) {
 			return filename;
 		}
-		final int x = filename.lastIndexOf(DOT);
+		final int x = filename.lastIndexOf(CHARS.PERIOD);
 		return x > 0 ? filename.substring(x) : STRINGS.EMPTY;
 	}
 

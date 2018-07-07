@@ -19,7 +19,7 @@ import java.util.Scanner;
  */
 public class StringList extends Ace implements Iterable<String> {
 
-	private static final Field FIELD_DATA = Reflection.getFieldAsAccessible(ArrayList.class, "elementData");
+	private static final Field _elementData = Reflection.getFieldAsAccessible(ArrayList.class, "elementData");
 	private final ArrayList<String> _list;
 
 	@SuppressWarnings("OverridableMethodCallInConstructor")
@@ -47,7 +47,7 @@ public class StringList extends Ace implements Iterable<String> {
 
 	public int capacity() {
 		try {
-			return ((Object[]) FIELD_DATA.get(_list)).length;
+			return ((Object[]) _elementData.get(_list)).length;
 		} catch (final Exception e) {
 			GEH.setLastException(e);
 			return -1;
@@ -194,8 +194,8 @@ public class StringList extends Ace implements Iterable<String> {
 		final List filtered = new ArrayList<String>() {
 			{
 				if (Strings.hasText(filter)) {
-					final boolean unknownEnd = "*".equals(String.valueOf(filter.charAt(filter.length() - 1)));
-					final boolean unknownStart = "*".equals(String.valueOf(filter.charAt(0)));
+					final boolean unknownEnd = STRINGS.ASTERISK.equals(String.valueOf(filter.charAt(filter.length() - 1)));
+					final boolean unknownStart = STRINGS.ASTERISK.equals(String.valueOf(filter.charAt(0)));
 					if (unknownEnd && unknownStart) {
 						final String knownPart = Strings.dropBoth(filter, 1);
 						for (final String n : _list) {

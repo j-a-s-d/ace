@@ -60,15 +60,15 @@ public class OS extends Ace {
 	}
 	
 	public static final String runCommand(final String commandLine, final String[] environment) {
-		return runCommand(commandLine.split(" "), environment, new File("./"));
+		return runCommand(commandLine.split(STRINGS.SPACE), environment, new File("./"));
 	}
 	
 	public static final String runCommand(final String commandLine, final String[] environment, final String directoryPath) {
-		return runCommand(commandLine.split(" "), environment, new File(directoryPath));
+		return runCommand(commandLine.split(STRINGS.SPACE), environment, new File(directoryPath));
 	}
 	
 	public static final String runCommand(final String commandLine, final String[] environment, final File directory) {
-		return runCommand(commandLine.split(" "), environment, directory);
+		return runCommand(commandLine.split(STRINGS.SPACE), environment, directory);
 	}
 	
 	public static final String runCommand(final String[] command, final String[] environment, final String directoryPath) {
@@ -147,7 +147,7 @@ public class OS extends Ace {
 	}
 	
 	private static String getUnixProcessSnapshotData(final int pid, final String info) {
-		final String[] p = getUnixProcessSnapshotInfo(pid, info).split("\n");
+		final String[] p = getUnixProcessSnapshotInfo(pid, info).split(STRINGS.LF);
 		return p.length == 1 ? STRINGS.EMPTY : p[1].trim();
 	}
 	

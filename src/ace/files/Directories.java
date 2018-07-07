@@ -16,6 +16,10 @@ public class Directories extends Ace {
 	public static final String CURRENT_PATH = STRINGS.PERIOD + File.separator;
 	public static final File CURRENT = new File(CURRENT_PATH);
 
+	public static boolean exists(final String path) {
+		return exists(new File(path));
+	}
+
 	public static boolean exists(final File directory) {
 		return assigned(directory) && directory.isDirectory() && directory.exists();
 	}

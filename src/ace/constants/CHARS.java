@@ -48,6 +48,12 @@ public class CHARS extends Ace {
     public static final char SECTION = '§';
     public static final char MINOR = '<';
     public static final char MAJOR = '>';
+	public static final char BRACES_OPEN = '{';
+	public static final char BRACES_CLOSE = '}';
+	public static final char BRACKETS_OPEN = '[';
+	public static final char BRACKETS_CLOSE = ']';
+	public static final char PARENTHESES_OPEN = '(';
+	public static final char PARENTHESES_CLOSE = ')';
 
 	// NUMBERS
 	public static final char NUMBER_ZERO = '0';

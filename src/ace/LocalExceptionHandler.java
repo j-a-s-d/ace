@@ -2,9 +2,9 @@
 
 package ace;
 
+import ace.containers.Lists;
 import ace.interfaces.ExceptionsHandler;
 import ace.interfaces.ExceptionsMonitor;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +13,7 @@ import java.util.List;
 public class LocalExceptionHandler extends Ace implements ExceptionsHandler {
 
 	private int _exceptionsHistoryMaximum = 100;
-	private final List<Throwable> _exceptionsThrown = new ArrayList();
+	private final List<Throwable> _exceptionsThrown = Lists.make();
 	private boolean _hadException = false;
 	private Throwable _lastException = null;
 	private Thread _lastExceptionThread;

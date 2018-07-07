@@ -3,7 +3,6 @@
 package ace.printing;
 
 import ace.Ace;
-import static ace.Ace.assigned;
 import java.util.ArrayList;
 import java.util.List;
 import javax.print.DocFlavor;
