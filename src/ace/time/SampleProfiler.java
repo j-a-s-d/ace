@@ -8,6 +8,9 @@ import ace.containers.Maps;
 import ace.interfaces.Reseteable;
 import java.util.HashMap;
 
+/**
+ * Useful sample profiler class with double precision, errors counting and time stamping.
+ */
 public class SampleProfiler extends Ace implements Reseteable {
 
 	public static final String PRECISION_SUFFIX_NONE = STRINGS.EMPTY;
@@ -54,16 +57,16 @@ public class SampleProfiler extends Ace implements Reseteable {
 	private long _err_timestamp;
 	private long _err;
 	private long _max_timestamp;
-	private long _max;
+	private double _max;
 	private long _min_timestamp;
-	private long _min;
+	private double _min;
 	private long _avg_max_timestamp;
-	private long _avg_max;
+	private double _avg_max;
 	private long _avg_min_timestamp;
-	private long _avg_min;
-	private long _avg;
+	private double _avg_min;
+	private double _avg;
 	private long _cur_timestamp;
-	private long _cur;
+	private double _cur;
 
 	private String _precisionSuffix = PRECISION_SUFFIX_MILLISECS;
 
@@ -147,7 +150,7 @@ public class SampleProfiler extends Ace implements Reseteable {
 				_avg_min_timestamp = _cur_timestamp;
 			}
 		} else {
-			_min = _max = value;
+			_avg = _min = _max = value;
 			_min_timestamp = _max_timestamp = _cur_timestamp;
 		}
 		if (!success) {
@@ -158,26 +161,50 @@ public class SampleProfiler extends Ace implements Reseteable {
 	}
 
 	public long getCurrent() {
-		return _cur;
+		return (long) _cur;
 	}
 
 	public long getMinimum() {
-		return _min;
+		return (long) _min;
 	}
 
 	public long getMaximum() {
-		return _max;
+		return (long) _max;
 	}
 
 	public long getAverage() {
-		return _avg;
+		return (long) _avg;
 	}
 
 	public long getAverageMinimum() {
-		return _avg_min;
+		return (long) _avg_min;
 	}
 
 	public long getAverageMaximum() {
+		return (long) _avg_max;
+	}
+
+	public double getPreciseCurrent() {
+		return _cur;
+	}
+
+	public double getPreciseMinimum() {
+		return _min;
+	}
+
+	public double getPreciseMaximum() {
+		return _max;
+	}
+
+	public double getPreciseAverage() {
+		return _avg;
+	}
+
+	public double getPreciseAverageMinimum() {
+		return _avg_min;
+	}
+
+	public double getPreciseAverageMaximum() {
 		return _avg_max;
 	}
 
@@ -216,6 +243,41 @@ public class SampleProfiler extends Ace implements Reseteable {
 	public HashMap<String, Long> snapshot() {
 		final HashMap<String, Long> result = Maps.make();
 		if (PRECISION_SUFFIX_MILLISECS.equals(_precisionSuffix)) {
+			result.put(METRIC_CURRENT_MILLISECS, (long) _cur);
+			result.put(METRIC_MINIMUM_MILLISECS, (long) _min);
+			result.put(METRIC_MAXIMUM_MILLISECS, (long) _max);
+			result.put(METRIC_AVERAGE_MILLISECS, (long) _avg);
+			result.put(METRIC_AVERAGE_MINIMUM_MILLISECS, (long) _avg_min);
+			result.put(METRIC_AVERAGE_MAXIMUM_MILLISECS, (long) _avg_max);
+		} else if (PRECISION_SUFFIX_NANOSECS.equals(_precisionSuffix)) {
+			result.put(METRIC_CURRENT_NANOSECS, (long) _cur);
+			result.put(METRIC_MINIMUM_NANOSECS, (long) _min);
+			result.put(METRIC_MAXIMUM_NANOSECS, (long) _max);
+			result.put(METRIC_AVERAGE_NANOSECS, (long) _avg);
+			result.put(METRIC_AVERAGE_MINIMUM_NANOSECS, (long) _avg_min);
+			result.put(METRIC_AVERAGE_MAXIMUM_NANOSECS, (long) _avg_max);
+		} else {
+			result.put(METRIC_CURRENT_NOSUFFIX, (long) _cur);
+			result.put(METRIC_MINIMUM_NOSUFFIX, (long) _min);
+			result.put(METRIC_MAXIMUM_NOSUFFIX, (long) _max);
+			result.put(METRIC_AVERAGE_NOSUFFIX, (long) _avg);
+			result.put(METRIC_AVERAGE_MINIMUM_NOSUFFIX, (long) _avg_min);
+			result.put(METRIC_AVERAGE_MAXIMUM_NOSUFFIX, (long) _avg_max);
+		}
+		result.put(METRIC_CURRENT_TIMESTAMP, _cur_timestamp);
+		result.put(METRIC_MINIMUM_TIMESTAMP, _min_timestamp);
+		result.put(METRIC_MAXIMUM_TIMESTAMP, _max_timestamp);
+		result.put(METRIC_AVERAGE_MINIMUM_TIMESTAMP, _avg_min_timestamp);
+		result.put(METRIC_AVERAGE_MAXIMUM_TIMESTAMP, _avg_max_timestamp);
+		result.put(METRIC_LAST_ERROR_TIMESTAMP, _err_timestamp);
+		result.put(METRIC_TOTAL_ERROR, _err);
+		result.put(METRIC_TOTAL_COUNT, _cnt);
+		return result;
+	}
+
+	public HashMap<String, Double> snapshotPrecisely() {
+		final HashMap<String, Double> result = Maps.make();
+		if (PRECISION_SUFFIX_MILLISECS.equals(_precisionSuffix)) {
 			result.put(METRIC_CURRENT_MILLISECS, _cur);
 			result.put(METRIC_MINIMUM_MILLISECS, _min);
 			result.put(METRIC_MAXIMUM_MILLISECS, _max);
@@ -237,14 +299,14 @@ public class SampleProfiler extends Ace implements Reseteable {
 			result.put(METRIC_AVERAGE_MINIMUM_NOSUFFIX, _avg_min);
 			result.put(METRIC_AVERAGE_MAXIMUM_NOSUFFIX, _avg_max);
 		}
-		result.put(METRIC_CURRENT_TIMESTAMP, _cur_timestamp);
-		result.put(METRIC_MINIMUM_TIMESTAMP, _min_timestamp);
-		result.put(METRIC_MAXIMUM_TIMESTAMP, _max_timestamp);
-		result.put(METRIC_AVERAGE_MINIMUM_TIMESTAMP, _avg_min_timestamp);
-		result.put(METRIC_AVERAGE_MAXIMUM_TIMESTAMP, _avg_max_timestamp);
-		result.put(METRIC_LAST_ERROR_TIMESTAMP, _err_timestamp);
-		result.put(METRIC_TOTAL_ERROR, _err);
-		result.put(METRIC_TOTAL_COUNT, _cnt);
+		result.put(METRIC_CURRENT_TIMESTAMP, (double) _cur_timestamp);
+		result.put(METRIC_MINIMUM_TIMESTAMP, (double) _min_timestamp);
+		result.put(METRIC_MAXIMUM_TIMESTAMP, (double) _max_timestamp);
+		result.put(METRIC_AVERAGE_MINIMUM_TIMESTAMP, (double) _avg_min_timestamp);
+		result.put(METRIC_AVERAGE_MAXIMUM_TIMESTAMP, (double) _avg_max_timestamp);
+		result.put(METRIC_LAST_ERROR_TIMESTAMP, (double) _err_timestamp);
+		result.put(METRIC_TOTAL_ERROR, (double) _err);
+		result.put(METRIC_TOTAL_COUNT, (double) _cnt);
 		return result;
 	}
 

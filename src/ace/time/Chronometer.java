@@ -2,6 +2,9 @@
 
 package ace.time;
 
+/**
+ * Useful chronometer class based on System.currentTimeMillis().
+ */
 public class Chronometer extends Timemeter {
 
 	private static final double FACTOR = 1000.0;

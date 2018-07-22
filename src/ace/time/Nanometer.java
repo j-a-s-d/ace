@@ -2,6 +2,9 @@
 
 package ace.time;
 
+/**
+ * Useful nanometer class based on System.nanoTime().
+ */
 public class Nanometer extends Timemeter {
 
 	private static final double FACTOR = 1000000.0;

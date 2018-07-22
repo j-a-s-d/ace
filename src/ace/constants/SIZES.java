@@ -29,5 +29,14 @@ public class SIZES extends Ace {
 	public static final long TERABYTE = GIGABYTE * KILOBYTE;
 	public static final long PETABYTE = TERABYTE * KILOBYTE;
 	public static final long EXABYTE = PETABYTE * KILOBYTE;
+	// NOTE: Zetabyte (ZB) and Yotabyte (YB) are not supported since the long data type is restricted to 8 exabytes
+
+	// BYTE UNITS
+	public static final String KILOBYTE_UNIT = "kb";
+	public static final String MEGABYTE_UNIT = "mb";
+	public static final String GIGABYTE_UNIT = "gb";
+	public static final String TERABYTE_UNIT = "tb";
+	public static final String PETABYTE_UNIT = "pb";
+	public static final String EXABYTE_UNIT = "eb";
 
 }
