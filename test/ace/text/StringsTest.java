@@ -218,12 +218,14 @@ public class StringsTest {
 		Assert.assertEquals("BBB", Strings.stripLeft("AAABBB", 'A'));
 		Assert.assertEquals("AAABBB", Strings.stripLeft("AAABBB", '0'));
 		Assert.assertEquals(STRINGS.EMPTY, Strings.stripLeft("AAA", 'A'));
+		Assert.assertEquals(null, Strings.stripLeft(null, 'A'));
 	}
 
 	@Test public void testStripRight() {
 		Assert.assertEquals("AAA", Strings.stripRight("AAABBB", 'B'));
 		Assert.assertEquals("AAABBB", Strings.stripRight("AAABBB", '0'));
 		Assert.assertEquals(STRINGS.EMPTY, Strings.stripRight("AAA", 'A'));
+		Assert.assertEquals(null, Strings.stripRight(null, 'A'));
 	}
 
 	@Test public void testStripBoth() {
@@ -331,16 +333,34 @@ public class StringsTest {
 		Assert.assertFalse(Strings.isAlphanumeric("Z1X0-1TT7"));
 		Assert.assertFalse(Strings.isAlphanumeric("."));
 		Assert.assertFalse(Strings.isAlphanumeric(STRINGS.EMPTY));
+		Assert.assertFalse(Strings.isAlphanumeric(null));
 	}
 
 	@Test public void testIsNumeric() {
 		Assert.assertFalse(Strings.isNumeric("A"));
 		Assert.assertFalse(Strings.isNumeric("-1B"));
 		Assert.assertFalse(Strings.isNumeric(".0"));
+		Assert.assertFalse(Strings.isNumeric(null));
 		Assert.assertTrue(Strings.isNumeric("1"));
 		Assert.assertTrue(Strings.isNumeric("1.2"));
 		Assert.assertTrue(Strings.isNumeric("-0"));
 		Assert.assertTrue(Strings.isNumeric("-0.9"));
+	}
+
+	@Test public void testReplaceOnce() {
+		Assert.assertEquals("hello you!", Strings.replaceOnce("hey you!", "y", "llo"));
+		Assert.assertEquals("ABC", Strings.replaceOnce("ABC", "A", "A"));
+		Assert.assertNull(Strings.replaceOnce("ABC", "A", null));
+		Assert.assertNull(Strings.replaceOnce("ABC", null, "B"));
+		Assert.assertNull(Strings.replaceOnce(null, "A", "B"));
+	}
+
+	@Test public void testReplaceAll() {
+		Assert.assertEquals("the cat is under the chair", Strings.replaceAll("a cat is under a chair", "a ", "the "));
+		Assert.assertEquals("ABC", Strings.replaceAll("ABC", "A", "A"));
+		Assert.assertNull(Strings.replaceAll("AABBCC", "A", null));
+		Assert.assertNull(Strings.replaceAll("AABBCC", null, "B"));
+		Assert.assertNull(Strings.replaceAll(null, "A", "B"));
 	}
 
 }

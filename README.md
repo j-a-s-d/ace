@@ -17,6 +17,9 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.5.6 -- 19 Aug 2018
+    + released new binary
+    + improved ace.text.Strings class
 * 0.5.5 -- 21 Jul 2018
     + released new binary
     + improved ace.time.SampleProfiler class

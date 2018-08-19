@@ -278,18 +278,20 @@ public class Strings extends Ace {
 
 	public static final String stripLeft(final String string, final char chr) {
 		String result = string;
-		final String c = STRINGS.EMPTY + chr;
-		while (result.startsWith(c)) {
-			result = result.substring(1);
+		if (result != null) {
+			while (result.length() > 0 && result.charAt(0) == chr) {
+				result = result.substring(1);
+			}
 		}
 		return result;
 	}
 
 	public static final String stripRight(final String string, final char chr) {
 		String result = string;
-		final String c = STRINGS.EMPTY + chr;
-		while (result.endsWith(c)) {
-			result = result.substring(0, result.length() - 1);
+		if (result != null) {
+			while (result.length() > 0 && result.charAt(result.length() - 1) == chr) {
+				result = result.substring(0, result.length() - 1);
+			}
 		}
 		return result;
 	}
@@ -372,6 +374,37 @@ public class Strings extends Ace {
 			}
 		}
 		return sb.toString();
+	}
+
+	public static String replaceOnce(final String string, final String find, final String replacement) {
+		if (string == null || find == null || replacement == null) {
+			return null;
+		}
+		final char[] a = string.toCharArray();
+		int i = string.indexOf(find, 0);
+		final StringBuilder buf = new StringBuilder(a.length).append(a, 0, i).append(replacement.toCharArray());
+		i += find.length();
+		return buf.append(a, i, a.length - i).toString();
+	}
+
+	public static String replaceAll(final String string, final String find, final String replacement) {
+		if (string == null || find == null || replacement == null) {
+			return null;
+		}
+		int i = string.indexOf(find, 0);
+		if (i < 0) {
+			return string;
+		}
+		final int l = find.length();
+		final char[] a = string.toCharArray();
+		final char[] r = replacement.toCharArray();
+		final StringBuilder b = new StringBuilder(a.length).append(a, 0, i).append(r);
+		int j = (i += l);
+		while ((i = string.indexOf(find, i)) > 0) {
+			b.append(a, j, i - j).append(r);
+			j = (i += l);
+		}
+		return b.append(a, j, a.length - j).toString();
 	}
 
 	public static boolean isAlphanumeric(final String string) {
