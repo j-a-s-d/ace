@@ -16,15 +16,28 @@ public class FileAppender extends Ace implements Reseteable, Closeable {
 	private final File _file;
 	private RandomAccessFile _raf;
 
+	/**
+	 * Constructor accepting the output file name.
+	 * 
+	 * @param filename 
+	 */
 	public FileAppender(final String filename) {
 		this(new File(filename));
 	}
 
+	/**
+	 * Constructor accepting the output file.
+	 * 
+	 * @param file 
+	 */
 	public FileAppender(final File file) {
 		_file = file;
 		reset();
 	}
 
+	/**
+	 * Resets the file appender.
+	 */
 	/*@Override*/ public final void reset() {
 		_raf = initializeAppender(_file);
 	}
@@ -40,6 +53,12 @@ public class FileAppender extends Ace implements Reseteable, Closeable {
 		}
 	}
 
+	/**
+	 * Appends the output file content with the specified string.
+	 * 
+	 * @param string
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public boolean append(final String string) {
 		if (_raf != null) {
 			try {
@@ -52,6 +71,12 @@ public class FileAppender extends Ace implements Reseteable, Closeable {
 		return false;
 	}
 
+	/**
+	 * Appends the output file content with the specified byte array.
+	 * 
+	 * @param bytes
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public boolean append(final byte[] bytes) {
 		if (_raf != null) {
 			try {
@@ -64,6 +89,9 @@ public class FileAppender extends Ace implements Reseteable, Closeable {
 		return false;
 	}
 
+	/**
+	 * Closes the output file.
+	 */
 	protected void closeFile() {
 		if (_raf != null) {
 			try {
@@ -74,6 +102,9 @@ public class FileAppender extends Ace implements Reseteable, Closeable {
 		}
 	}
 
+	/**
+	 * Closes the output file.
+	 */
 	/*@Override*/ public void close() {
 		closeFile();
 	}

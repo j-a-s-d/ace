@@ -19,41 +19,91 @@ public class FilesSplitter extends Ace {
 	private File _file;
 	private int _bufferSize;
 
+	/**
+	 * Constructor accepting the input file name.
+	 * 
+	 * @param filename 
+	 */
 	public FilesSplitter(final String filename) {
 		this(new File(filename), DEFAULT_BUFFER_SIZE);
 	}
 
+	/**
+	 * Constructor accepting the input file.
+	 * 
+	 * @param file 
+	 */
 	public FilesSplitter(final File file) {
 		this(file, DEFAULT_BUFFER_SIZE);
 	}
 
+	/**
+	 * Constructor accepting the input file name and the buffer size.
+	 * 
+	 * @param filename 
+	 * @param bufferSize 
+	 */
 	public FilesSplitter(final String filename, final int bufferSize) {
 		this(new File(filename), bufferSize);
 	}
 
+	/**
+	 * Constructor accepting the input file and the buffer size.
+	 * 
+	 * @param file 
+	 * @param bufferSize 
+	 */
 	public FilesSplitter(final File file, final int bufferSize) {
 		_file = file;
 		_bufferSize = bufferSize;
 	}
 
+	/**
+	 * Gets the buffer size.
+	 * 
+	 * @return the buffer size
+	 */
 	public int getBufferSize() {
 		return _bufferSize;
 	}
 
+	/**
+	 * Sets the buffer size.
+	 * 
+	 * @param value
+	 * @return itself
+	 */
 	public FilesSplitter setBufferSize(final int value) {
 		_bufferSize = value;
 		return this;
 	}
 
+	/**
+	 * Gets the input file.
+	 * 
+	 * @return the input file
+	 */
 	public File getFile() {
 		return _file;
 	}
 
+	/**
+	 * Sets the input file.
+	 * 
+	 * @param file
+	 * @return itself
+	 */
 	public FilesSplitter setFile(final File file) {
 		_file = file;
 		return this;
 	}
 
+	/**
+	 * Splits the input file into the specified amount of parts.
+	 * 
+	 * @param partsAmount
+	 * @return the resulting array of files
+	 */
 	public File[] splitIntoParts(final int partsAmount) {
 		long fileSize;
 		if (assigned(_file) && _file.exists() && (fileSize = _file.length()) > 0) {
@@ -63,6 +113,12 @@ public class FilesSplitter extends Ace {
 		return null;
 	}
 
+	/**
+	 * Splits the input file into parts of the specified size.
+	 * 
+	 * @param partsSize
+	 * @return the resulting array of files
+	 */
 	public File[] splitBySize(final long partsSize) {
 		long fileSize;
 		if (assigned(_file) && _file.exists() && (fileSize = _file.length()) > 0 && partsSize > 0) {

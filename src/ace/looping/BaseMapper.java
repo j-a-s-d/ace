@@ -7,6 +7,7 @@ import ace.interfaces.Treater;
 
 /**
  * Useful base mapper class.
+ * 
  * @param <R> Result map type.
  * @param <T> Value type to be mapped.
  */

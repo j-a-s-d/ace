@@ -41,7 +41,8 @@ public class GlobalExceptionHandler extends LocalExceptionHandler {
 	}
 
 	/*
-	* Unregisters as the default uncaught exception handler by registering again the backup of the previous handler (which commonly will be null).
+	* Unregisters as the default uncaught exception handler by registering
+	* again the backup of the previous handler (which commonly will be null).
 	*/
 	public final boolean unregisterAsDefaultUncaughtExceptionHandler() {
 		return setDefaultUncaughtExceptionHandler(_lastUncaughtExceptionHandler);
@@ -50,7 +51,7 @@ public class GlobalExceptionHandler extends LocalExceptionHandler {
 	/**
 	 * Prevents the GEH from printing the stack trace of uncaught exceptions.
 	 * 
-	 * If you need this, use it via:
+	 * Note: If you need this, use it via:
 	 * <code>((ace.GlobalExceptionHandler) ace.Ace.GEH).disableUncaughtExceptionsStackTracePrinting()</code>
 	 */
 	public void disableUncaughtExceptionsStackTracePrinting() {

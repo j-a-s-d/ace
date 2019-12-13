@@ -20,14 +20,34 @@ import java.util.List;
  */
 public class Files extends Ace {
 
+	/**
+	 * Determines if the specified file has content.
+	 * 
+	 * @param file
+	 * @return <tt>true</tt> if the specified file has content, <tt>false</tt> otherwise
+	 */
 	public static boolean hasContent(final File file) {
 		return exists(file) && file.length() > 0;
 	}
 
+	/**
+	 * Makes a file with the specified name in the specified directory.
+	 * 
+	 * @param directory
+	 * @param fileName
+	 * @return the resulting file
+	 */
 	public static File make(final File directory, final String fileName) {
 		return make(directory.getAbsolutePath(), fileName);
 	}
 
+	/**
+	 * Makes a file with the specified name in the specified directory path.
+	 * 
+	 * @param directoryPath
+	 * @param fileName
+	 * @return the resulting file
+	 */
 	public static File make(final String directoryPath, final String fileName) {
 		try {
 			final File file = new File(FilenameUtils.ensureLastDirectorySeparator(directoryPath) + fileName);
@@ -40,10 +60,22 @@ public class Files extends Ace {
 		return null;
 	}
 
+	/**
+	 * Determines if the specified file exists.
+	 * 
+	 * @param file
+	 * @return <tt>true</tt> if the specified file exists, <tt>false</tt> otherwise
+	 */
 	public static boolean exists(final File file) {
 		return assigned(file) && file.isFile() && file.exists();
 	}
 
+	/**
+	 * Determines if the specified files exist.
+	 * 
+	 * @param files
+	 * @return <tt>true</tt> if the specified files exist, <tt>false</tt> otherwise
+	 */
 	public static boolean exist(final List<File> files) {
 		boolean result = Lists.hasContent(files);
 		for (final File file : files) {
@@ -52,6 +84,12 @@ public class Files extends Ace {
 		return result;
 	}
 
+	/**
+	 * Determines if the specified files exist.
+	 * 
+	 * @param files
+	 * @return <tt>true</tt> if the specified files exist, <tt>false</tt> otherwise
+	 */
 	public static boolean exist(final File... files) {
 		boolean result = GenericArrays.hasContent(files);
 		for (final File file : files) {
@@ -60,6 +98,12 @@ public class Files extends Ace {
 		return result;
 	}
 
+	/**
+	 * Ensures the existence of the specified file (if it does not exist, it is created).
+	 * 
+	 * @param file
+	 * @return <tt>true</tt> if the file (created or not in the process) exists, <tt>false</tt> otherwise
+	 */
 	public static boolean ensure(final File file) {
 		if (assigned(file)) {
 			if (file.exists()) {
@@ -77,10 +121,23 @@ public class Files extends Ace {
 		return false;
 	}
 
+	/**
+	 * Ensures the existence of the file with the specified name (if it does not exist, it is created).
+	 * 
+	 * @param filePath
+	 * @return <tt>true</tt> if the file (created or not in the process) exists, <tt>false</tt> otherwise
+	 */
 	public static boolean ensure(final String filePath) {
 		return ensure(new File(filePath));
 	}
 
+	/**
+	 * Compares the two specified files.
+	 * 
+	 * @param file1
+	 * @param file2
+	 * @return <tt>true</tt> if the content is equal, <tt>false</tt> otherwise
+	 */
 	public static boolean hasSameBytes(final File file1, final File file2) {
 		InputStream input1 = null;
 		InputStream input2 = null;
@@ -111,10 +168,25 @@ public class Files extends Ace {
 		return false;
 	}
 
+	/**
+	 * Copies the content of the specified source file to the specified destination file.
+	 * 
+	 * @param source
+	 * @param destination
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public static boolean copy(final File source, final File destination) {
 		return copy(source, destination, false);
 	}
 
+	/**
+	 * Copies the content of the specified source file to the specified destination file preserving the modification date on it.
+	 * 
+	 * @param source
+	 * @param destination
+	 * @param preserveModificationDate
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public static boolean copy(final File source, final File destination, final boolean preserveModificationDate) {
 		try {
 			if (destination.exists() && destination.isDirectory()) {
@@ -145,6 +217,12 @@ public class Files extends Ace {
 		return false;
 	}
 
+	/**
+	 * Gets the corresponding url to the specified file in a silent mode (catching exceptions).
+	 * 
+	 * @param file
+	 * @return the corresponding url if the operation was successful, <tt>null</tt> otherwise
+	 */
 	public static URL getURL(final File file) {
 		if (assigned(file)) {
 			try {

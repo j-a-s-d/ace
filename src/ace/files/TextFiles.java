@@ -21,18 +21,44 @@ public class TextFiles extends Ace {
 	public static final String FILE_EXTENSION = ".txt";
 	public static String CHARSET = "utf-8";
 
+	/**
+	 * Reads the contents of the file with the specified name.
+	 * 
+	 * @param filename
+	 * @return the contents of the file with the specified name or <tt>null</tt> if it fails
+	 */
 	public static final String read(final String filename) {
 		return read(new File(filename), CHARSET);
 	}
 
+	/**
+	 * Reads the contents of the specified file.
+	 * 
+	 * @param file
+	 * @return the contents of the specified file or <tt>null</tt> if it fails
+	 */
 	public static final String read(final File file) {
 		return read(file, CHARSET);
 	}
 
+	/**
+	 * Reads the contents of the file with the specified name in the specified character set.
+	 * 
+	 * @param filename
+	 * @param charset
+	 * @return the contents of the file with the specified name in the specified character set or <tt>null</tt> if it fails
+	 */
 	public static final String read(final String filename, final String charset) {
 		return read(new File(filename), charset);
 	}
 
+	/**
+	 * Reads the contents of the specified file in the specified character set.
+	 * 
+	 * @param file
+	 * @param charset
+	 * @return the contents of the specified file in the specified character set or <tt>null</tt> if it fails
+	 */
 	public static final String read(final File file, final String charset) {
 		String result = null;
 		try {
@@ -69,10 +95,26 @@ public class TextFiles extends Ace {
 		}
 	}
 
+	/**
+	 * Writes the specified text in the file with the specified name in the specified character set.
+	 * 
+	 * @param filename
+	 * @param text
+	 * @param charset
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public static final boolean write(final String filename, final String text, final String charset) {
-		return write (new File(filename), text, charset);
+		return write(new File(filename), text, charset);
 	}
 
+	/**
+	 * Writes the specified text in the specified file in the specified character set.
+	 * 
+	 * @param file
+	 * @param text
+	 * @param charset
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public static final boolean write(final File file, final String text, final String charset) {
 		try {
 			performWriting(new OutputStreamWriter(new FileOutputStream(file, false), charset), text);
@@ -83,26 +125,70 @@ public class TextFiles extends Ace {
 		}
 	}
 
+	/**
+	 * Writes the specified text in the file with the specified name.
+	 * 
+	 * @param filename
+	 * @param text
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public static final boolean write(final String filename, final String text) {
 		return write(new File(filename), text);
 	}
 
+	/**
+	 * Writes the specified text in the specified file.
+	 * 
+	 * @param file
+	 * @param text
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public static final boolean write(final File file, final String text) {
 		return write(file, text, CHARSET);
 	}
 
+	/**
+	 * Appends the specified text in the file with the specified name.
+	 * 
+	 * @param filename
+	 * @param text
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public static final boolean append(final String filename, final String text) {
 		return append(new File(filename), text, CHARSET);
 	}
 
+	/**
+	 * Appends the specified text in the specified file.
+	 * 
+	 * @param file
+	 * @param text
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public static final boolean append(final File file, final String text) {
 		return append(file, text, CHARSET);
 	}
 
+	/**
+	 * Appends the specified text in the file with the specified name in the specified character set.
+	 * 
+	 * @param filename
+	 * @param text
+	 * @param charset
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public static final boolean append(final String filename, final String text, final String charset) {
 		return append(new File(filename), text, charset);
 	}
 
+	/**
+	 * Appends the specified text in the specified file in the specified character set.
+	 * 
+	 * @param file
+	 * @param text
+	 * @param charset
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public static final boolean append(final File file, final String text, final String charset) {
 		try {
 			performWriting(new OutputStreamWriter(new FileOutputStream(file, true), charset), text);
@@ -113,10 +199,28 @@ public class TextFiles extends Ace {
 		}
 	}
 
+	/**
+	 * Reads the content of the input file with the specified name in the specified character set and writes it in the specified character set to the output file with the name specified.
+	 * 
+	 * @param inputFilename
+	 * @param inputEncoding
+	 * @param outputFilename
+	 * @param outputEncoding
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public static final boolean transcode(final String inputFilename, final String inputEncoding, final String outputFilename, final String outputEncoding) {
 		return transcode(new File(inputFilename), inputEncoding, new File(outputFilename), outputEncoding);
 	}
 
+	/**
+	 * Reads the content of the specified input file in the specified character set and writes it in the specified character set to the specified output file.
+	 * 
+	 * @param inputFile
+	 * @param inputEncoding
+	 * @param outputFile
+	 * @param outputEncoding
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public static final boolean transcode(final File inputFile, final String inputEncoding, final File outputFile, final String outputEncoding) {
 		try {
 			final FileInputStream is = new FileInputStream(inputFile);
@@ -132,6 +236,13 @@ public class TextFiles extends Ace {
 		}
 	}
 
+	/**
+	 * Treats the specified file with the specified string treater.
+	 * 
+	 * @param file
+	 * @param treater
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public static final boolean treat(final File file, final Treater<String> treater) {
 		return write(file, treater.treat(read(file)));
 	}

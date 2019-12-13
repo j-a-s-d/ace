@@ -19,6 +19,9 @@ public class BinaryFileWriter extends Ace {
 	private BufferedOutputStream _bos;
 	private OutputStream _output;
 
+	/**
+	 * Default constructor.
+	 */
 	public BinaryFileWriter() {
 		reset();
 	}
@@ -29,10 +32,24 @@ public class BinaryFileWriter extends Ace {
 		_output = null;
 	}
 
+	/**
+	 * Initializes the binary file writer with the specified output file name and the specified writing mode (<tt>true</tt> for append mode).
+	 * 
+	 * @param filename
+	 * @param append
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public boolean init(final String filename, final boolean append) {
 		return init(new File(filename), append);
 	}
 
+	/**
+	 * Initializes the binary file writer with the specified output file and the specified writing mode (<tt>true</tt> for append mode).
+	 * 
+	 * @param file
+	 * @param append
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public boolean init(final File file, final boolean append) {
 		try {
 			_fos = new FileOutputStream(file, append);
@@ -46,6 +63,12 @@ public class BinaryFileWriter extends Ace {
 		}
 	}
 
+	/**
+	 * Writes the specified byte array to the output file.
+	 * 
+	 * @param input
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public boolean write(final byte[] input) {
 		try {
 			_output.write(input);
@@ -57,6 +80,12 @@ public class BinaryFileWriter extends Ace {
 		}
 	}
 
+	/**
+	 * Writes the specified input stream to the output file.
+	 * 
+	 * @param input
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public boolean write(final InputStream input) {
 		try {
 			final ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -71,10 +100,21 @@ public class BinaryFileWriter extends Ace {
 		}
 	}
 
+	/**
+	 * Writes the specified string to the output file.
+	 * 
+	 * @param input
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public boolean write(final String input) {
 		return write(input.getBytes());
 	}
 
+	/**
+	 * Closes the output file.
+	 * 
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public boolean close() {
 		try {
 			_output.close();

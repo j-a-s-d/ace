@@ -20,10 +20,22 @@ import java.io.RandomAccessFile;
  */
 public class BinaryFiles extends Ace {
 
+	/**
+	 * Reads the contents of the file with the specified name as a byte array.
+	 * 
+	 * @param filename
+	 * @return the contents of the file with the specified name or <tt>null</tt> if it fails
+	 */
 	public static final byte[] read(final String filename) {
 		return read(new File(filename));
 	}
 
+	/**
+	 * Reads the contents of the specified file as a byte array.
+	 * 
+	 * @param file
+	 * @return the contents of the specified file or <tt>null</tt> if it fails
+	 */
 	public static final byte[] read(final File file) {
 		if (file == null || !file.exists()) {
 			GEH.setLastException(new FileNotFoundException()); // NOTE: same as in java.io.RandomAccessFile.setLength()
@@ -36,10 +48,26 @@ public class BinaryFiles extends Ace {
 		return read(file, (long) 0, (int) file.length());
 	}
 
+	/**
+	 * Reads the specified segment of the file with the specified name as a byte array.
+	 * 
+	 * @param filename
+	 * @param fromPosition
+	 * @param length
+	 * @return the contents of the file with the specified name or <tt>null</tt> if it fails
+	 */
 	public static final byte[] read(final String filename, final long fromPosition, final int length) {
 		return read(new File(filename), fromPosition, length);
 	}
 
+	/**
+	 * Reads the specified segment of the specified file as a byte array.
+	 * 
+	 * @param file
+	 * @param fromPosition
+	 * @param length
+	 * @return the contents of the file with the specified name or <tt>null</tt> if it fails
+	 */
 	public static final byte[] read(final File file, final long fromPosition, final int length) {
 		try {
 			final byte[] result = new byte[length];
@@ -54,10 +82,26 @@ public class BinaryFiles extends Ace {
 		}
 	}
 
+	/**
+	 * Reads the specified segment of the file with the specified name as an input stream.
+	 * 
+	 * @param filename
+	 * @param fromPosition
+	 * @param length
+	 * @return the contents of the file with the specified name or <tt>null</tt> if it fails
+	 */
 	public static final InputStream read(final String filename, final int length, final long fromPosition) {
 		return read(new File(filename), length, fromPosition);
 	}
-	
+
+	/**
+	 * Reads the specified segment of the specified file as an input stream.
+	 * 
+	 * @param file
+	 * @param fromPosition
+	 * @param length
+	 * @return the contents of the file with the specified name or <tt>null</tt> if it fails
+	 */
 	public static final InputStream read(final File file, final int length, final long fromPosition) {
 		return new ByteArrayInputStream(read(file, fromPosition, length));
 	}
@@ -75,18 +119,46 @@ public class BinaryFiles extends Ace {
 		return result;
 	}
 
+	/**
+	 * Writes the specified byte array to the file with the specified name.
+	 * 
+	 * @param filename
+	 * @param content
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public static final boolean write(final String filename, final byte[] content) {
 		return performByteArrayFileWriting(new File(filename), content, false);
 	}
 
+	/**
+	 * Writes the specified byte array to the specified file.
+	 * 
+	 * @param file
+	 * @param content
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public static final boolean write(final File file, final byte[] content) {
 		return performByteArrayFileWriting(file, content, false);
 	}
 
+	/**
+	 * Appends the specified byte array to the file with the specified name.
+	 * 
+	 * @param filename
+	 * @param content
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public static final boolean append(final String filename, final byte[] content) {
 		return performByteArrayFileWriting(new File(filename), content, true);
 	}
 
+	/**
+	 * Appends the specified byte array to the specified file.
+	 * 
+	 * @param file
+	 * @param content
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public static final boolean append(final File file, final byte[] content) {
 		return performByteArrayFileWriting(file, content, true);
 	}
@@ -104,26 +176,70 @@ public class BinaryFiles extends Ace {
 		return result;
 	}
 
+	/**
+	 * Writes the specified input stream to the file with the specified name.
+	 * 
+	 * @param filename
+	 * @param content
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public static final boolean write(final String filename, final InputStream content) {
 		return performInputStreamFileWriting(new File(filename), content, false);
 	}
 
+	/**
+	 * Writes the specified input stream to the specified file.
+	 * 
+	 * @param file
+	 * @param content
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public static final boolean write(final File file, final InputStream content) {
 		return performInputStreamFileWriting(file, content, false);
 	}
 
+	/**
+	 * Appends the specified input stream to the file with the specified name.
+	 * 
+	 * @param filename
+	 * @param content
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public static final boolean append(final String filename, final InputStream content) {
 		return performInputStreamFileWriting(new File(filename), content, true);
 	}
 
+	/**
+	 * Appends the specified input stream to the specified file.
+	 * 
+	 * @param file
+	 * @param content
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public static final boolean append(final File file, final InputStream content) {
 		return performInputStreamFileWriting(file, content, true);
 	}
 
+	/**
+	 * Treats the specified file with the specified binary treater.
+	 * 
+	 * @param file
+	 * @param treater
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public static final boolean treat(final File file, final Treater<byte[]> treater) {
 		return write(file, treater.treat(read(file)));
 	}
 
+	/**
+	 * Reads the specified segment of the specified file to the specified output stream.
+	 * 
+	 * @param inputFile
+	 * @param skip
+	 * @param length
+	 * @param output
+	 * @return the contents of the file with the specified name or <tt>null</tt> if it fails
+	 */
 	public static boolean copySegmentToStream(final File inputFile, final long skip, final long length, final OutputStream output) {
 		try {
 			final FileInputStream input = new FileInputStream(inputFile);
@@ -138,6 +254,14 @@ public class BinaryFiles extends Ace {
 		return false;
 	}
 
+	/**
+	 * Reads the specified segment of the specified file as a byte array.
+	 * 
+	 * @param file
+	 * @param skip
+	 * @param length
+	 * @return the contents of the file with the specified name or <tt>null</tt> if it fails
+	 */
 	public static byte[] readSegment(final File file, final long skip, final long length) {
 		try {
 			final ByteArrayOutputStream baos = new ByteArrayOutputStream();

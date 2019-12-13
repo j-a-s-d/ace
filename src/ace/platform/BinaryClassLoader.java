@@ -19,26 +19,62 @@ public class BinaryClassLoader extends ClassLoader {
 	private final Map<String, byte[]> _binaryClasses = Maps.make();
 	private final Map<String, byte[]> _binaryResources = Maps.make();
 
+	/**
+	 * Default constructor using the local class loader.
+	 */
 	public BinaryClassLoader() {
 		this(BinaryClassLoader.class.getClassLoader());
 	}
 
+	/**
+	 * Default constructor using the specified class loader.
+	 * 
+	 * @param parent 
+	 */
 	public BinaryClassLoader(final ClassLoader parent) {
 		super(parent);
 	}
 
+	/**
+	 * Register a class with the specified name and the specified content.
+	 * 
+	 * @param name
+	 * @param data
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public boolean registerClass(final String name, final byte[] data) {
 		return !_binaryClasses.containsKey(name) && _binaryClasses.put(name, data) == null;
 	}
 
+	/**
+	 * Register a resource with the specified name and the specified content.
+	 * 
+	 * @param name
+	 * @param data
+	 * @return <tt>true</tt> if the operation was successful, <tt>false</tt> otherwise
+	 */
 	public boolean registerResource(final String name, final byte[] data) {
 		return !_binaryResources.containsKey(name) && _binaryResources.put(name, data) == null;
 	}
 
+	/**
+	 * Loads the class with the specified name (calling the implied loadClass method).
+	 * 
+	 * @param name
+	 * @return the class instance
+	 * @throws ClassNotFoundException 
+	 */
 	@Override public Class loadClass(final String name) throws ClassNotFoundException {
 		return super.loadClass(name, true);
 	}
 
+	/**
+	 * Finds the class with the specified name (looking for it among the defined classes).
+	 * 
+	 * @param name
+	 * @return the class instance
+	 * @throws ClassNotFoundException 
+	 */
 	@Override public Class findClass(final String name) throws ClassNotFoundException {
 		if (!_definedClasses.contains(name)) {
 			try {
@@ -55,6 +91,12 @@ public class BinaryClassLoader extends ClassLoader {
 		return super.loadClass(name, true);
 	}
 
+	/**
+	 * Returns an input stream for reading the specified resource.
+	 * 
+	 * @param name
+	 * @return an input stream for reading the specified resource
+	 */
     @Override public InputStream getResourceAsStream(final String name) {
 		return new ByteArrayInputStream(_binaryResources.get(name));
 	}

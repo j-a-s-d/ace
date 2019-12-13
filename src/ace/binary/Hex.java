@@ -10,6 +10,12 @@ import java.util.Formatter;
  */
 public class Hex extends Ace {
 
+	/**
+	 * Converts the hex string provided to its corresponding byte array.
+	 * 
+	 * @param string
+	 * @return the resulting byte array
+	 */
 	public final static byte[] toByteArray(final String string) {
 		if (string != null) {
 			final byte[] r = new byte[string.length() / 2];
@@ -21,6 +27,12 @@ public class Hex extends Ace {
 		return null;
 	}
 
+	/**
+	 * Converts the byte array to its corresponding hex string.
+	 * 
+	 * @param bytes
+	 * @return the resulting hex string
+	 */
 	public final static String fromByteArray(final byte[] bytes) {
 		if (bytes != null) {
 			final Formatter formatter = new Formatter();

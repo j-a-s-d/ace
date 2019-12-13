@@ -4,6 +4,11 @@ package ace.looping;
 
 public abstract class ArrayMapper<T> extends BaseMapper<T[], T> {
 
+	/**
+	 * Constructor accepting an array.
+	 * 
+	 * @param items 
+	 */
 	@SuppressWarnings("OverridableMethodCallInConstructor")
 	public ArrayMapper(final T... items) {
 		super(items);

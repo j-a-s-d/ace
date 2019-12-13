@@ -11,10 +11,23 @@ import ace.constants.STRINGS;
  */
 public class Sizes extends Ace {
 
+	/**
+	 * Formats the specified byte size.
+	 * 
+	 * @param bytes
+	 * @return the formatted byte size
+	 */
 	public static final String formatByteSize(final long bytes) {
 		return formatByteSize(bytes, 2);
 	}
 
+	/**
+	 * Formats the specified byte size with the specified amount of decimals.
+	 * 
+	 * @param bytes
+	 * @param decimals
+	 * @return the formatted byte size
+	 */
 	public static final String formatByteSize(final long bytes, final int decimals) {
 		final String unit_suffix;
 		final double unit_bytes;

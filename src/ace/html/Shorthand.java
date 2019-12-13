@@ -11,6 +11,10 @@ import ace.text.Strings;
  */
 public class Shorthand extends Ace {
 
+	/**
+	 * This class holds the resulting information of the shorthand notation parsing
+	 * containing the tag, the id and the classes included in it.
+	 */
 	public static class ShorthandInfo {
 
 		public String tag = "div";
@@ -19,6 +23,13 @@ public class Shorthand extends Ace {
 
 	}
 
+	/**
+	 * Parses the supplied html shorthand notation string
+	 * storing the resulting information in a ShorthandInfo instance.
+	 * 
+	 * @param shorthandNotation
+	 * @return a ShorthandInfo instance
+	 */
 	@SuppressWarnings("PMD.AvoidArrayLoops")
 	public static ShorthandInfo parse(final String shorthandNotation) {
 		if (!Strings.hasContent(shorthandNotation)) {
@@ -47,10 +58,24 @@ public class Shorthand extends Ace {
 		return result;
 	}
 
+	/**
+	 * Compiles the provided shorthand notation string to an html element.
+	 * 
+	 * @param shorthandNotation
+	 * @return the resulting html element string
+	 */
 	public static String make(final String shorthandNotation) {
 		return make(shorthandNotation, null);
 	}
 
+	/**
+	 * Compiles the provided shorthand notation string to an html element
+	 * containing the supplied content.
+	 * 
+	 * @param shorthandNotation
+	 * @param content
+	 * @return the resulting html element string
+	 */
 	public static String make(final String shorthandNotation, final String content) {
 		final ShorthandInfo parsed = parse(shorthandNotation);
 		final StringBuilder sb = new StringBuilder(STRINGS.MINOR).append(parsed.tag);

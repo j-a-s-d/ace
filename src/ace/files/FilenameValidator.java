@@ -11,20 +11,42 @@ import java.util.regex.Pattern;
  */
 public class FilenameValidator extends Ace {
 
+	/**
+	 * Creates a file name validator that matches all files (*.*)
+	 * 
+	 * @return the resulting file name validator
+	 */
 	public static final FilenameValidator makeAllFilesValidator() {
 		return new FilenameValidator("^.*\\.*$");
 	}
 
 	private final Pattern _pattern;
 
+	/**
+	 * Constructor accepting a file name regex pattern.
+	 * 
+	 * @param filePattern 
+	 */
 	public FilenameValidator(final String filePattern) {
 		_pattern = Pattern.compile(filePattern);
 	}
 
+	/**
+	 * Determines if the specified file name matches the validation pattern.
+	 * 
+	 * @param fileName
+	 * @return <tt>true</tt> if the specified file name matches the validation pattern, <tt>false</tt> otherwise
+	 */
 	public boolean validate(final String fileName) {
 		return _pattern.matcher(fileName).matches();
 	}
 
+	/**
+	 * Creates a file name validator that matches the specified file name regex pattern.
+	 * 
+	 * @param extensions
+	 * @return the resulting file name validator
+	 */
 	@SuppressWarnings("PMD.SimplifyStartsWith")
 	public static FilenameValidator makeExtensionsValidator(final String... extensions) {
 		if (extensions == null || extensions.length == 0) {

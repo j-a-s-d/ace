@@ -10,10 +10,20 @@ import java.util.UUID;
  */
 public class GUID extends Ace {
 
+	/**
+	 * Makes a random GUID and returns it as a UUID instance.
+	 * 
+	 * @return a UUID instance
+	 */
 	public static UUID make() {
 		return UUID.randomUUID();
 	}
 
+	/**
+	 * Makes a random GUID and returns it as its string representation.
+	 * 
+	 * @return the string representation of the created UUID instance
+	 */
 	public static String makeAsString() {
 		return UUID.randomUUID().toString();
 	}

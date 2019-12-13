@@ -6,6 +6,11 @@ import java.util.List;
 
 public abstract class ListMapper<T> extends BaseMapper<List<T>, T> {
 
+	/**
+	 * Constructor accepting a list.
+	 * 
+	 * @param items 
+	 */
 	@SuppressWarnings("OverridableMethodCallInConstructor")
 	public ListMapper(final List<T> items) {
 		super(items);

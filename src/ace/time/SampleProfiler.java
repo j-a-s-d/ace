@@ -70,10 +70,18 @@ public class SampleProfiler extends Ace implements Reseteable {
 
 	private String _precisionSuffix = PRECISION_SUFFIX_MILLISECS;
 
+	/**
+	 * Default constructor.
+	 */
 	public SampleProfiler() {
 		this(null);
 	}
 
+	/**
+	 * Constructor accepting a sample profiler as source from where copy the initial state.
+	 * 
+	 * @param source
+	 */
 	public SampleProfiler(final SampleProfiler source) {
 		if (assigned(source)) {
 			_precisionSuffix = source._precisionSuffix;
@@ -89,33 +97,66 @@ public class SampleProfiler extends Ace implements Reseteable {
 		}
 	}
 
+	/**
+	 * Indicates if the precision suffix is none.
+	 * 
+	 * @return <tt>true</tt> if the precision suffix is none, <tt>false</tt> otherwise
+	 */
 	public boolean isPrecisionSuffixNone() {
 		return PRECISION_SUFFIX_NONE.equals(_precisionSuffix);
 	}
 
+	/**
+	 * Indicates if the precision suffix is milliseconds.
+	 * 
+	 * @return <tt>true</tt> if the precision suffix is milliseconds, <tt>false</tt> otherwise
+	 */
 	public boolean isPrecisionSuffixMilliseconds() {
 		return PRECISION_SUFFIX_MILLISECS.equals(_precisionSuffix);
 	}
 
+	/**
+	 * Indicates if the precision suffix is nanoseconds.
+	 * 
+	 * @return <tt>true</tt> if the precision suffix is nanoseconds, <tt>false</tt> otherwise
+	 */
 	public boolean isPrecisionSuffixNanoseconds() {
 		return PRECISION_SUFFIX_NANOSECS.equals(_precisionSuffix);
 	}
 
+	/**
+	 * Sets the precision suffix as none.
+	 * 
+	 * @return itself
+	 */
 	public SampleProfiler setPrecisionSuffixToNone() {
 		_precisionSuffix = PRECISION_SUFFIX_NONE;
 		return this;
 	}
 
+	/**
+	 * Sets the precision suffix as milliseconds.
+	 * 
+	 * @return itself
+	 */
 	public SampleProfiler setPrecisionSuffixToMilliseconds() {
 		_precisionSuffix = PRECISION_SUFFIX_MILLISECS;
 		return this;
 	}
 
+	/**
+	 * Sets the precision suffix as nanoseconds.
+	 * 
+	 * @return itself
+	 */
 	public SampleProfiler setPrecisionSuffixToNanoseconds() {
 		_precisionSuffix = PRECISION_SUFFIX_NANOSECS;
 		return this;
 	}
 
+	/**
+	 * Resets this sample profiler.
+	 */
 	/*@Override*/ public void reset() {
 		_cnt = 0;
 		_err = 0;
@@ -128,6 +169,12 @@ public class SampleProfiler extends Ace implements Reseteable {
 		_avg_min_timestamp = 0;
 	}
 
+	/**
+	 * Takes a sample to profile by processing a boolean success flag and a long value.
+	 * 
+	 * @param success
+	 * @param value 
+	 */
 	public void sample(final boolean success, final long value) {
 		_cur = value;
 		_cur_timestamp = System.currentTimeMillis();
@@ -160,86 +207,191 @@ public class SampleProfiler extends Ace implements Reseteable {
 		_cnt++;
 	}
 
+	/**
+	 * Gets the last sampled (current) long value.
+	 * 
+	 * @return the last sampled (current) long value
+	 */
 	public long getCurrent() {
 		return (long) _cur;
 	}
 
+	/**
+	 * Gets the minimum sampled long value.
+	 * 
+	 * @return the minimum sampled long value
+	 */
 	public long getMinimum() {
 		return (long) _min;
 	}
 
+	/**
+	 * Gets the maximum sampled long value.
+	 * 
+	 * @return the maximum sampled long value
+	 */
 	public long getMaximum() {
 		return (long) _max;
 	}
 
+	/**
+	 * Gets the average sampled long value.
+	 * 
+	 * @return the average sampled long value
+	 */
 	public long getAverage() {
 		return (long) _avg;
 	}
 
+	/**
+	 * Gets the average minimum sampled long value.
+	 * 
+	 * @return the average minimum sampled long value
+	 */
 	public long getAverageMinimum() {
 		return (long) _avg_min;
 	}
 
+	/**
+	 * Gets the average maximum sampled long value.
+	 * 
+	 * @return the average maximum sampled long value
+	 */
 	public long getAverageMaximum() {
 		return (long) _avg_max;
 	}
 
+	/**
+	 * Gets the last sampled (current) double precision value.
+	 * 
+	 * @return the last sampled (current) double precision value
+	 */
 	public double getPreciseCurrent() {
 		return _cur;
 	}
 
+	/**
+	 * Gets the minimum sampled double precision value.
+	 * 
+	 * @return the minimum sampled double precision value
+	 */
 	public double getPreciseMinimum() {
 		return _min;
 	}
 
+	/**
+	 * Gets the maximum sampled double precision value.
+	 * 
+	 * @return the maximum sampled double precision value
+	 */
 	public double getPreciseMaximum() {
 		return _max;
 	}
 
+	/**
+	 * Gets the average sampled double precision value.
+	 * 
+	 * @return the average sampled double precision value
+	 */
 	public double getPreciseAverage() {
 		return _avg;
 	}
 
+	/**
+	 * Gets the average minimum sampled double precision value.
+	 * 
+	 * @return the average minimum sampled double precision value
+	 */
 	public double getPreciseAverageMinimum() {
 		return _avg_min;
 	}
 
+	/**
+	 * Gets the average maximum sampled double precision value.
+	 * 
+	 * @return the average maximum sampled double precision value
+	 */
 	public double getPreciseAverageMaximum() {
 		return _avg_max;
 	}
 
+	/**
+	 * Gets the last sampled (current) time stamp.
+	 * 
+	 * @return the last sampled (current) time stamp
+	 */
 	public long getCurrentTimestamp() {
 		return _cur_timestamp;
 	}
 
+	/**
+	 * Gets the minimum sampled time stamp.
+	 * 
+	 * @return the minimum sampled time stamp
+	 */
 	public long getMinimumTimestamp() {
 		return _min_timestamp;
 	}
 
+	/**
+	 * Gets the maximum sampled time stamp.
+	 * 
+	 * @return the maximum sampled time stamp
+	 */
 	public long getMaximumTimestamp() {
 		return _max_timestamp;
 	}
 
+	/**
+	 * Gets the average minimum sampled time stamp.
+	 * 
+	 * @return the average minimum sampled time stamp
+	 */
 	public long getAverageMinimumTimestamp() {
 		return _avg_min_timestamp;
 	}
 
+	/**
+	 * Gets the average maximum sampled time stamp.
+	 * 
+	 * @return the average maximum sampled time stamp
+	 */
 	public long getAverageMaximumTimestamp() {
 		return _avg_max_timestamp;
 	}
 
+	/**
+	 * Gets the last error sampled time stamp.
+	 * 
+	 * @return the last error sampled time stamp
+	 */
 	public long getLastErrorTimestamp() {
 		return _err_timestamp;
 	}
 
+	/**
+	 * Gets the count of sampled errors.
+	 * 
+	 * @return the count of sampled errors
+	 */
 	public long getTotalErrors() {
 		return _err;
 	}
 
+	/**
+	 * Gets the count of processed samples.
+	 * 
+	 * @return the count of processed samples
+	 */
 	public long getTotalCount() {
 		return _cnt;
 	}
 
+	/**
+	 * Gets a snapshot hash map of the current state values.
+	 * 
+	 * @return a snapshot hash map of the current state values
+	 */
 	public HashMap<String, Long> snapshot() {
 		final HashMap<String, Long> result = Maps.make();
 		if (PRECISION_SUFFIX_MILLISECS.equals(_precisionSuffix)) {
@@ -275,6 +427,11 @@ public class SampleProfiler extends Ace implements Reseteable {
 		return result;
 	}
 
+	/**
+	 * Gets a snapshot hash map of the current state double precision values.
+	 * 
+	 * @return a snapshot hash map of the current state double precision values
+	 */
 	public HashMap<String, Double> snapshotPrecisely() {
 		final HashMap<String, Double> result = Maps.make();
 		if (PRECISION_SUFFIX_MILLISECS.equals(_precisionSuffix)) {

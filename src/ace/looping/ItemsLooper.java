@@ -6,8 +6,18 @@ import ace.Ace;
 import ace.interfaces.Processor;
 import java.util.Collection;
 
+/**
+ * Useful items mapper class.
+ * 
+ * @param <T> Value type to be mapped.
+ */
 public abstract class ItemsLooper<T> extends Ace implements Processor<T> {
 
+	/**
+	 * Constructor accepting items.
+	 * 
+	 * @param items 
+	 */
 	@SuppressWarnings("OverridableMethodCallInConstructor")
 	public ItemsLooper(final T... items) {
 		for (final T item : items) {
@@ -15,6 +25,11 @@ public abstract class ItemsLooper<T> extends Ace implements Processor<T> {
 		}
 	}
 
+	/**
+	 * Constructor accepting a collection.
+	 * 
+	 * @param items 
+	 */
 	@SuppressWarnings("OverridableMethodCallInConstructor")
 	public ItemsLooper(final Collection<T> items) {
 		for (final T item : items) {
