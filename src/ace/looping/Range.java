@@ -6,6 +6,9 @@ import ace.Ace;
 import ace.interfaces.Immutable;
 import java.util.Iterator;
 
+/**
+ * Utility class for working with ranges.
+ */
 public class Range extends Ace implements Immutable, Iterable<Integer> {
 
 	public static Range downFrom(final int max) {

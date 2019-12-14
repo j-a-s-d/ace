@@ -7,6 +7,9 @@ import ace.Sandboxed;
 import ace.interfaces.Evaluable;
 import java.util.concurrent.*;
 
+/**
+ * Utility class for working with threads.
+ */
 public class Threads extends Ace {
 
 	// EXECUTORS RELATED

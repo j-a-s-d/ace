@@ -2,6 +2,9 @@
 
 package ace.interfaces;
 
+/**
+ * Useful interface to evaluate parameters and return a value.
+ */
 public interface Evaluable {
 
 	Object evaluate(final Object... parameters) throws Exception;

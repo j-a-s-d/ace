@@ -4,6 +4,11 @@ package ace.looping;
 
 import java.util.List;
 
+/**
+ * Useful list mapper class.
+ * 
+ * @param <T> Value type to be mapped.
+ */
 public abstract class ListMapper<T> extends BaseMapper<List<T>, T> {
 
 	/**

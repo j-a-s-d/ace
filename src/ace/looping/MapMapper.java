@@ -5,6 +5,12 @@ package ace.looping;
 import java.util.Map;
 import java.util.Map.Entry;
 
+/**
+ * Useful map mapper class.
+ * 
+ * @param <K> Key type to be mapped.
+ * @param <V> Value type to be mapped.
+ */
 public abstract class MapMapper<K, V> extends BaseMapper<Map<K, V>, V> {
 
 	/**

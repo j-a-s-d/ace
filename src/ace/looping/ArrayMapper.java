@@ -2,6 +2,11 @@
 
 package ace.looping;
 
+/**
+ * Useful array mapper class.
+ * 
+ * @param <T> Value type to be mapped.
+ */
 public abstract class ArrayMapper<T> extends BaseMapper<T[], T> {
 
 	/**
