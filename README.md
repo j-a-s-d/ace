@@ -17,6 +17,9 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.7.0 -- 24 Dec 2019
+    + released new binaries
+    + added sources and javadoc packages generation
 * 0.6.1 -- 14 Dec 2019
     + released new binary
     + improved methods documentation comments
@@ -325,7 +328,7 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 ## License
 
 Ace
-Copyright (c) 2016 Javier Santo Domingo (j-a-s-d@coderesearchlabs.com).
+Copyright (c) 2016-2019 Javier Santo Domingo (j-a-s-d@coderesearchlabs.com).
 
 Permission is hereby granted, free of charge, to any
 person obtaining a copy of this software and associated
