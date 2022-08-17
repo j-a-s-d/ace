@@ -17,6 +17,9 @@ An elegant & flexible general purpose utility library aiming compatibility & sim
 
 ## History
 
+* 0.7.1 -- 17 Aug 2022
+    + released new binaries
+    + improved ace.Ace class
 * 0.7.0 -- 24 Dec 2019
     + released new binaries
     + added sources and javadoc packages generation
