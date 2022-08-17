@@ -13,7 +13,7 @@ public class Ace {
 	/**
 	 * Ace version.
 	 */
-	public static final SemanticVersion ACE_VERSION = SemanticVersion.fromString("0.7.0");
+	public static final SemanticVersion ACE_VERSION = SemanticVersion.fromString("0.7.1");
 
 	/**
 	 * Ace DEVELOPMENT mode flag.
@@ -33,9 +33,11 @@ public class Ace {
 	 * @return Returns true if all of the specified objects are not null, otherwise it returns false.
 	 */
 	public static final boolean assigned(final Object... objects) {
-		boolean result = objects.length > 0;
-		for (final Object o : objects) {
-			result &= o != null;
+		boolean result = objects != null;
+		if (result) {
+			for (final Object o : objects) {
+				result &= o != null;
+			}
 		}
 		return result;
 	}
